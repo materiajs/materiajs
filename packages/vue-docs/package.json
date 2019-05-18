@@ -15,7 +15,7 @@
   "dependencies": {
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
-    "toolblox": "^0.1.26"
+    "toolblox": "^0.1.27"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

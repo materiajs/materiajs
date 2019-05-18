@@ -9,15 +9,15 @@
     </tb-toolbar>
     <aside>
       <tb-side-bar>
-        <div v-for="(item, key) in listItems" :key="key">
+        <div
+          v-for="(item, key) in navLinkItems"
+          :key="key"
+          class="nav-link-item"
+          :class="{ active: item.active }"
+        >
           <nuxt-link :to="item.to">
             {{ item.name }}
           </nuxt-link>
-          <tb-expansion-item :show="show">
-            <div class="expanding-item">
-              {{ item.name }}
-            </div>
-          </tb-expansion-item>
         </div>
       </tb-side-bar>
     </aside>
@@ -30,26 +30,20 @@
 
 export default {
   data: () => ({
-    show: false,
     listItems: [
       {
-        name: 'Welcome',
-        to: 'select',
-      },
-      {
-        name: 'Install',
-        to: 'select',
-      },
-      {
-        name: 'Examples',
+        name: 'Select',
         to: 'select',
       },
     ],
   }),
-  methods: {
-    onClick() {
-      this.show = !this.show;
-      this.$router.push({ name: 'select' });
+  computed: {
+    navLinkItems() {
+      return this.listItems
+        .map(item => ({
+          ...item,
+          active: this.$route.name === item.to,
+        }));
     },
   },
 };
@@ -88,5 +82,13 @@ export default {
   }
   .expanding-item {
     padding: 15px;
+  }
+  .nav-link-item {
+    border-bottom: 1px solid #ccc;
+    a {
+      padding: 15px;
+      display: block;
+      text-decoration: none;
+    }
   }
 </style>
