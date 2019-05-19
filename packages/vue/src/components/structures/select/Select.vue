@@ -49,7 +49,7 @@
 </template>
 <script>
 import t from 'vue-types';
-import isEmpty from 'lodash/isEmpty';
+import { isEmpty, isArray } from 'lodash';
 import Fuse from 'fuse.js';
 import themeable from '../../../mixins/themeable';
 import MatInput from '../../blocks/input/Input.vue';
@@ -157,7 +157,7 @@ export default {
         this.$emit('input', option);
         return;
       }
-      const selectedOptions = [...this.value];
+      const selectedOptions = [...(isArray(this.value) ? this.value : [])];
       selectedOptions.push(option);
       this.$emit('input', selectedOptions);
     },
@@ -172,7 +172,7 @@ export default {
       this.$emit('input', value);
     },
     getSelectedOptionIndex(option) {
-      return this.value.indexOf(option);
+      return isArray(this.value) ? this.value.indexOf(option) : -1;
     },
     isSelected(option) {
       if (this.isSingleValue) {
