@@ -52,8 +52,11 @@ import t from 'vue-types';
 import isEmpty from 'lodash/isEmpty';
 import Fuse from 'fuse.js';
 import themeable from '../../../mixins/themeable';
-import { MatInput, MatList, MatCheckbox } from '../../blocks';
-import { MatActionBox, MatChipList } from '../../composites';
+import MatInput from '../../blocks/input/Input.vue';
+import MatList from '../../blocks/list/List.vue';
+import MatCheckbox from '../../blocks/checkbox/Checkbox.vue';
+import MatActionBox from '../../composites/action-box/ActionBox.vue';
+import MatChipList from '../../composites/chip/ChipList.vue';
 
 export default {
   name: 'mat-select',

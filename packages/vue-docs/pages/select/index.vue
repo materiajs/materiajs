@@ -53,12 +53,6 @@ export default {
     SingleSelect,
   },
   data: () => ({
-    componentList: [
-      {
-        title: 'Single select',
-        component: MatSelect,
-      },
-    ],
     multipleBasicValue: [],
     multipleWithCheckboxesValue: [],
     multipleBasic: [
@@ -76,6 +70,17 @@ export default {
       { value: 'Cooper' },
     ],
   }),
+  computed: {
+    componentList() {
+      console.debug(this.$options.components); // TODO - Remove console output
+      return [
+        {
+          title: 'Single select',
+          component: MatSelect,
+        },
+      ];
+    },
+  },
 };
 </script>
 

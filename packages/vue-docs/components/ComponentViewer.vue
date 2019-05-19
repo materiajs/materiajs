@@ -13,10 +13,11 @@
       </mat-nav-link>
     </mat-toolbar>
     <mat-spacer />
-    <component
-      v-if="component"
-      :is="component"
-    />
+    <template v-if="component">
+      <component
+        :is="component"
+      />
+    </template>
 <!--    <mat-select-->
 <!--      v-model="singleValue"-->
 <!--      placeholder="Select single"-->
