@@ -1,5 +1,4 @@
 export { default as MatInput } from './input/Input.vue';
-export { default as MatList } from './list/List.vue';
 export { default as MatFa } from './icon/Fa.vue';
 export { default as MatChip } from './chip/Chip.vue';
 export { default as MatTransition } from './transition/TransitionComponent.vue';
@@ -21,6 +20,10 @@ export { default as MatFlexItem } from './layout/FlexItem.vue';
 export { default as MatGridLayout } from './layout/GridLayout.vue';
 export { default as MatSpacer } from './layout/Spacer.vue';
 export { default as MatLineBreak } from './layout/LineBreak.vue';
+
+// List
+export { default as MatList } from './list/List.vue';
+export { default as MatListLinkItem } from './list/ListLinkItem.vue';
 
 // Image
 export { default as MatImage } from './image/ImageComponent.vue';

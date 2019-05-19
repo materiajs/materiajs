@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../../../styles/main";
+  @import "../../../styles/variables";
   .mat-list {
     &.bordered {
       border: 1px solid $primary-color-light;

@@ -51,8 +51,8 @@ export default {
   ** Build configuration
   */
   build: {
-    vendors: [
-      'toolblox',
+    vendor: [
+      '@materiajs/vue',
     ],
     /*
     ** You can extend webpack config here

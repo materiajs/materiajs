@@ -106,7 +106,7 @@ export default {
           if (this.isSingleValue) {
             return this.value !== option;
           }
-          return this.value.indexOf(option) === -1;
+          return (isArray(this.value) ? this.value.indexOf(option) : -1) === -1;
         });
       }
       if (!this.searchString) {

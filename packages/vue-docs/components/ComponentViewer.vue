@@ -3,13 +3,13 @@
     <mat-toolbar
       ref="toolbar"
       size="small"
-      color="primary-light"
+      color="accent"
       :shadow="false"
     >
       {{ title }}
       <mat-spacer />
       <mat-nav-link @click="() => (showCode = !showCode)">
-        Source
+        <mat-fa icon="code" />
       </mat-nav-link>
     </mat-toolbar>
     <mat-spacer />

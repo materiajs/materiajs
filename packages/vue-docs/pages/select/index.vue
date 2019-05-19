@@ -5,39 +5,25 @@
       Examples
     </mat-title>
     <mat-line-break color="accent" />
-    <mat-spacer />
-    <component-viewer
-      v-for="(component, key) in componentList"
-      :key="key"
-      v-bind="component" />
-    <single-select />
-    <mat-spacer />
-    <mat-select
-      v-model="multipleBasicValue"
-      placeholder="Select multiple (Hide selected)"
-      :hide-selected="true"
-      :options="multipleBasic"
-    />
-    <br>
-    <mat-select
-      v-model="multipleWithCheckboxesValue"
-      placeholder="Select multiple with checkboxes"
-      :show-checkboxes="true"
-      :options="multipleWithChecboxes"
-    />
-    <mat-spacer />
-    <mat-select
-      :single-value="true"
-      :close-on-select="true"
-      :options="multipleBasic"
-    >
-      <template slot="trigger">
-        <mat-button>Trigger slot</mat-button>
-      </template>
-      <template slot="item" slot-scope="{ option }">
-        Item: {{ option.value }}
-      </template>
-    </mat-select>
+    <mat-padding padding="30px 0">
+      The Select component is a structure which uses the
+      <nuxt-link to="input">Input</nuxt-link>,
+      <nuxt-link to="list">List</nuxt-link>,
+      <nuxt-link to="chip-list">ChipList</nuxt-link>,
+      <nuxt-link to="checkbox">Checkbox</nuxt-link> and
+      <nuxt-link to="action-box">ActionBox</nuxt-link> components.
+    </mat-padding>
+    <template v-for="(component, key) in componentList">
+      <mat-padding padding="15px 0">
+        <mat-card>
+          <mat-padding padding="15px">
+            <component-viewer
+              :key="key"
+              v-bind="component" />
+          </mat-padding>
+        </mat-card>
+      </mat-padding>
+    </template>
   </div>
 </template>
 
@@ -78,6 +64,37 @@ export default {
           component: MatSelect,
           componentProps: {
             placeholder: 'Select value',
+            singleValue: true,
+            options: [
+              { value: 'Andy' },
+              { value: 'Gary' },
+              { value: 'Aoife' },
+              { value: 'Chrissy' },
+              { value: 'Cooper' },
+            ],
+          },
+        },
+        {
+          title: 'Multi select',
+          component: MatSelect,
+          componentProps: {
+            placeholder: 'Select multiple (hide selected)',
+            hideSelected: true,
+            options: [
+              { value: 'Andy' },
+              { value: 'Gary' },
+              { value: 'Aoife' },
+              { value: 'Chrissy' },
+              { value: 'Cooper' },
+            ],
+          },
+        },
+        {
+          title: 'Multi select with checkboxes',
+          component: MatSelect,
+          componentProps: {
+            placeholder: 'Select multiple',
+            showCheckboxes: true,
             options: [
               { value: 'Andy' },
               { value: 'Gary' },
@@ -98,6 +115,6 @@ export default {
   .select-index {
     margin: auto;
     max-width: 800px;
-    padding: 15px;
+    padding: 30px 15px;
   }
 </style>

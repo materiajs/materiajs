@@ -1,26 +1,27 @@
 <template>
   <div class="layout-default">
-    <mat-toolbar :dark="true">
-      <mat-nav-link>
-        <nuxt-link to="/">
-          Toolblox docs
-        </nuxt-link>
-      </mat-nav-link>
-    </mat-toolbar>
-    <aside>
-      <mat-side-bar>
-        <div
-          v-for="(item, key) in navLinkItems"
-          :key="key"
-          class="nav-link-item"
-          :class="{ active: item.active }"
-        >
-          <nuxt-link :to="item.to">
-            {{ item.name }}
+    <no-ssr>
+      <mat-toolbar :dark="true">
+        <mat-nav-link>
+          <nuxt-link to="/">
+            Materia JS
           </nuxt-link>
-        </div>
-      </mat-side-bar>
-    </aside>
+        </mat-nav-link>
+      </mat-toolbar>
+      <aside>
+        <mat-side-bar>
+          <mat-list-link-item
+            v-for="(item, key) in navLinkItems"
+            :key="key"
+            :active="item.active"
+          >
+            <nuxt-link :to="item.to">
+              {{ item.name }}
+            </nuxt-link>
+          </mat-list-link-item>
+        </mat-side-bar>
+      </aside>
+    </no-ssr>
     <main>
       <nuxt />
     </main>
@@ -32,8 +33,20 @@ export default {
   data: () => ({
     listItems: [
       {
+        name: 'Home',
+        to: '/',
+      },
+      {
+        name: 'Install guide',
+        to: '/install',
+      },
+      {
         name: 'Select',
-        to: 'select',
+        to: '/select',
+      },
+      {
+        name: 'Input',
+        to: '/input',
       },
     ],
   }),
@@ -42,7 +55,7 @@ export default {
       return this.listItems
         .map(item => ({
           ...item,
-          active: this.$route.name === item.to,
+          active: this.$route.path === item.to,
         }));
     },
   },
@@ -83,12 +96,9 @@ export default {
   .expanding-item {
     padding: 15px;
   }
-  .nav-link-item {
-    border-bottom: 1px solid #ccc;
-    a {
-      padding: 15px;
-      display: block;
-      text-decoration: none;
-    }
+  main {
+    min-height: 100%;
+    height: 20vh;
+    overflow-y: scroll;
   }
 </style>
