@@ -1,46 +1,46 @@
 <template>
   <div class="component-viewer">
-    <tb-toolbar
+    <mat-toolbar
       ref="toolbar"
       size="small"
       color="primary-light"
       :shadow="false"
     >
       {{ title }}
-      <tb-spacer />
-      <tb-nav-link @click="() => (showCode = !showCode)">
+      <mat-spacer />
+      <mat-nav-link @click="() => (showCode = !showCode)">
         Source
-      </tb-nav-link>
-    </tb-toolbar>
-    <tb-spacer />
+      </mat-nav-link>
+    </mat-toolbar>
+    <mat-spacer />
     <component
       v-if="component"
       :is="component"
     />
-    <tb-select
-      v-model="singleValue"
-      placeholder="Select single"
-      :single-value="true"
-      :options="singleSelect"
-    />
-<!--    <tb-expansion-item :show="showCode">-->
-<!--      <tb-tabs v-model="singleSelectTab">-->
-<!--        <tb-tab :tab-key="0">Template</tb-tab>-->
-<!--        <tb-tab :tab-key="1">Script</tb-tab>-->
-<!--      </tb-tabs>-->
-<!--      <tb-window :value="singleSelectTab">-->
-<!--        <tb-window-item :value="0">-->
-<!--          <tb-padding padding="15px">-->
-<!--            <tb-code :value="singleCode" lang="html" />-->
-<!--          </tb-padding>-->
-<!--        </tb-window-item>-->
-<!--        <tb-window-item :value="1">-->
-<!--          <tb-padding padding="15px">-->
-<!--            <tb-code :value="singleCodeJs" lang="javascript" />-->
-<!--          </tb-padding>-->
-<!--        </tb-window-item>-->
-<!--      </tb-window>-->
-<!--    </tb-expansion-item>-->
+<!--    <mat-select-->
+<!--      v-model="singleValue"-->
+<!--      placeholder="Select single"-->
+<!--      :single-value="true"-->
+<!--      :options="singleSelect"-->
+<!--    />-->
+<!--    <mat-expansion-item :show="showCode">-->
+<!--      <mat-tabs v-model="singleSelectTab">-->
+<!--        <mat-tab :tab-key="0">Template</mat-tab>-->
+<!--        <mat-tab :tab-key="1">Script</mat-tab>-->
+<!--      </mat-tabs>-->
+<!--      <mat-window :value="singleSelectTab">-->
+<!--        <mat-window-item :value="0">-->
+<!--          <mat-padding padding="15px">-->
+<!--            <mat-code :value="singleCode" lang="html" />-->
+<!--          </mat-padding>-->
+<!--        </mat-window-item>-->
+<!--        <mat-window-item :value="1">-->
+<!--          <mat-padding padding="15px">-->
+<!--            <mat-code :value="singleCodeJs" lang="javascript" />-->
+<!--          </mat-padding>-->
+<!--        </mat-window-item>-->
+<!--      </mat-window>-->
+<!--    </mat-expansion-item>-->
   </div>
 </template>
 

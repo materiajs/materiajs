@@ -1,14 +1,14 @@
 <template>
   <div class="layout-default">
-    <tb-toolbar :dark="true">
-      <tb-nav-link>
+    <mat-toolbar :dark="true">
+      <mat-nav-link>
         <nuxt-link to="/">
           Toolblox docs
         </nuxt-link>
-      </tb-nav-link>
-    </tb-toolbar>
+      </mat-nav-link>
+    </mat-toolbar>
     <aside>
-      <tb-side-bar>
+      <mat-side-bar>
         <div
           v-for="(item, key) in navLinkItems"
           :key="key"
@@ -19,7 +19,7 @@
             {{ item.name }}
           </nuxt-link>
         </div>
-      </tb-side-bar>
+      </mat-side-bar>
     </aside>
     <main>
       <nuxt />
@@ -74,10 +74,10 @@ export default {
     grid-template-rows: minmax(0, auto) 1fr;
     height: 100vh;
   }
-  .tb-toolbar {
+  .mat-toolbar {
     grid-area: toolbar;
   }
-  .tb-side-bar {
+  .mat-side-bar {
     height: 100%;
   }
   .expanding-item {

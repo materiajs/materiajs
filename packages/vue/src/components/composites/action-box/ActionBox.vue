@@ -7,7 +7,7 @@
       <div
         :style="getElementStyle"
         v-on-clickaway="onClickOutside"
-        class="mat-action-box-body mat-card-light">
+        class="mat-action-box-body mat-card-light mat-box-shadow-heavy">
         <slot />
       </div>
     </div>
@@ -48,7 +48,6 @@ export default {
     top: 100%;
     z-index: 100;
     &-body {
-      box-shadow: $box-shadow-heavy;
       overflow: hidden;
     }
     &:before {

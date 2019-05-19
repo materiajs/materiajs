@@ -1,46 +1,48 @@
 <template>
   <div class="select-index">
-    <tb-title>Select</tb-title>
-    <tb-title :subtitle="true" size="xs">
+    <mat-title>Select</mat-title>
+    <mat-title :subtitle="true" size="xs">
       Examples
-    </tb-title>
-    <tb-line-break color="accent" />
-    <tb-spacer />
+    </mat-title>
+    <mat-line-break color="accent" />
+    <mat-spacer />
     <component-viewer
-      v-for="component in componentList"
+      v-for="(component, key) in componentList"
+      :key="key"
       v-bind="component" />
     <single-select />
-    <tb-spacer />
-    <tb-select
+    <mat-spacer />
+    <mat-select
       v-model="multipleBasicValue"
       placeholder="Select multiple (Hide selected)"
       :hide-selected="true"
       :options="multipleBasic"
     />
     <br>
-    <tb-select
+    <mat-select
       v-model="multipleWithCheckboxesValue"
       placeholder="Select multiple with checkboxes"
       :show-checkboxes="true"
       :options="multipleWithChecboxes"
     />
-    <tb-spacer />
-    <tb-select
+    <mat-spacer />
+    <mat-select
       :single-value="true"
       :close-on-select="true"
       :options="multipleBasic"
     >
       <template slot="trigger">
-        <tb-button>Trigger slot</tb-button>
+        <mat-button>Trigger slot</mat-button>
       </template>
       <template slot="item" slot-scope="{ option }">
         Item: {{ option.value }}
       </template>
-    </tb-select>
+    </mat-select>
   </div>
 </template>
 
 <script>
+import MatSelect from '@materiajs/vue/src/components/structures/select/Select.vue';
 import SingleSelect from '../../components/select/SingleSelect.vue';
 import ComponentViewer from '../../components/ComponentViewer.vue';
 
@@ -54,7 +56,7 @@ export default {
     componentList: [
       {
         title: 'Single select',
-        component: {},
+        component: MatSelect,
       },
     ],
     multipleBasicValue: [],
