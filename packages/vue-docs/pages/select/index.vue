@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import MatSelect from '@materiajs/vue/src/components/structures/select/Select.vue';
 import SingleSelect from '../../components/select/SingleSelect.vue';
 import ComponentViewer from '../../components/ComponentViewer.vue';
 
@@ -55,7 +54,7 @@ export default {
     componentList: [
       {
         title: 'Single select',
-        component: MatSelect,
+        component: {},
       },
     ],
     multipleBasicValue: [],
