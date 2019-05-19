@@ -17,8 +17,8 @@
 <script>
 import { mixin as clickaway } from 'vue-clickaway';
 import t from 'vue-types';
-import themeable from '@/mixins/themeable';
-import sizeable from '@/mixins/sizeable';
+import themeable from '../../../mixins/themeable';
+import sizeable from '../../../mixins/sizeable';
 
 export default {
   name: 'mat-action-box',
