@@ -52,10 +52,10 @@ export default {
   name: 'ComponentViewer',
   props: {
     title: t.string.def('Component name'),
+    component: t.object,
   },
   data: () => ({
     showCode: false,
-    component: t.object,
   }),
 };
 </script>
