@@ -1,7 +1,7 @@
 {
   "name": "@materiajs/vue",
   "main": "./dist/materiajs-vue.common.js",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
