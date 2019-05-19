@@ -13,7 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@materiajs/vue": "^0.2.5",
+    "@materiajs/vue": "file:.yalc/@materiajs/vue",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
     "vue-types": "^1.5.3"

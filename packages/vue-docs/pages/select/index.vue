@@ -72,11 +72,20 @@ export default {
   }),
   computed: {
     componentList() {
-      console.debug(this.$options.components); // TODO - Remove console output
       return [
         {
           title: 'Single select',
           component: MatSelect,
+          componentProps: {
+            placeholder: 'Select value',
+            options: [
+              { value: 'Andy' },
+              { value: 'Gary' },
+              { value: 'Aoife' },
+              { value: 'Chrissy' },
+              { value: 'Cooper' },
+            ],
+          },
         },
       ];
     },
@@ -85,8 +94,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "~@materiajs/vue/src/styles/main";
   .select-index {
-    margin: 15px auto;
+    margin: auto;
     max-width: 800px;
     padding: 15px;
   }

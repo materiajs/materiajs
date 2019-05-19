@@ -18,7 +18,7 @@
 
 <script>
 import t from 'vue-types';
-import { MatChip } from '../../blocks';
+import MatChip from '../../blocks/chip/Chip.vue';
 
 export default {
   name: 'mat-chip-list',

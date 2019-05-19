@@ -10,7 +10,7 @@
 
 <script>
 import t from 'vue-types';
-import { MatTransition } from '../index';
+import MatTransition from '../transition/TransitionComponent.vue';
 
 export default {
   name: 'WindowItem',

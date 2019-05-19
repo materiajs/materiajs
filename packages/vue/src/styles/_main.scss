@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import './_variables';
+@import './variables';
+@import './card';
 
 body, html {
   font-family: 'Source Sans Pro', sans-serif;
@@ -60,19 +61,6 @@ input {
     &.focused {
       color: $primary-color-dark;
     }
-  }
-}
-
-// Card
-.mat-card {
-  background: white;
-  border-radius: $border-radius-standard;
-  box-shadow: $box-shadow-standard;
-
-  &-light {
-    background: white;
-    border-radius: $border-radius-light;
-    box-shadow: $box-shadow-light;
   }
 }
 
