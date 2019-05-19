@@ -18,6 +18,7 @@
         :is="component"
       />
     </template>
+    <mat-spacer />
 <!--    <mat-select-->
 <!--      v-model="singleValue"-->
 <!--      placeholder="Select single"-->

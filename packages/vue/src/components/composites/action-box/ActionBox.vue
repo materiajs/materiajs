@@ -40,7 +40,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../../../styles/main";
   .mat-action-box {
     min-width: 320px;
     position: absolute;

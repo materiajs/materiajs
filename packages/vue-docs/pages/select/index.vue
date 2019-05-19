@@ -88,5 +88,6 @@ export default {
   .select-index {
     margin: 15px auto;
     max-width: 800px;
+    padding: 15px;
   }
 </style>

@@ -2,7 +2,6 @@ export { default as MatInput } from './input/Input.vue';
 export { default as MatList } from './list/List.vue';
 export { default as MatFa } from './icon/Fa.vue';
 export { default as MatChip } from './chip/Chip.vue';
-export { default as MatTransition } from './transition/TransitionComponent.vue';
 export { default as MatCheckbox } from './checkbox/Checkbox.vue';
 
 // Button
@@ -44,3 +43,11 @@ export { default as MatWindowItem } from './window/WindowItem.vue';
 // Tabs
 export { default as MatTabs } from './tabs/TabsComponent.vue';
 export { default as MatTab } from './tabs/TabComponent.vue';
+
+// eslint-disable-next-line
+export let MatTransition;
+if (window === undefined) {
+  MatTransition = {};
+} else {
+  MatTransition = import('./transition/TransitionComponent.vue');
+}
