@@ -52,7 +52,7 @@
 import t from 'vue-types';
 import isEmpty from 'lodash/isEmpty';
 import Fuse from 'fuse.js';
-import themeable from '@/mixins/themeable';
+import themeable from '../../../mixins/themeable';
 import { MatInput, MatList, MatCheckbox } from '@/components/blocks';
 import { MatActionBox, MatChipList } from '@/components/composites';
 
