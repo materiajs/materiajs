@@ -1,5 +1,5 @@
 {
-  "name": "toolblox-docs",
+  "name": "@materiajs/vue-docs",
   "version": "0.0.1",
   "description": "Documentation and Component demo for toolblox ",
   "author": "andyfeely",
@@ -13,9 +13,9 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "@materiajs/vue": "0.0.1",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
-    "toolblox": "^0.1.27",
     "vue-types": "^1.5.3"
   },
   "devDependencies": {

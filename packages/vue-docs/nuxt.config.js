@@ -38,7 +38,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/toolblox.js', ssr: false },
+    { src: '~/plugins/materia.js', ssr: false },
   ],
 
   /*

@@ -6,6 +6,9 @@
     </tb-title>
     <tb-line-break color="accent" />
     <tb-spacer />
+    <component-viewer
+      v-for="component in componentList"
+      v-bind="component" />
     <single-select />
     <tb-spacer />
     <tb-select
@@ -38,14 +41,23 @@
 </template>
 
 <script>
+import MatSelect from '@materiajs/vue/src/components/structures/select/Select.vue';
 import SingleSelect from '../../components/select/SingleSelect.vue';
+import ComponentViewer from '../../components/ComponentViewer.vue';
 
 export default {
   name: 'Index',
   components: {
+    ComponentViewer,
     SingleSelect,
   },
   data: () => ({
+    componentList: [
+      {
+        title: 'Single select',
+        component: MatSelect,
+      },
+    ],
     multipleBasicValue: [],
     multipleWithCheckboxesValue: [],
     multipleBasic: [
