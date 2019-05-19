@@ -44,7 +44,9 @@
 </template>
 
 <script>
-import { MatCode, MatWindow, MatWindowItem, MatTab, MatTabs } from './components/blocks';
+import {
+  MatCode, MatWindow, MatWindowItem, MatTab, MatTabs,
+} from './components/blocks';
 
 export default {
   name: 'app',
@@ -62,6 +64,8 @@ export default {
     MatCode,
     MatWindow,
     MatWindowItem,
+    MatTab,
+    MatTabs,
   },
 };
 </script>

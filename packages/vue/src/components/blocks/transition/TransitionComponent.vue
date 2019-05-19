@@ -51,13 +51,13 @@ export default {
         beforeLeave: { 'max-height': `${el.clientHeight}px`, overflow: 'hidden' },
         leave: { opacity: [0, 1], 'max-height': 0 },
       }),
-      'slide-in-out-left': el => ({
+      'slide-in-out-left': () => ({
         beforeEnter: { width: '100%', top: 0 },
         enter: { translateX: [0, '-100%'] },
         beforeLeave: { position: 'absolute', top: 0, width: '100%' },
         leave: { translateX: ['-100%', 0] },
       }),
-      'slide-in-out-right': el => ({
+      'slide-in-out-right': () => ({
         beforeEnter: { width: '100%', top: 0 },
         enter: { translateX: [0, '100%'] },
         beforeLeave: { position: 'absolute', top: 0, width: '100%' },

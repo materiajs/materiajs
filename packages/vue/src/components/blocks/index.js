@@ -42,5 +42,5 @@ export { default as MatWindow } from './window/Window.vue';
 export { default as MatWindowItem } from './window/WindowItem.vue';
 
 // Tabs
-export { default as MatTabs } from './tabs/TabsComponent';
-export { default as MatTab } from './tabs/TabComponent';
+export { default as MatTabs } from './tabs/TabsComponent.vue';
+export { default as MatTab } from './tabs/TabComponent.vue';
