@@ -1,0 +1,21 @@
+0 silly argv { _: [ 'import' ],
+0 silly argv   lernaVersion: '3.14.1',
+0 silly argv   '$0': 'node_modules\\lerna\\cli.js',
+0 silly argv   dir: '../toolblox' }
+1 notice cli v3.14.1
+2 verbose rootPath D:\Andy\Development\materiajs
+3 error Error: Command failed: git rev-parse HEAD
+3 error fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+3 error Use '--' to separate paths from revisions, like this:
+3 error 'git <command> [<revision>...] -- [<file>...]'
+3 error
+3 error HEAD
+3 error
+3 error     at makeError (D:\Andy\Development\materiajs\node_modules\execa\index.js:174:9)
+3 error     at Function.module.exports.sync (D:\Andy\Development\materiajs\node_modules\execa\index.js:338:15)
+3 error     at Object.execSync (D:\Andy\Development\materiajs\node_modules\@lerna\child-process\index.js:23:16)
+3 error     at ImportCommand.execSync (D:\Andy\Development\materiajs\node_modules\@lerna\import\index.js:143:34)
+3 error     at ImportCommand.getCurrentSHA (D:\Andy\Development\materiajs\node_modules\@lerna\import\index.js:135:17)
+3 error     at ImportCommand.initialize (D:\Andy\Development\materiajs\node_modules\@lerna\import\index.js:104:31)
+3 error     at Promise.resolve.then (D:\Andy\Development\materiajs\node_modules\@lerna\command\index.js:271:24)
+3 error     at <anonymous>
