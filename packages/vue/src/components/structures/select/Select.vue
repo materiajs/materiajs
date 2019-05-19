@@ -47,6 +47,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import t from 'vue-types';
 import isEmpty from 'lodash/isEmpty';

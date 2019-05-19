@@ -53,5 +53,6 @@
     "public/*",
     "*.json",
     "*.js"
-  ]
+  ],
+  "gitHead": "e6afe8dbb382f6c02121dccbcfcf721d35f17a2d"
 }
