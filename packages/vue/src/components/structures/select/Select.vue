@@ -49,7 +49,8 @@
 </template>
 <script>
 import t from 'vue-types';
-import { isEmpty, isArray } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import isArray from 'lodash/isArray';
 import Fuse from 'fuse.js';
 import themeable from '../../../mixins/themeable';
 import MatInput from '../../blocks/input/Input.vue';
