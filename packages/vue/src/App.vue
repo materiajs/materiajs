@@ -46,7 +46,7 @@
                 <mat-tab :tab-key="6">
                   Window 4
                 </mat-tab>
-                <mat-tab :tab-key="7"">
+                <mat-tab :tab-key="7">
                   Window 4
                 </mat-tab>
               </mat-tabs>
