@@ -1,36 +1,42 @@
 <template>
   <div class="layout-default">
     <no-ssr>
-      <mat-toolbar :dark="true">
+      <mat-toolbar :dark="true" position="sticky" top="0">
+        <mat-nav-link>
+          <mat-fa icon="bars" @click.native="showSidebar = !showSidebar" />
+        </mat-nav-link>
         <mat-nav-link>
           <nuxt-link to="/">
             Materia JS
           </nuxt-link>
         </mat-nav-link>
       </mat-toolbar>
-      <aside>
-        <mat-side-bar>
-          <mat-list-link-item
-            v-for="(item, key) in navLinkItems"
-            :key="key"
-            :active="item.active"
-          >
-            <nuxt-link :to="item.to">
-              {{ item.name }}
-            </nuxt-link>
-          </mat-list-link-item>
-        </mat-side-bar>
-      </aside>
+      <section id="default-body">
+        <aside>
+          <mat-side-bar :show="showSidebar">
+            <mat-list-link-item
+              v-for="(item, key) in navLinkItems"
+              :key="key"
+              :active="item.active"
+            >
+              <nuxt-link :to="item.to">
+                {{ item.name }}
+              </nuxt-link>
+            </mat-list-link-item>
+          </mat-side-bar>
+        </aside>
+        <main>
+          <nuxt />
+        </main>
+      </section>
     </no-ssr>
-    <main>
-      <nuxt />
-    </main>
   </div>
 </template>
 <script>
 
 export default {
   data: () => ({
+    showSidebar: true,
     listItems: [
       {
         name: 'Home',
@@ -81,14 +87,27 @@ export default {
     margin: 0;
   }
   .layout-default {
-    display: grid;
-    grid-template-areas: "toolbar toolbar" "aside main";
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: minmax(0, auto) 1fr;
-    height: 100vh;
+    /*display: grid;*/
+    /*grid-template-areas: "toolbar toolbar" "aside main";*/
+    /*grid-template-columns: 300px 1fr;*/
+    /*grid-template-rows: minmax(0, auto) 1fr;*/
+    /*height: 100vh;*/
   }
   .mat-toolbar {
     grid-area: toolbar;
+  }
+  section {
+    display: flex;
+  }
+  aside {
+    position: sticky;
+    top: 60px;
+    align-self: flex-start;
+    height: calc(100vh - 60px);
+  }
+  main {
+    flex: 1;
+    max-width: 100vw;
   }
   .mat-side-bar {
     height: 100%;
@@ -96,9 +115,9 @@ export default {
   .expanding-item {
     padding: 15px;
   }
-  main {
-    min-height: 100%;
-    height: 20vh;
-    overflow-y: scroll;
+  @media screen and (max-width: 768px) {
+    aside {
+      position: absolute;
+    }
   }
 </style>

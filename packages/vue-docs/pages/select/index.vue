@@ -1,29 +1,31 @@
 <template>
   <div class="select-index">
-    <mat-title>Select</mat-title>
-    <mat-title :subtitle="true" size="xs">
-      Examples
-    </mat-title>
-    <mat-line-break color="accent" />
-    <mat-padding padding="30px 0">
-      The Select component is a structure which uses the
-      <nuxt-link to="input">Input</nuxt-link>,
-      <nuxt-link to="list">List</nuxt-link>,
-      <nuxt-link to="chip-list">ChipList</nuxt-link>,
-      <nuxt-link to="checkbox">Checkbox</nuxt-link> and
-      <nuxt-link to="action-box">ActionBox</nuxt-link> components.
-    </mat-padding>
-    <template v-for="(component, key) in componentList">
-      <mat-padding padding="15px 0">
-        <mat-card>
-          <mat-padding padding="15px">
-            <component-viewer
-              :key="key"
-              v-bind="component" />
-          </mat-padding>
-        </mat-card>
+    <no-ssr>
+      <mat-title>Select</mat-title>
+      <mat-title :subtitle="true" size="xs">
+        Examples
+      </mat-title>
+      <mat-line-break color="accent" />
+      <mat-padding padding="30px 0">
+        The Select component is a structure which uses the
+        <nuxt-link to="input">Input</nuxt-link>,
+        <nuxt-link to="list">List</nuxt-link>,
+        <nuxt-link to="chip-list">ChipList</nuxt-link>,
+        <nuxt-link to="checkbox">Checkbox</nuxt-link> and
+        <nuxt-link to="action-box">ActionBox</nuxt-link> components.
       </mat-padding>
-    </template>
+      <template v-for="(component, key) in componentList">
+        <mat-padding padding="15px 0">
+          <mat-card>
+            <mat-padding padding="15px">
+              <component-viewer
+                :key="key"
+                v-bind="component" />
+            </mat-padding>
+          </mat-card>
+        </mat-padding>
+      </template>
+    </no-ssr>
   </div>
 </template>
 

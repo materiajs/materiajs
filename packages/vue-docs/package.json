@@ -10,6 +10,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "upload": "aws s3 sync ./dist s3://materiajs.com",
+    "deploy": "npm run generate && npm run upload",
     "precommit": "npm run lint"
   },
   "dependencies": {

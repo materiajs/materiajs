@@ -33,10 +33,13 @@ export default {
     },
   },
   watch: {
-    parentValue(newVal) {
-      if (newVal !== this.value) {
-        this.transitionName = this.transitions[(newVal > this.value ? 0 : 1)];
-      }
+    parentValue: {
+      handler(newVal) {
+        if (newVal !== this.value) {
+          this.transitionName = this.transitions[(newVal > this.value ? 0 : 1)];
+        }
+      },
+      immediate: true,
     },
   },
 };
