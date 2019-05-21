@@ -2,11 +2,11 @@
   <div class="mat-tabs-wrapper">
     <div class="mat-tabs">
       <slot />
+      <div
+        class="mat-tabs-ink-line"
+        :style="inkLinePosition"
+      ></div>
     </div>
-    <div
-      class="mat-tabs-ink-line"
-      :style="inkLinePosition"
-    ></div>
   </div>
 </template>
 
@@ -29,6 +29,37 @@ export default {
   }),
   created() {
     this.$on('tabAdded', this.onTabAdded);
+  },
+  mounted() {
+    const slider = document.querySelector('.mat-tabs');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let moved;
+
+    slider.addEventListener('mousedown', (e) => {
+      moved = false;
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+    slider.addEventListener('mouseup', (e) => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+    slider.addEventListener('mousemove', (e) => {
+      moved = true;
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 3; // scroll-fast
+      slider.scrollLeft = scrollLeft - walk;
+    });
   },
   computed: {
     inkLinePosition() {
@@ -53,6 +84,12 @@ export default {
     },
     setActiveTab(tabIndex) {
       this.$emit('input', tabIndex);
+      const left = this.$children
+        .slice(0, tabIndex)
+        .map(child => child.$el.clientWidth)
+        .reduce((acc, current) => acc + current, 0);
+      const doc = document.querySelector('.mat-tabs');
+      doc.scrollTo({ left, behavior: 'smooth' });
     },
   },
 };
@@ -64,7 +101,8 @@ export default {
     position: relative;
   }
   .mat-tabs {
-    display: flex;
+    position: relative;
+    white-space: nowrap;
     border-bottom: 1px solid #f3f3f3;
     overflow-x: scroll;
     width: 100%;

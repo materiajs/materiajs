@@ -27,7 +27,7 @@ export default {
   .mat-tab {
     align-items: center;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     min-width: 60px;
     padding: 15px;
     text-align: center;
