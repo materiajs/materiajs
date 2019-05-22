@@ -3,5 +3,8 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.3.2"
+  },
+  "scripts": {
+    "build-yalc-deploy": "cd ./packages/vue && npm run build-bundle && yalc push && cd ../vue-docs && npm run deploy"
   }
 }

@@ -16,10 +16,12 @@ export { default as MatMargin } from './layout/MarginComponent.vue';
 export { default as MatPadding } from './layout/PaddingComponent.vue';
 export { default as MatPageLayout } from './layout/PageLayout.vue';
 export { default as MatFlexLayout } from './layout/FlexLayout.vue';
+export { default as MatScrollbarLayout } from './layout/ScrollbarLayout.vue';
 export { default as MatFlexItem } from './layout/FlexItem.vue';
 export { default as MatGridLayout } from './layout/GridLayout.vue';
 export { default as MatSpacer } from './layout/Spacer.vue';
 export { default as MatLineBreak } from './layout/LineBreak.vue';
+export { default as MatNavigationLayout } from './layout/NavigationLayout.vue';
 
 // List
 export { default as MatList } from './list/List.vue';

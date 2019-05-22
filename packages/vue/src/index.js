@@ -1,3 +1,4 @@
+import VueMq from 'vue-mq';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
@@ -26,5 +27,15 @@ export default {
       .forEach((name) => {
         Vue.component(name, components[name]);
       });
+    Vue.use(VueMq, {
+      breakpoints: { // default breakpoints - customize this
+        xs: 360,
+        sm: 480,
+        md: 768,
+        lg: 1250,
+        xl: Infinity,
+      },
+      defaultBreakpoint: 'lg', // customize this for SSR
+    });
   },
 };

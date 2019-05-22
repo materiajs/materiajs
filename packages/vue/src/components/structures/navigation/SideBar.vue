@@ -1,18 +1,30 @@
 <template>
-  <div class="mat-side-bar">
+  <div
+    class="mat-side-bar"
+    :class="{ 'is-mobile': isMobile, open: value }"
+    :style="sideBarStyle"
+  >
     <transition
-      @before-enter="beforeEnter"
+      @beforeEnter="beforeEnter"
       @enter="enter"
-      @after-enter="afterEnter"
-      @leave="leave">
+      @leave="leave"
+    >
       <div
-        v-if="show"
+        v-if="value"
         class="mat-side-bar-inner"
         :style="getElementStyle"
       >
-        <slot/>
+        <div class="mat-side-bar-inner-block">
+          <slot/>
+        </div>
       </div>
     </transition>
+    <div
+      v-if="isMobile"
+      class="actions"
+      @click="onClickActions">
+      <mat-fa icon="bars" />
+    </div>
   </div>
 </template>
 
@@ -23,33 +35,105 @@ import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'SideBar',
+  data: () => ({
+    mobileStyles: {
+      beforeEnter: {
+        width: '100%',
+      },
+      enter: {
+        translateY: [0, '100%'],
+      },
+      leave: {
+        translateY: ['100%', 0],
+      },
+    },
+    regularStyles: {
+      beforeEnter: {
+        width: '0',
+        top: 'initial',
+      },
+      enter: {
+        width: '300px',
+      },
+      leave: {
+        width: '0',
+        top: 'initial',
+      },
+    },
+  }),
   props: {
-    show: t.bool.def(true),
+    value: t.bool.def(true),
   },
   mixins: [
     themeable,
   ],
+  // watch: {
+  //   isMobile: 'checkDrawerState',
+  //   value: {
+  //     handler(newValue) {
+  //       if (newValue) {
+  //         this.openDrawer();
+  //       } else {
+  //         this.closeDrawer();
+  //       }
+  //     },
+  //   },
+  // },
+  computed: {
+    isMobile() {
+      return ['xs', 'sm', 'md'].includes(this.$mq);
+    },
+    styles() {
+      return this.isMobile ? this.mobileStyles : this.regularStyles;
+    },
+    sideBarStyle() {
+      return {
+        'border-right': `1px solid ${this.$toolblox.theme.accent}`,
+      };
+    },
+  },
   methods: {
+    // checkDrawerState() {
+    //   if (this.isMobile) {
+    //     this.closeDrawer();
+    //   } else {
+    //     this.openDrawer();
+    //   }
+    // },
+    // openDrawer() {
+    //   this.$emit('input', true);
+    //   this.beforeEnter(this.$el);
+    //   this.enter(this.$el);
+    // },
+    // closeDrawer() {
+    //   this.$emit('input', false);
+    //   this.leave(this.$el);
+    // },
     beforeEnter(el) {
-      el.style.width = '0';
+      const styles = this.styles.beforeEnter;
+      Object.keys(styles)
+        .forEach((attr) => {
+          el.style[attr] = styles[attr]; // eslint-disable-line
+        });
     },
     enter(el, done) {
-      Velocity(el, { width: '300px' }, {
+      Velocity(el, this.styles.enter, {
         complete: done,
         duration: 300,
         easing: 'easeInOutQuart',
       });
-    },
-    afterEnter(el) {
-      el.style.cssText = ''; // eslint-disable-line
+      console.debug('Enter', done); // TODO - Remove console output
     },
     leave(el, done) {
-      const styles = { width: 0 };
+      const styles = this.styles.leave;
       Velocity(el, styles, {
         complete: done,
         duration: 300,
         easing: 'easeInOutQuart',
       });
+    },
+    onClickActions() {
+      this.$emit('input', !this.value);
     },
   },
 };
@@ -57,34 +141,38 @@ export default {
 
 <style scoped lang="scss">
   .mat-side-bar {
-    height: calc(100vh - 60px);
-    box-shadow: 1px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    1px 4px 5px 0px rgba(0, 0, 0, 0.14),
-    2px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
     &-inner {
       width: 300px;
-      overflow: hidden;
-      /deep/ >* {
+      &-block {
         width: 300px;
-        padding: 15px;
       }
     }
-  }
-  @media screen and (max-width: 768px) {
-    .mat-side-bar {
-      position: absolute;
-      top: 100%;
-      width: 100%;
+    &.is-mobile {
+      background: white;
+      bottom: 0;
+      transform: translateY(100%);
       height: 50vh;
-      transform: translateY(-100%);
-      overflow: auto;
-      &-inner {
+      position: fixed;
+      width: 100vw;
+      z-index: 5;
+      .mat-side-bar-inner {
         width: 100%;
         overflow: auto;
         /deep/ >* {
           width: auto;
         }
       }
+      &.open {
+        transform: translateY(0);
+      }
+    }
+    .actions {
+      position: absolute;
+      transform: translateY(-100%);
+      width: 100%;
+      background: rgb(38, 50, 56);
+      color: white;
     }
   }
 </style>

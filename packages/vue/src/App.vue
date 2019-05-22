@@ -1,74 +1,94 @@
 <template>
   <div id="app">
-    <mat-toolbar :dark="true" position="sticky" top="0">
-      <mat-nav-link>
-        <mat-fa icon="bars" @click.native="showSidebar = !showSidebar" />
-      </mat-nav-link>
-      <mat-nav-link>
-        Materia JS
-      </mat-nav-link>
-    </mat-toolbar>
-    <section id="default-body">
-      <aside>
-        <mat-side-bar :show="showSidebar">
-          <mat-list-link-item
-            v-for="(item, key) in listItems"
-            :key="key"
-            :active="item.active"
-          >
+    <mat-navigation-layout>
+      <mat-toolbar
+        slot="header"
+        :dark="true"
+        position="sticky"
+        top="0">
+        <mat-nav-link @click.native="showSidebar = !showSidebar">
+          <mat-fa icon="bars" />
+        </mat-nav-link>
+        <mat-nav-link>
+          Materia JS
+        </mat-nav-link>
+      </mat-toolbar>
+      <mat-side-bar
+        v-model="showSidebar"
+        slot="nav"
+      >
+        <mat-list-link-item
+          v-for="(item, key) in listItems"
+          :key="key"
+          :active="item.active"
+        >
+          <mat-padding>
             {{ item.name }}
-          </mat-list-link-item>
-        </mat-side-bar>
-      </aside>
-      <div class="main">
-        <mat-card>
-          <mat-padding padding="15px">
-            <mat-padding padding="0 0 15px">
-              <mat-tabs v-model="windowValue">
-                <mat-tab :tab-key="0">
-                  Window 1
-                </mat-tab>
-                <mat-tab :tab-key="1">
-                  Window 2
-                </mat-tab>
-                <mat-tab :tab-key="2">
-                  Window 3 - with a little extra
-                </mat-tab>
-                <mat-tab :tab-key="3">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab-key="4">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab-key="5">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab-key="6">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab-key="7">
-                  Window 4
-                </mat-tab>
-              </mat-tabs>
-            </mat-padding>
-            <mat-window v-model="windowValue">
-              <mat-window-item :value="0">
-                Window 1
-              </mat-window-item>
-              <mat-window-item :value="1">
-                <mat-code :value="singleCode" lang="html" />
-              </mat-window-item>
-              <mat-window-item :value="2">
-                <mat-code :value="singleCode" lang="html" />
-              </mat-window-item>
-              <mat-window-item :value="3">
-                Window 3
-              </mat-window-item>
-            </mat-window>
           </mat-padding>
-        </mat-card>
+        </mat-list-link-item>
+      </mat-side-bar>
+      <div class="main-wrapper">
+        <div class="main-container">
+          <mat-card>
+            <mat-padding padding="15px">
+              <mat-padding padding="0 0 15px">
+                <mat-tabs v-model="windowValue">
+                  <mat-tab :tab-key="0">
+                    Window 1
+                  </mat-tab>
+                  <mat-tab :tab-key="1">
+                    Window 2
+                  </mat-tab>
+                  <mat-tab :tab-key="2">
+                    Window 3 - with a little extra
+                  </mat-tab>
+                  <mat-tab :tab-key="3">
+                    Window 4
+                  </mat-tab>
+                  <mat-tab :tab-key="4">
+                    Window 4
+                  </mat-tab>
+                  <mat-tab :tab-key="5">
+                    Window 4
+                  </mat-tab>
+                  <mat-tab :tab-key="6">
+                    Window 4
+                  </mat-tab>
+                  <mat-tab :tab-key="7">
+                    Window 4
+                  </mat-tab>
+                </mat-tabs>
+              </mat-padding>
+              <mat-window v-model="windowValue">
+                <mat-window-item :value="0">
+                  Window 1
+                </mat-window-item>
+                <mat-window-item :value="1">
+                  <mat-code :value="singleCode" lang="html" />
+                </mat-window-item>
+                <mat-window-item :value="2">
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                  <mat-code :value="singleCode" lang="html" />
+                </mat-window-item>
+                <mat-window-item :value="3">
+                  Window 3
+                </mat-window-item>
+              </mat-window>
+            </mat-padding>
+          </mat-card>
+        </div>
       </div>
-    </section>
+    </mat-navigation-layout>
   </div>
 </template>
 
@@ -169,8 +189,15 @@ export default {
 <style lang="scss">
   @import "~highlight.js/styles/github.css";
   .main {
-    margin: 15px auto;
-    max-width: 800px;
+    width: 100%;
+    &-wrapper {
+      width: 50px;
+      min-width: 100%;
+    }
+    &-container {
+      margin: auto;
+      max-width: 800px;
+    }
   }
   #default-body {
     display: flex;

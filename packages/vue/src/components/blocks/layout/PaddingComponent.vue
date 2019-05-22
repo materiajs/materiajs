@@ -10,7 +10,7 @@ import t from 'vue-types';
 export default {
   name: 'PaddingComponent',
   props: {
-    padding: t.string,
+    padding: t.string.def('15px'),
   },
 };
 </script>

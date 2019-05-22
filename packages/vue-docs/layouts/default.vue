@@ -12,22 +12,22 @@
         </mat-nav-link>
       </mat-toolbar>
       <section id="default-body">
-        <aside>
-          <mat-side-bar :show="showSidebar">
-            <mat-list-link-item
-              v-for="(item, key) in navLinkItems"
-              :key="key"
-              :active="item.active"
-            >
-              <nuxt-link :to="item.to">
-                {{ item.name }}
-              </nuxt-link>
-            </mat-list-link-item>
-          </mat-side-bar>
-        </aside>
-        <main>
-          <nuxt />
-        </main>
+        <mat-side-bar v-model="showSidebar">
+          <mat-list-link-item
+            v-for="(item, key) in navLinkItems"
+            :key="key"
+            :active="item.active"
+          >
+            <nuxt-link :to="item.to">
+              {{ item.name }}
+            </nuxt-link>
+          </mat-list-link-item>
+        </mat-side-bar>
+        <mat-scrollbar-layout>
+          <main>
+            <nuxt />
+          </main>
+        </mat-scrollbar-layout>
       </section>
     </no-ssr>
   </div>
@@ -38,6 +38,22 @@ export default {
   data: () => ({
     showSidebar: true,
     listItems: [
+      {
+        name: 'Home',
+        to: '/',
+      },
+      {
+        name: 'Install guide',
+        to: '/install',
+      },
+      {
+        name: 'Select',
+        to: '/select',
+      },
+      {
+        name: 'Input',
+        to: '/input',
+      },
       {
         name: 'Home',
         to: '/',
@@ -108,12 +124,6 @@ export default {
   main {
     flex: 1;
     max-width: 100vw;
-  }
-  .mat-side-bar {
-    height: 100%;
-  }
-  .expanding-item {
-    padding: 15px;
   }
   @media screen and (max-width: 768px) {
     aside {
