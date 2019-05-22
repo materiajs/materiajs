@@ -6,13 +6,14 @@
   >
     <transition
       @beforeEnter="beforeEnter"
+      @afterEnter="afterEnter"
+      @beforeLeave="beforeLeave"
       @enter="enter"
       @leave="leave"
     >
       <div
         v-if="value"
         class="mat-side-bar-inner"
-        :style="getElementStyle"
       >
         <div class="mat-side-bar-inner-block">
           <slot/>
@@ -50,14 +51,17 @@ export default {
     regularStyles: {
       beforeEnter: {
         width: '0',
-        top: 'initial',
       },
       enter: {
         width: '300px',
       },
+      beforeLeave: {
+        'max-width': '300px',
+        width: '300px',
+      },
       leave: {
-        width: '0',
-        top: 'initial',
+        'max-width': '0px',
+        width: '0px',
       },
     },
   }),
@@ -67,18 +71,6 @@ export default {
   mixins: [
     themeable,
   ],
-  // watch: {
-  //   isMobile: 'checkDrawerState',
-  //   value: {
-  //     handler(newValue) {
-  //       if (newValue) {
-  //         this.openDrawer();
-  //       } else {
-  //         this.closeDrawer();
-  //       }
-  //     },
-  //   },
-  // },
   computed: {
     isMobile() {
       return ['xs', 'sm', 'md'].includes(this.$mq);
@@ -93,22 +85,6 @@ export default {
     },
   },
   methods: {
-    // checkDrawerState() {
-    //   if (this.isMobile) {
-    //     this.closeDrawer();
-    //   } else {
-    //     this.openDrawer();
-    //   }
-    // },
-    // openDrawer() {
-    //   this.$emit('input', true);
-    //   this.beforeEnter(this.$el);
-    //   this.enter(this.$el);
-    // },
-    // closeDrawer() {
-    //   this.$emit('input', false);
-    //   this.leave(this.$el);
-    // },
     beforeEnter(el) {
       const styles = this.styles.beforeEnter;
       Object.keys(styles)
@@ -119,16 +95,24 @@ export default {
     enter(el, done) {
       Velocity(el, this.styles.enter, {
         complete: done,
-        duration: 300,
+        duration: 400,
         easing: 'easeInOutQuart',
       });
-      console.debug('Enter', done); // TODO - Remove console output
+    },
+    afterEnter(el) {
+      el.style.cssText = ''; // eslint-disable-line
+    },
+    beforeLeave(el) {
+      const styles = this.styles.beforeLeave;
+      Object.keys(styles)
+        .forEach((attr) => {
+          el.style[attr] = styles[attr]; // eslint-disable-line
+        });
     },
     leave(el, done) {
-      const styles = this.styles.leave;
-      Velocity(el, styles, {
+      Velocity(el, this.styles.leave, {
         complete: done,
-        duration: 300,
+        duration: 400,
         easing: 'easeInOutQuart',
       });
     },
@@ -141,9 +125,9 @@ export default {
 
 <style scoped lang="scss">
   .mat-side-bar {
+    min-height: 100%;
     box-sizing: border-box;
     &-inner {
-      width: 300px;
       &-block {
         width: 300px;
       }
@@ -162,9 +146,6 @@ export default {
         /deep/ >* {
           width: auto;
         }
-      }
-      &.open {
-        transform: translateY(0);
       }
     }
     .actions {

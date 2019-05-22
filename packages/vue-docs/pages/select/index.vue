@@ -115,8 +115,8 @@ export default {
 <style lang="scss" scoped>
   @import "~@materiajs/vue/src/styles/main";
   .select-index {
-    padding: 30px 15px;
-    min-width: 100%;
-    width: 10vw;
+    padding: 15px;
+    margin: auto;
+    max-width: 600px;
   }
 </style>

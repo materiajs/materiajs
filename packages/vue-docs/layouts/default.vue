@@ -1,18 +1,22 @@
 <template>
   <div class="layout-default">
     <no-ssr>
-      <mat-toolbar :dark="true" position="sticky" top="0">
-        <mat-nav-link>
-          <mat-fa icon="bars" @click.native="showSidebar = !showSidebar" />
-        </mat-nav-link>
-        <mat-nav-link>
-          <nuxt-link to="/">
+      <mat-navigation-layout>
+        <mat-toolbar
+          slot="header"
+          :dark="true"
+          position="sticky"
+          top="0">
+          <mat-nav-link @click.native="showSidebar = !showSidebar">
+            <mat-fa icon="bars" />
+          </mat-nav-link>
+          <mat-nav-link>
             Materia JS
-          </nuxt-link>
-        </mat-nav-link>
-      </mat-toolbar>
-      <section id="default-body">
-        <mat-side-bar v-model="showSidebar">
+          </mat-nav-link>
+        </mat-toolbar>
+        <mat-side-bar
+          slot="nav"
+          v-model="showSidebar">
           <mat-list-link-item
             v-for="(item, key) in navLinkItems"
             :key="key"
@@ -23,12 +27,8 @@
             </nuxt-link>
           </mat-list-link-item>
         </mat-side-bar>
-        <mat-scrollbar-layout>
-          <main>
-            <nuxt />
-          </main>
-        </mat-scrollbar-layout>
-      </section>
+        <nuxt />
+      </mat-navigation-layout>
     </no-ssr>
   </div>
 </template>
@@ -55,20 +55,20 @@ export default {
         to: '/input',
       },
       {
-        name: 'Home',
-        to: '/',
+        name: 'Button',
+        to: '/button',
       },
       {
-        name: 'Install guide',
-        to: '/install',
+        name: 'Layouts',
+        to: '/layouts',
       },
       {
-        name: 'Select',
-        to: '/select',
+        name: 'List',
+        to: '/list',
       },
       {
-        name: 'Input',
-        to: '/input',
+        name: 'Toolbar',
+        to: '/toolbar',
       },
     ],
   }),
@@ -101,33 +101,5 @@ export default {
   *:after {
     box-sizing: border-box;
     margin: 0;
-  }
-  .layout-default {
-    /*display: grid;*/
-    /*grid-template-areas: "toolbar toolbar" "aside main";*/
-    /*grid-template-columns: 300px 1fr;*/
-    /*grid-template-rows: minmax(0, auto) 1fr;*/
-    /*height: 100vh;*/
-  }
-  .mat-toolbar {
-    grid-area: toolbar;
-  }
-  section {
-    display: flex;
-  }
-  aside {
-    position: sticky;
-    top: 60px;
-    align-self: flex-start;
-    height: calc(100vh - 60px);
-  }
-  main {
-    flex: 1;
-    max-width: 100vw;
-  }
-  @media screen and (max-width: 768px) {
-    aside {
-      position: absolute;
-    }
   }
 </style>
