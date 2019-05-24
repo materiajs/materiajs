@@ -3,7 +3,6 @@
     <mat-navigation-layout>
       <mat-toolbar
         slot="header"
-        :dark="true"
         position="sticky"
         top="0">
         <mat-nav-link @click.native="showSidebar = !showSidebar">
@@ -12,9 +11,14 @@
         <mat-nav-link>
           Materia JS
         </mat-nav-link>
+        <mat-spacer />
+        <mat-nav-link @click.native="toggleDark()">
+          <mat-fa :icon="darkIcon" />
+        </mat-nav-link>
       </mat-toolbar>
       <mat-side-bar
         v-model="showSidebar"
+        color="primary-light"
         slot="nav"
       >
         <mat-list-link-item
@@ -84,6 +88,10 @@
                   Window 3
                 </mat-window-item>
               </mat-window>
+              <mat-input
+                v-model="inputValue"
+                placeholder="With clear button on right"
+                :show-clear-button="true" />
             </mat-padding>
           </mat-card>
         </div>
@@ -93,13 +101,18 @@
 </template>
 
 <script>
+import store from './store';
 import {
   MatCode, MatWindow, MatWindowItem, MatTab, MatTabs,
 } from './components/blocks';
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapMutations, mapState } = createNamespacedHelpers('materiajs');
 
 export default {
   name: 'app',
   data: () => ({
+    inputValue: 'Test',
     listItems: [
       {
         name: 'Home',
@@ -183,6 +196,17 @@ export default {
     MatTab,
     MatTabs,
   },
+  computed: {
+    ...mapState(['darkMode']),
+    darkIcon() {
+      return this.darkMode ? 'sun' : 'moon';
+    },
+  },
+  methods: {
+    ...mapMutations([
+      'toggleDark',
+    ]),
+  },
 };
 </script>
 
@@ -197,6 +221,7 @@ export default {
     &-container {
       margin: auto;
       max-width: 800px;
+      padding: 15px;
     }
   }
   #default-body {

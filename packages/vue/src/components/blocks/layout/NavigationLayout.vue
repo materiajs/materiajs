@@ -1,5 +1,5 @@
 <template>
-  <div class="mat-navigation-layout">
+  <div class="mat-navigation-layout" :style="{ background, color: textColor }">
     <header>
       <slot name="header" />
     </header>
@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import themeable from '../../../mixins/themeable';
+
 export default {
   name: 'NavigationLayout',
+  mixins: [
+    themeable,
+  ],
 };
 </script>
 

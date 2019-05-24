@@ -1,8 +1,10 @@
 import VueMq from 'vue-mq';
+import merge from 'lodash/merge';
+import materiaJsStore from './store';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
-import { theme, darkTheme } from './styles/themes';
+import theme from './styles/themes';
 
 const components = {
   ...blocks,
@@ -12,16 +14,8 @@ const components = {
 
 export default {
   install: (Vue, options) => {
-    Vue.prototype.$toolblox = {
-      theme: {
-        ...theme,
-        ...(options ? options.theme : {}),
-      },
-      darkTheme: {
-        ...darkTheme,
-        ...(options ? options.darkTheme : {}),
-      },
-      dark: false,
+    Vue.prototype.$materiajs = {
+      theme: merge(theme, options ? options.theme : {}),
     };
     Object.keys(components)
       .forEach((name) => {
@@ -38,4 +32,5 @@ export default {
       defaultBreakpoint: 'lg', // customize this for SSR
     });
   },
+  materiaJsStore,
 };

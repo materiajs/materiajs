@@ -80,7 +80,9 @@ export default {
     },
     sideBarStyle() {
       return {
-        'border-right': `1px solid ${this.$toolblox.theme.accent}`,
+        'border-right': `1px solid ${this.$materiajs.theme.colors.accent}`,
+        background: this.background,
+        color: this.textColor,
       };
     },
   },

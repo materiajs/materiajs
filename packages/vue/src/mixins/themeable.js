@@ -1,5 +1,6 @@
 import t from 'vue-types';
-import { theme, darkTheme } from '../styles/themes';
+import { createNamespacedHelpers } from 'vuex';
+import theme from '../styles/themes';
 
 const colors = {
   PRIMARY: 'primary',
@@ -9,7 +10,7 @@ const colors = {
 };
 
 const defaultColors = [
-  null,
+  'default',
   colors.PRIMARY,
   colors.PRIMARY_LIGHT,
   colors.ACCENT,
@@ -26,74 +27,58 @@ export {
   defaultAccentColor,
 };
 
+const { mapState } = createNamespacedHelpers('materiajs');
+
 const white = '#FFF';
 
 export default {
   props: {
-    dark: t.bool.def(false),
-    color: t.oneOf(defaultColors),
-    darkColor: t.oneOf(defaultColors),
+    // :dark overrides global dark mode
+    dark: t.any,
+    color: t.oneOf(defaultColors).def('default'),
   },
   computed: {
-    isPrimary() {
-      return this.color === colors.PRIMARY;
+    ...mapState([
+      'darkMode',
+    ]),
+    isAnyDark() {
+      if (this.dark !== undefined) {
+        return this.dark;
+      }
+      return this.darkMode;
     },
-    isAccent() {
-      return this.color === colors.ACCENT;
-    },
-    isWarn() {
-      return this.color === colors.WARN;
+    colorKey() {
+      return `${this.isAnyDark ? 'dark-' : ''}${this.color}`;
     },
     getElementStyle() {
       const { textColor: color, background } = this;
       const styles = {
         color, background,
       };
-      if (this.isWarn) {
-        styles.background = this.theme.warn;
-      }
       return styles;
     },
-    getDarkElementStyle() {
-      if (this.dark) {
-        return this.getElementStyle;
-      }
-      return {};
-    },
     theme() {
-      if (this.$toolblox) {
-        return this.$toolblox.theme;
+      if (this.$materiajs) {
+        return this.$materiajs.theme;
       }
       return theme;
     },
-    darkTheme() {
-      if (this.$toolblox) {
-        return this.$toolblox.darkTheme;
-      }
-      return darkTheme;
-    },
     background() {
-      return this.dark ? this.darkBackground : (this.theme[this.color] || null);
+      return this.theme.colors[this.colorKey];
     },
-    isWhiteBackground() {
-      return this.background === white || this.background === null;
-    },
-    darkBackground() {
-      let color;
-      if (this.darkColor || this.color) {
-        color = this.darkColor || this.color;
-      } else {
-        color = colors.primary;
-      }
-      return this.darkTheme[color];
+    backgroundTextColor() {
+      return this.parseTextColor(this.background);
     },
     textColor() {
-      return this.isWhiteBackground ? '#000' : white;
+      return this.backgroundTextColor;
     },
-    darkBorder() {
-      return {
-        border: `1px solid ${this.darkTheme.warn}`,
-      };
+  },
+  methods: {
+    parseTextColor(color) {
+      if (!color) {
+        return '';
+      }
+      return (parseInt(color.replace('#', ''), 16) > 0xffffff / 2) ? '#000' : '#fff';
     },
   },
 };

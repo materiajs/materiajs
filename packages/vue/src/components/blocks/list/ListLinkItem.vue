@@ -22,6 +22,7 @@ export default {
 
   .mat-list-link-item {
     border-bottom: 1px solid $primary-color-light;
+    cursor: pointer;
     a {
       color: inherit;
       padding: 15px;
@@ -32,7 +33,7 @@ export default {
       border-right: 3px solid $primary-color;
     }
     &.active, &:hover {
-      background: lighten($primary-color-light, 10%);
+      background: rgba(0,0,0,.1);
     }
   }
 </style>

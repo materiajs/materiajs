@@ -28,7 +28,6 @@ export default {
   computed: {
     getStyle() {
       return {
-        color: this.background,
         transform: this.rotate ? `rotate(${this.rotate}deg)` : undefined,
         cursor: this.cursor,
       };

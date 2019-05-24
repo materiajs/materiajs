@@ -3,7 +3,6 @@
     @click="onClickInputWrapper"
     class="mat-input mat-frame"
     :class="{ focused: isFocused }"
-    :style="wrapperStyle"
     v-on-clickaway="onInputBlur"
   >
     <slot />
@@ -11,7 +10,6 @@
       v-if="type !== 'textarea'"
       ref="blox-input-ref"
       :value="value"
-      :style="getDarkElementStyle"
       :type="type"
       @input="onInputChange"
       @focus="onInputFocus">
@@ -32,7 +30,6 @@
     <div
       class="mat-frame-placeholder"
       :class="{ focused: isFocused, raised: placeholderRaised }"
-      :style="getDarkElementStyle"
     >
       <div class="mat-frame-placeholder-bg"></div>
       {{ placeholder }}
@@ -43,7 +40,7 @@
 <script>
 import t from 'vue-types';
 import { mixin as clickaway } from 'vue-clickaway';
-import themeable, { defaultAccentColor } from '../../../mixins/themeable';
+import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'mat-input',
@@ -52,7 +49,6 @@ export default {
     themeable,
   ],
   props: {
-    darkColor: defaultAccentColor,
     focused: t.bool.def(false),
     placeholder: t.string.def('Enter text'),
     raisePlaceholder: t.bool.def(false),
@@ -69,9 +65,6 @@ export default {
     },
     placeholderRaised() {
       return this.raisePlaceholder || (this.value && this.value.length > 0) || this.inputFocused;
-    },
-    wrapperStyle() {
-      return { ...this.getDarkElementStyle };
     },
   },
   methods: {
@@ -112,6 +105,8 @@ export default {
 
     input {
       flex: 1;
+      background: rgba(0,0,0,0);
+      color: inherit;
     }
     textarea {
       border: none;
@@ -124,7 +119,6 @@ export default {
     }
 
     &-clear-button {
-      color: $text-color-light;
       cursor: pointer;
       margin: -10px;
       padding: 10px;
