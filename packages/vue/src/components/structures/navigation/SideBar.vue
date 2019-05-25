@@ -20,12 +20,6 @@
         </div>
       </div>
     </transition>
-    <div
-      v-if="isMobile"
-      class="actions"
-      @click="onClickActions">
-      <mat-fa icon="bars" />
-    </div>
   </div>
 </template>
 
@@ -42,10 +36,13 @@ export default {
         width: '100%',
       },
       enter: {
-        translateY: [0, '100%'],
+        translateX: [0, '-100%'],
+      },
+      beforeLeave: {
+        translateX: [0, '-100%'],
       },
       leave: {
-        translateY: ['100%', 0],
+        translateX: ['-100%', 0],
       },
     },
     regularStyles: {
@@ -53,15 +50,16 @@ export default {
         width: '0',
       },
       enter: {
+        translateX: [0, '-300px'],
         width: '300px',
       },
       beforeLeave: {
-        'max-width': '300px',
         width: '300px',
+        translateX: [0, '-300px'],
       },
       leave: {
-        'max-width': '0px',
         width: '0px',
+        translateX: ['-300px', 0],
       },
     },
   }),
@@ -76,11 +74,11 @@ export default {
       return ['xs', 'sm', 'md'].includes(this.$mq);
     },
     styles() {
-      return this.isMobile ? this.mobileStyles : this.regularStyles;
+      return this.isMobile ? this.regularStyles : this.regularStyles;
     },
     sideBarStyle() {
       return {
-        'border-right': `1px solid ${this.$materiajs.theme.colors.accent}`,
+        'border-right': `1px solid ${this.theme.colors.accent}`,
         background: this.background,
         color: this.textColor,
       };
@@ -135,20 +133,20 @@ export default {
       }
     }
     &.is-mobile {
-      background: white;
-      bottom: 0;
-      transform: translateY(100%);
-      height: 50vh;
-      position: fixed;
-      width: 100vw;
-      z-index: 5;
-      .mat-side-bar-inner {
-        width: 100%;
-        overflow: auto;
-        /deep/ >* {
-          width: auto;
-        }
-      }
+      /*background: white;*/
+      /*bottom: 0;*/
+      /*transform: translateY(100%);*/
+      /*height: 50vh;*/
+      /*position: fixed;*/
+      /*width: 100vw;*/
+      /*z-index: 5;*/
+      /*.mat-side-bar-inner {*/
+      /*  width: 100%;*/
+      /*  overflow: auto;*/
+      /*  /deep/ >* {*/
+      /*    width: auto;*/
+      /*  }*/
+      /*}*/
     }
     .actions {
       position: absolute;

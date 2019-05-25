@@ -39,9 +39,18 @@ export default {
     }
     nav {
       grid-area: nav;
+      z-index: 5;
     }
     main {
       grid-area: main;
+    }
+    @media screen and (max-width: 768px) {
+      nav {
+        box-shadow: $box-shadow-standard;
+      }
+      main {
+        grid-column-start: 1;
+      }
     }
     footer {
       grid-area: footer;

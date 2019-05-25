@@ -57,7 +57,7 @@ export default {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 3; // scroll-fast
+      const walk = (x - startX) * 1; // scroll-fast
       slider.scrollLeft = scrollLeft - walk;
     });
   },
@@ -71,7 +71,7 @@ export default {
         return {
           left: `${left}px`,
           width: `${width}px`,
-          background: this.background,
+          background: this.isAnyDark ? '#fff' : this.background,
         };
       }
       return null;
@@ -84,10 +84,13 @@ export default {
     },
     setActiveTab(tabIndex) {
       this.$emit('input', tabIndex);
-      const left = this.$children
+      const boxOffset = this.$el.clientWidth / 2;
+      const leftSiblingsWidth = this.$children
         .slice(0, tabIndex)
         .map(child => child.$el.clientWidth)
         .reduce((acc, current) => acc + current, 0);
+      const childOffset = this.$children[tabIndex].$el.offsetWidth;
+      const left = (leftSiblingsWidth - boxOffset) - childOffset;
       const doc = document.querySelector('.mat-tabs');
       doc.scrollTo({ left, behavior: 'smooth' });
     },

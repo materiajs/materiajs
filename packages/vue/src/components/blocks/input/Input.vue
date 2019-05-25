@@ -1,7 +1,7 @@
 <template>
   <div
     @click="onClickInputWrapper"
-    class="mat-input mat-frame"
+    class="mat-input"
     :class="{ focused: isFocused }"
     v-on-clickaway="onInputBlur"
   >
@@ -28,7 +28,7 @@
       <i class="fa fa-times-circle"></i>
     </div>
     <div
-      class="mat-frame-placeholder"
+      class="mat-input-placeholder"
       :class="{ focused: isFocused, raised: placeholderRaised }"
     >
       <div class="mat-frame-placeholder-bg"></div>
@@ -102,6 +102,12 @@ export default {
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    padding: 15px 0;
+    border-bottom: 1px solid;
+
+    &.focused {
+      border-bottom-color: $primary-color-dark;
+    }
 
     input {
       flex: 1;
@@ -116,6 +122,34 @@ export default {
       font-family: inherit;
       font-size: 1rem;
       height: 200px;
+    }
+    &-placeholder {
+      border-radius: 15px;
+      margin: 0 -3px;
+      padding: 0 3px;
+      position: absolute;
+      top: 25px;
+      transform: translateY(-50%);
+      transition: top $standard-transition-t-e, font-size $standard-transition-t-e;
+      user-select: none;
+
+      &.raised {
+        .mat-frame-placeholder-bg {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 50%;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          z-index: -1;
+        }
+        top: 0;
+        font-size: 0.8em;
+      }
+      &.focused {
+        color: $primary-color-dark;
+      }
     }
 
     &-clear-button {

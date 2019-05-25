@@ -4,7 +4,6 @@
       <mat-navigation-layout>
         <mat-toolbar
           slot="header"
-          :dark="true"
           position="sticky"
           top="0">
           <mat-nav-link @click.native="showSidebar = !showSidebar">
@@ -12,6 +11,10 @@
           </mat-nav-link>
           <mat-nav-link>
             Materia JS
+          </mat-nav-link>
+          <mat-spacer />
+          <mat-nav-link @click.native="toggleDark()">
+            <mat-fa :icon="darkIcon" />
           </mat-nav-link>
         </mat-toolbar>
         <mat-side-bar
@@ -73,12 +76,27 @@ export default {
     ],
   }),
   computed: {
+    darkMode() {
+      const store = this.$store;
+      if (store.state && store.state.materiajs) {
+        return store.state.materiajs.darkMode;
+      }
+      return false;
+    },
+    darkIcon() {
+      return this.darkMode ? 'sun' : 'moon';
+    },
     navLinkItems() {
       return this.listItems
         .map(item => ({
           ...item,
           active: this.$route.path === item.to,
         }));
+    },
+  },
+  methods: {
+    toggleDark() {
+      this.$store.commit('materiajs/toggleDark');
     },
   },
 };

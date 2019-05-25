@@ -18,7 +18,6 @@
       </mat-toolbar>
       <mat-side-bar
         v-model="showSidebar"
-        color="primary-light"
         slot="nav"
       >
         <mat-list-link-item
@@ -88,6 +87,8 @@
                   Window 3
                 </mat-window-item>
               </mat-window>
+              <mat-spacer />
+              <mat-spacer />
               <mat-input
                 v-model="inputValue"
                 placeholder="With clear button on right"
@@ -101,11 +102,10 @@
 </template>
 
 <script>
-import store from './store';
+import { createNamespacedHelpers } from 'vuex';
 import {
   MatCode, MatWindow, MatWindowItem, MatTab, MatTabs,
 } from './components/blocks';
-import { createNamespacedHelpers } from 'vuex';
 
 const { mapMutations, mapState } = createNamespacedHelpers('materiajs');
 
