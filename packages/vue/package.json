@@ -12,7 +12,8 @@
     "lint-fix": "vue-cli-service lint --fix",
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
-    "storybook:upload": "aws s3 sync ./storybook-static s3://storybook.andyfeely.com"
+    "storybook:upload": "aws s3 sync ./storybook-static s3://storybook.andyfeely.com",
+    "yalc-update": "npm run build-bundle && yalc push"
   },
   "dependencies": {
     "@storybook/addon-knobs": "^4.1.13",

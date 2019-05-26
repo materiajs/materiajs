@@ -3,7 +3,6 @@
     <mat-toolbar
       ref="toolbar"
       size="small"
-      color="accent"
       :shadow="false"
     >
       {{ title }}
@@ -23,9 +22,8 @@
     <mat-spacer />
     <mat-expansion-item :show="showCode">
       <mat-tabs v-model="tab">
-<!--        <mat-tab :tab-key="0">Template</mat-tab>-->
-<!--        <mat-tab :tab-key="1">Script</mat-tab>-->
-        <mat-tab v-for="item in 10" :tab-key="item - 1" :key="item - 1">Testy testason</mat-tab>
+        <mat-tab :tab-key="0">Template</mat-tab>
+        <mat-tab :tab-key="1">Script</mat-tab>
       </mat-tabs>
       <mat-window :value="tab">
         <mat-window-item :value="0">

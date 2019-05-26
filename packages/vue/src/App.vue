@@ -19,6 +19,7 @@
       <mat-side-bar
         v-model="showSidebar"
         slot="nav"
+        :color="darkMode ? 'accent' : undefined"
       >
         <mat-list-link-item
           v-for="(item, key) in listItems"
@@ -32,68 +33,70 @@
       </mat-side-bar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-card>
-            <mat-padding padding="15px">
-              <mat-padding padding="0 0 15px">
-                <mat-tabs v-model="windowValue">
-                  <mat-tab :tab-key="0">
-                    Window 1
-                  </mat-tab>
-                  <mat-tab :tab-key="1">
-                    Window 2
-                  </mat-tab>
-                  <mat-tab :tab-key="2">
-                    Window 3 - with a little extra
-                  </mat-tab>
-                  <mat-tab :tab-key="3">
-                    Window 4
-                  </mat-tab>
-                  <mat-tab :tab-key="4">
-                    Window 4
-                  </mat-tab>
-                  <mat-tab :tab-key="5">
-                    Window 4
-                  </mat-tab>
-                  <mat-tab :tab-key="6">
-                    Window 4
-                  </mat-tab>
-                  <mat-tab :tab-key="7">
-                    Window 4
-                  </mat-tab>
-                </mat-tabs>
-              </mat-padding>
-              <mat-window v-model="windowValue">
-                <mat-window-item :value="0">
+          <mat-title>Select</mat-title>
+          <mat-title :subtitle="true" color="accent" size="xs">
+            Examples
+          </mat-title>
+          <mat-card hide-on-mq="md">
+            <mat-padding padding="0 0 15px">
+              <mat-tabs v-model="windowValue">
+                <mat-tab :tab-key="0">
                   Window 1
-                </mat-window-item>
-                <mat-window-item :value="1">
-                  <mat-code :value="singleCode" lang="html" />
-                </mat-window-item>
-                <mat-window-item :value="2">
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                  <mat-code :value="singleCode" lang="html" />
-                </mat-window-item>
-                <mat-window-item :value="3">
-                  Window 3
-                </mat-window-item>
-              </mat-window>
-              <mat-spacer />
-              <mat-spacer />
-              <mat-input
-                v-model="inputValue"
-                placeholder="With clear button on right"
-                :show-clear-button="true" />
+                </mat-tab>
+                <mat-tab :tab-key="1">
+                  Window 2
+                </mat-tab>
+                <mat-tab :tab-key="2">
+                  Window 3 - with a little extra
+                </mat-tab>
+                <mat-tab :tab-key="3">
+                  Window 4
+                </mat-tab>
+                <mat-tab :tab-key="4">
+                  Window 4
+                </mat-tab>
+                <mat-tab :tab-key="5">
+                  Window 4
+                </mat-tab>
+                <mat-tab :tab-key="6">
+                  Window 4
+                </mat-tab>
+                <mat-tab :tab-key="7">
+                  Window 4
+                </mat-tab>
+              </mat-tabs>
             </mat-padding>
+            <mat-window v-model="windowValue">
+              <mat-window-item :value="0">
+                Window 1
+              </mat-window-item>
+              <mat-window-item :value="1">
+                <mat-code :value="singleCode" lang="html" />
+              </mat-window-item>
+              <mat-window-item :value="2">
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+                <mat-code :value="singleCode" lang="html" />
+              </mat-window-item>
+              <mat-window-item :value="3">
+                Window 3
+              </mat-window-item>
+            </mat-window>
+            <mat-spacer />
+            <mat-spacer />
+            <mat-input
+              v-model="inputValue"
+              placeholder="With clear button on right"
+              :show-clear-button="true" />
           </mat-card>
         </div>
       </div>
@@ -129,6 +132,7 @@ export default {
       {
         name: 'Input',
         to: '/input',
+        active: true,
       },
       {
         name: 'Home',

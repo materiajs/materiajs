@@ -31,7 +31,7 @@ export default {
     this.$on('tabAdded', this.onTabAdded);
   },
   mounted() {
-    const slider = document.querySelector('.mat-tabs');
+    const slider = this.$el.querySelector('.mat-tabs');
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -91,7 +91,7 @@ export default {
         .reduce((acc, current) => acc + current, 0);
       const childOffset = this.$children[tabIndex].$el.offsetWidth;
       const left = (leftSiblingsWidth - boxOffset) - childOffset;
-      const doc = document.querySelector('.mat-tabs');
+      const doc = this.$el.querySelector('.mat-tabs');
       doc.scrollTo({ left, behavior: 'smooth' });
     },
   },

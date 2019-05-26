@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mat-side-bar"
+    class="mat-side-bar mat-scrollbar-hidden"
     :class="{ 'is-mobile': isMobile, open: value }"
     :style="sideBarStyle"
   >
@@ -78,9 +78,8 @@ export default {
     },
     sideBarStyle() {
       return {
-        'border-right': `1px solid ${this.theme.colors.accent}`,
         background: this.background,
-        color: this.textColor,
+        color: this.backgroundTextColor,
       };
     },
   },
@@ -127,6 +126,7 @@ export default {
   .mat-side-bar {
     min-height: 100%;
     box-sizing: border-box;
+    box-shadow: $box-shadow-standard;
     &-inner {
       &-block {
         width: 300px;

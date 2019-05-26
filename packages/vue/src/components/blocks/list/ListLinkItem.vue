@@ -24,7 +24,7 @@ export default {
     getStyle() {
       return {
         'border-bottom': '1px solid #ccc',
-        'border-right': '1px solid #ccc',
+        'border-right': this.active ? `2px solid ${this.primaryColor}` : '',
       };
     },
   },
@@ -42,11 +42,8 @@ export default {
       display: block;
       text-decoration: none;
     }
-    &.active {
-      border-right: 3px solid $primary-color;
-    }
     &.active, &:hover {
-      background: rgba(0,0,0,.1);
+      background: rgba(0,0,0,0.1);
     }
   }
 </style>

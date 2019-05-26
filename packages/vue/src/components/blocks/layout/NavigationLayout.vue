@@ -1,9 +1,9 @@
 <template>
-  <div class="mat-navigation-layout" :style="{ background, color: textColor }">
+  <div class="mat-navigation-layout" :style="{ background, color: backgroundTextColor }">
     <header>
       <slot name="header" />
     </header>
-    <nav class="mat-scrollbar-hidden">
+    <nav>
       <slot name="nav" />
     </nav>
     <main class="mat-scrollbar-hidden">
@@ -45,9 +45,6 @@ export default {
       grid-area: main;
     }
     @media screen and (max-width: 768px) {
-      nav {
-        box-shadow: $box-shadow-standard;
-      }
       main {
         grid-column-start: 1;
       }

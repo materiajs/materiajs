@@ -50,13 +50,16 @@ export default {
     colorKey() {
       return `${this.isAnyDark ? 'dark-' : ''}${this.color}`;
     },
-    getElementStyle() {
-      const { textColor: color, background } = this;
-      const styles = {
-        color, background,
-      };
-      return styles;
+    primaryColor() {
+      return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary`];
     },
+    // getElementStyle() {
+    //   const { background } = this;
+    //   const styles = {
+    //     color, background,
+    //   };
+    //   return styles;
+    // },
     theme() {
       if (this.$materiajs) {
         return this.$materiajs.theme;
@@ -69,8 +72,11 @@ export default {
     backgroundTextColor() {
       return this.parseTextColor(this.background);
     },
-    textColor() {
-      return this.backgroundTextColor;
+    textPrimaryColor() {
+      return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary-text`];
+    },
+    textSecondaryColor() {
+      return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}secondary-text`];
     },
   },
   methods: {
@@ -78,7 +84,8 @@ export default {
       if (!color) {
         return '';
       }
-      return (parseInt(color.replace('#', ''), 16) > 0xffffff / 2) ? '#000' : '#fff';
+      return (parseInt(color.replace('#', ''), 16) > 0xffffff / 2)
+        ? this.theme.colors['primary-text'] : this.theme.colors['dark-primary-text'];
     },
   },
 };

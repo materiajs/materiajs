@@ -1,7 +1,7 @@
 <template>
   <div
     class="mat-line-break"
-    :style="getElementStyle"
+    :style="getStyle"
   ></div>
 </template>
 
@@ -17,6 +17,13 @@ export default {
   mixins: [
     themeable,
   ],
+  computed: {
+    getStyle() {
+      return {
+        background: this.background,
+      };
+    },
+  },
 };
 </script>
 

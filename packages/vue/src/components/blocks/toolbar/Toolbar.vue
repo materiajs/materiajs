@@ -26,7 +26,7 @@ export default {
   computed: {
     _getStyle() {
       return {
-        ...this.getElementStyle,
+        background: this.background,
         ...this.getPositionStyle,
       };
     },

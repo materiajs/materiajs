@@ -7,7 +7,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Materia JS - Docs',
     script: [
       { src: 'https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js' },
     ],
