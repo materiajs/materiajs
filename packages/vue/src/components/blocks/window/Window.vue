@@ -1,5 +1,9 @@
 <template>
-  <div class="mat-window" :style="{ 'height': minHeight }">
+  <div
+    class="mat-window"
+    :style="{ 'min-height': minHeight }"
+    :class="{ animating }"
+  >
     <slot></slot>
   </div>
 </template>
@@ -11,6 +15,7 @@ export default {
   name: 'Window',
   data: () => ({
     minHeight: undefined,
+    animating: false,
   }),
   props: {
     value: t.number,
@@ -18,6 +23,10 @@ export default {
   watch: {
     value: {
       handler() {
+        this.animating = true;
+        if (this.$el) {
+          this.minHeight = `${this.$el.offsetHeight}px`;
+        }
         this.$nextTick(() => {
           const match = this.$children
             .find(child => child.value === this.value);
@@ -25,6 +34,10 @@ export default {
             this.minHeight = `${match.$el.offsetHeight}px`;
           }
         });
+        setTimeout(() => {
+          this.animating = false;
+          this.minHeight = undefined;
+        }, 300);
       },
       immediate: true,
     },
@@ -35,7 +48,9 @@ export default {
 <style lang="scss" scoped>
   .mat-window {
     position: relative;
-    overflow: hidden;
     transition: all 0.2s ease;
+    &.animating {
+      overflow: hidden;
+    }
   }
 </style>

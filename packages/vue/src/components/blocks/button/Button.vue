@@ -5,17 +5,7 @@
     :style="_getElementStyle"
     :class="[color]">
     {{ text }}
-    <div
-      v-if="$slots.left"
-      class="mat-button-slot mat-button-slot-left">
-      <slot name="left" />
-    </div>
     <slot />
-    <div
-      v-if="$slots.right"
-      class="mat-button-slot mat-button-slot-right">
-      <slot name="right" />
-    </div>
   </button>
 </template>
 
@@ -35,8 +25,8 @@ export default {
   computed: {
     _getElementStyle() {
       return {
-        ...this.getElementStyle,
-        background: (this.background !== null ? this.background : '#FFF'),
+        background: this.background !== null ? this.background : '#FFF',
+        color: this.backgroundTextColor,
       };
     },
   },
@@ -51,7 +41,7 @@ export default {
     border: none;
     cursor: pointer;
     display: inline-flex;
-    font-size: 16px;
+    font-size: 14px;
     height: 35px;
     outline: none;
     padding: 0 10px;
@@ -65,14 +55,6 @@ export default {
     box-shadow: $box-shadow-light;
     &:active {
       box-shadow: $box-shadow-extra-light;
-    }
-    &-slot {
-      &-right {
-        margin-right: -10px;
-      }
-      &-left {
-        margin-left: -10px;
-      }
     }
   }
 </style>

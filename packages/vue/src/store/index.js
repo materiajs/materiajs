@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: {
-    darkMode: true,
+    darkMode: false,
   },
   mutations: {
     toggleDark(state, value = !state.darkMode) {

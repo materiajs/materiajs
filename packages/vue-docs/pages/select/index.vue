@@ -16,11 +16,10 @@
       </mat-padding>
       <template v-for="(component, key) in componentList">
         <mat-padding padding="15px 0">
-          <mat-card hide-on-mq="md">
-              <component-viewer
-                :key="key"
-                v-bind="component" />
-          </mat-card>
+          <component-viewer
+            :key="key"
+            v-bind="component">
+          </component-viewer>
         </mat-padding>
       </template>
     </no-ssr>
@@ -112,9 +111,5 @@ export default {
 
 <style lang="scss" scoped>
   @import "~@materiajs/vue/src/styles/main";
-  .select-index {
-    padding: 15px;
-    margin: auto;
-    max-width: 600px;
-  }
+  .select-index {}
 </style>

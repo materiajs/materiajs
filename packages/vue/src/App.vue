@@ -37,6 +37,27 @@
           <mat-title :subtitle="true" color="accent" size="xs">
             Examples
           </mat-title>
+          <mat-title>
+            Add coin
+          </mat-title>
+          <mat-spacer></mat-spacer>
+          <mat-select
+            placeholder="Select coin"
+            :single-value="true"
+            :options="[]"
+            :close-on-select="true"
+          />
+          <mat-spacer></mat-spacer>
+          <mat-input
+            type="number"
+          />
+          <mat-spacer></mat-spacer>
+          <mat-button
+            color="primary"
+          >
+            Save
+          </mat-button>
+          <mat-spacer></mat-spacer>
           <mat-card hide-on-mq="md">
             <mat-padding padding="0 0 15px">
               <mat-tabs v-model="windowValue">

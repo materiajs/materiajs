@@ -1,20 +1,21 @@
 <template>
   <div
     :class="getChipClass"
-    class="chip"
+    class="mat-chip"
     @click="onChipClicked"
     :style="{ 'background-color': color }">
     <i
       v-if="icon"
       :class="icon"
       class="fa main-icon"></i>
-    <span class="chip-value">
+    <span class="mat-chip-value">
       {{ value }}
+      <slot />
     </span>
     <span
       v-if="closeable"
       @click.stop="onRemove"
-      class="chip-close-area">
+      class="mat-chip-close-area">
       <i class="fa fa-times close-icon"></i>
     </span>
   </div>
@@ -39,7 +40,7 @@ export default {
   computed: {
     getChipClass() {
       return [
-        this.size ? `chip-size-${this.size}` : 'chip-size-regular',
+        this.size ? `mat-chip-size-${this.size}` : 'mat-chip-size-regular',
         this.closeable ? 'closeable' : '',
         this.disabled ? 'disabled' : '',
         this.clickable ? 'clickable' : '',
@@ -58,8 +59,7 @@ export default {
 
 <style scoped lang="scss">
   @import "../../../styles/main";
-
-  .chip {
+  .mat-chip {
     align-items: center;
     background: $primary-color;
     border-radius: $border-radius-standard;
@@ -68,7 +68,7 @@ export default {
     font-size: 14px;
     overflow: hidden;
 
-    span.chip-value {
+    span.mat-chip-value {
       padding: 3px 10px;
     }
 
@@ -95,13 +95,13 @@ export default {
         background: rgba(0,0,0,0.1);
       }
     }
-    &.chip-size-small {
+    &.mat-chip-size-small {
       font-size: 12px;
       span.chip-value {
         padding: 1px 8px;
       }
     }
-    &.chip-size-large {
+    &.mat-chip-size-large {
       font-size: 14px;
       span.chip-value {
         padding: 5px 10px;

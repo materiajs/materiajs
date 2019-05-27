@@ -1,24 +1,18 @@
-<template>
+<template functional>
   <div class="mat-paragraph">
-    <mat-padding :padding="padding">
-      <slot />
-    </mat-padding>
+    <slot />
   </div>
 </template>
 
 <script>
-import layout from '../../../mixins/layout';
-
 export default {
   name: 'Paragraph',
-  mixins: [
-    layout,
-  ],
 };
 </script>
 
 <style scoped lang="scss">
   .mat-paragraph {
     line-height: 1.5;
+    padding: 0 3px;
   }
 </style>

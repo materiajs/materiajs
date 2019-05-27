@@ -17,13 +17,15 @@
         :is="component"
         v-model="value"
         v-bind="componentProps"
-      />
+      >
+        <slot :name="slotRef"></slot>
+      </component>
     </template>
     <mat-spacer />
     <mat-expansion-item :show="showCode">
       <mat-tabs v-model="tab">
-        <mat-tab :tab-key="0">Template</mat-tab>
-        <mat-tab :tab-key="1">Script</mat-tab>
+        <mat-tab :tab="0">Template</mat-tab>
+        <mat-tab :tab="1">Script</mat-tab>
       </mat-tabs>
       <mat-window :value="tab">
         <mat-window-item :value="0">
@@ -50,6 +52,7 @@ export default {
     title: t.string.def('Component name'),
     component: t.object,
     componentProps: t.object.def({}),
+    slotRef: t.string,
   },
   data: () => ({
     showCode: false,

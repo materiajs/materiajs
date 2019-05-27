@@ -10,14 +10,14 @@ import t from 'vue-types';
 export default {
   name: 'TabComponent',
   props: {
-    tabKey: t.number.isRequired,
+    tab: t.number.isRequired,
   },
   mounted() {
     this.$parent.$emit('tabAdded');
   },
   methods: {
     tabClick() {
-      this.$parent.setActiveTab(this.tabKey);
+      this.$parent.setActiveTab(this.tab);
     },
   },
 };

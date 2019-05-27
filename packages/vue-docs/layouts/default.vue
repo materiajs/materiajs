@@ -30,7 +30,9 @@
             </nuxt-link>
           </mat-list-link-item>
         </mat-side-bar>
-        <nuxt />
+        <div class="layout-default-main">
+          <nuxt />
+        </div>
       </mat-navigation-layout>
     </no-ssr>
   </div>
@@ -48,6 +50,10 @@ export default {
       {
         name: 'Install guide',
         to: '/install',
+      },
+      {
+        name: 'Tabs',
+        to: '/tabs',
       },
       {
         name: 'Select',
@@ -119,5 +125,15 @@ export default {
   *:after {
     box-sizing: border-box;
     margin: 0;
+  }
+  a {
+    color: initial;
+  }
+  .layout-default {
+    &-main {
+      padding: 15px;
+      margin: auto;
+      max-width: 800px;
+    }
   }
 </style>

@@ -22,7 +22,6 @@ export default {
   props: {
     color: defaultPrimaryColor,
     value: t.number.def(0),
-    tabs: t.array,
   },
   data: () => ({
     tabAmount: 0,
