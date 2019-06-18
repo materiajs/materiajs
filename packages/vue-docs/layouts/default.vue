@@ -4,22 +4,54 @@
       <mat-navigation-layout>
         <mat-toolbar
           slot="header"
+          :no-padding="true"
           position="sticky"
+          color="primary-light"
           top="0">
           <mat-nav-link @click.native="showSidebar = !showSidebar">
-            <mat-fa icon="bars" />
+            <mat-padding padding="0 15px">
+              <mat-fa icon="bars" />
+            </mat-padding>
           </mat-nav-link>
-          <mat-nav-link>
-            Materia JS
-          </mat-nav-link>
+          <nuxt-link to="/">
+            <mat-nav-link>
+              <mat-padding>
+                Materia JS
+              </mat-padding>
+            </mat-nav-link>
+          </nuxt-link>
           <mat-spacer />
           <mat-nav-link @click.native="toggleDark()">
-            <mat-fa :icon="darkIcon" />
+            <mat-padding padding="0 15px">
+              <mat-fa :icon="darkIcon" />
+            </mat-padding>
           </mat-nav-link>
         </mat-toolbar>
         <mat-side-bar
           slot="nav"
           v-model="showSidebar">
+          <mat-list-link-item  @click.native="showLinks = !showLinks">
+            <mat-padding>
+              <mat-flex-layout>
+                Getting started
+                <mat-spacer />
+                <mat-fa
+                  :rotate="showLinks ? 180 : 0"
+                  icon="chevron-down" />
+              </mat-flex-layout>
+            </mat-padding>
+          </mat-list-link-item>
+          <mat-expansion-item :show="showLinks">
+            <mat-list-link-item>
+              <mat-padding>
+                <mat-flex-layout>
+                  Install
+                  <mat-spacer />
+                </mat-flex-layout>
+              </mat-padding>
+            </mat-list-link-item>
+          </mat-expansion-item>
+          <mat-line-break color="accent" />
           <mat-list-link-item
             v-for="(item, key) in navLinkItems"
             :key="key"
@@ -31,7 +63,9 @@
           </mat-list-link-item>
         </mat-side-bar>
         <div class="layout-default-main">
-          <nuxt />
+          <div class="layout-default-main-inner">
+            <nuxt />
+          </div>
         </div>
       </mat-navigation-layout>
     </no-ssr>
@@ -42,6 +76,7 @@
 export default {
   data: () => ({
     showSidebar: true,
+    showLinks: false,
     listItems: [
       {
         name: 'Home',
@@ -81,6 +116,11 @@ export default {
       },
     ],
   }),
+  mounted() {
+    if (this.getMenuMqs().includes(this.$mq)) {
+      this.showSidebar = false;
+    }
+  },
   computed: {
     darkMode() {
       const store = this.$store;
@@ -104,6 +144,14 @@ export default {
     toggleDark() {
       this.$store.commit('materiajs/toggleDark');
     },
+    getMenuMqs() {
+      const mqs = Object.keys(this.$mqAvailableBreakpoints);
+      const i = mqs.findIndex(mq => mq === 'md');
+      if (i > -1) {
+        return mqs.slice(0, i + 1);
+      }
+      return [];
+    },
   },
 };
 </script>
@@ -111,7 +159,7 @@ export default {
   html {
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -127,11 +175,11 @@ export default {
     margin: 0;
   }
   a {
-    color: initial;
+    color: inherit;
   }
   .layout-default {
     &-main {
-      padding: 15px;
+      padding: 30px;
       margin: auto;
       max-width: 800px;
     }

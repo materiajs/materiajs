@@ -1,5 +1,5 @@
-<template>
-  <div class="mat-padding-component"  :style="{ padding }">
+<template functional>
+  <div class="mat-padding-component"  :style="{ padding: props.padding }">
     <slot />
   </div>
 </template>

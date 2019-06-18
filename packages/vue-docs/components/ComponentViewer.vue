@@ -4,6 +4,7 @@
       ref="toolbar"
       size="small"
       :shadow="false"
+      color="accent"
     >
       {{ title }}
       <mat-spacer />

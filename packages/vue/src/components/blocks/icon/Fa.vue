@@ -4,7 +4,7 @@
     class="mat-fa-wrapper mat-standard-transition"
     :style="getStyle"
   >
-    <i class="fa mat-fa" :class="[`fa-${icon}`, size]"></i>
+    <i class="mat-fa" :class="getClass"></i>
     <slot />
   </span>
 </template>
@@ -24,8 +24,12 @@ export default {
     icon: t.string,
     size: t.oneOf(['small', 'large', 'extra-large']),
     rotate: t.number.def(0),
+    prefix: t.string.def('fas'),
   },
   computed: {
+    getClass() {
+      return [this.prefix, `fa-${this.icon}`, this.size];
+    },
     getStyle() {
       return {
         transform: this.rotate ? `rotate(${this.rotate}deg)` : undefined,
@@ -39,9 +43,7 @@ export default {
 <style scoped lang="scss">
   .mat-fa {
     font-size: 14px;
-    min-width: 30px;
     text-align: center;
-    min-height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;

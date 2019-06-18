@@ -36,10 +36,11 @@ export default {
     color: inherit;
     cursor: pointer;
     height: 100%;
-    padding: 0 15px;
+    padding: 5px;
     position: relative;
     text-align: center;
     user-select: none;
+    border-radius: 3px;
     a {
       color: inherit;
       text-decoration: none;

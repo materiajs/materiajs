@@ -1,0 +1,31 @@
+<template>
+  <div class="component-list">
+    <mat-title size="xs">
+      Components used:
+    </mat-title>
+    <component-link
+      v-for="component in componentList"
+      :route="component.route"
+    >{{ component.text }}</component-link>
+    <mat-spacer />
+    <mat-line-break color="accent" />
+    <mat-spacer />
+  </div>
+</template>
+
+<script>
+import t from 'vue-types';
+
+export default {
+  name: 'ComponentList',
+  props: {
+    componentList: t.array,
+  },
+};
+</script>
+
+<style scoped lang="scss">
+  .component-link {
+    margin-right: 5px;
+  }
+</style>

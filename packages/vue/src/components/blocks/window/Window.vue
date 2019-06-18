@@ -1,7 +1,7 @@
 <template>
   <div
     class="mat-window"
-    :style="{ 'min-height': minHeight }"
+    :style="{ height: minHeight }"
     :class="{ animating }"
   >
     <slot></slot>

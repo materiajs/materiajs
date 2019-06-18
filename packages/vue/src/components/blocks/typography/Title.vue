@@ -2,7 +2,6 @@
   <div
     class="mat-title"
     :class="{ [size]: size, subtitle }"
-    :style="getStyle"
   >
     <slot>
       {{ value }}
@@ -12,24 +11,13 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'Title',
-  mixins: [
-    themeable,
-  ],
   props: {
     value: t.string.def(''),
     size: t.oneOf(['xs', 'small', 'regular', 'large', 'xl']),
     subtitle: t.bool.def(false),
-  },
-  computed: {
-    getStyle() {
-      return {
-        color: this.subtitle ? this.textSecondaryColor : this.textPrimaryColor,
-      };
-    },
   },
 };
 </script>
@@ -41,6 +29,8 @@ export default {
     font-size: 2rem;
     margin-bottom: 10px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
     &.xs {
       font-size: 1.2rem;
     }

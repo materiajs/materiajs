@@ -3,17 +3,25 @@
     <mat-navigation-layout>
       <mat-toolbar
         slot="header"
+        color="primary-light"
         position="sticky"
+        :no-padding="true"
         top="0">
         <mat-nav-link @click.native="showSidebar = !showSidebar">
-          <mat-fa icon="bars" />
+          <mat-padding>
+            <mat-fa icon="bars" />
+          </mat-padding>
         </mat-nav-link>
         <mat-nav-link>
-          Materia JS
+          <mat-padding>
+            Materia JS
+          </mat-padding>
         </mat-nav-link>
         <mat-spacer />
         <mat-nav-link @click.native="toggleDark()">
-          <mat-fa :icon="darkIcon" />
+          <mat-padding>
+            <mat-fa :icon="darkIcon" />
+          </mat-padding>
         </mat-nav-link>
       </mat-toolbar>
       <mat-side-bar
@@ -61,28 +69,28 @@
           <mat-card hide-on-mq="md">
             <mat-padding padding="0 0 15px">
               <mat-tabs v-model="windowValue">
-                <mat-tab :tab-key="0">
+                <mat-tab :tab="0">
                   Window 1
                 </mat-tab>
-                <mat-tab :tab-key="1">
+                <mat-tab :tab="1">
                   Window 2
                 </mat-tab>
-                <mat-tab :tab-key="2">
+                <mat-tab :tab="2">
                   Window 3 - with a little extra
                 </mat-tab>
-                <mat-tab :tab-key="3">
+                <mat-tab :tab="3">
                   Window 4
                 </mat-tab>
-                <mat-tab :tab-key="4">
+                <mat-tab :tab="4">
                   Window 4
                 </mat-tab>
-                <mat-tab :tab-key="5">
+                <mat-tab :tab="5">
                   Window 4
                 </mat-tab>
-                <mat-tab :tab-key="6">
+                <mat-tab :tab="6">
                   Window 4
                 </mat-tab>
-                <mat-tab :tab-key="7">
+                <mat-tab :tab="7">
                   Window 4
                 </mat-tab>
               </mat-tabs>

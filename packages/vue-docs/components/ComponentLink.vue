@@ -2,6 +2,7 @@
   <nuxt-link class="component-link" :to="route">
     <mat-chip size="small">
       {{ value }}
+      <slot />
     </mat-chip>
   </nuxt-link>
 </template>

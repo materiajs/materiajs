@@ -9,7 +9,6 @@
 
 <script>
 import t from 'vue-types';
-import { defaultPrimaryColor } from '../../../mixins/themeable';
 import { position, themeable } from '../../../mixins';
 
 export default {
@@ -19,15 +18,17 @@ export default {
     position,
   ],
   props: {
-    color: defaultPrimaryColor,
     shadow: t.bool.def(true),
     size: t.oneOf(['xs', 'small', 'large']),
+    noPadding: t.bool.def(false),
   },
   computed: {
     _getStyle() {
       return {
         background: this.background,
+        color: this.backgroundTextColor,
         ...this.getPositionStyle,
+        padding: this.noPadding ? '' : '0 15px',
       };
     },
   },
@@ -36,12 +37,10 @@ export default {
 
 <style scoped lang="scss">
   .mat-toolbar {
-    padding: 0 15px;
     position: relative;
     display: flex;
     height: 60px;
     align-items: center;
-    color: white;
 
     &.xs {
       height: 40px;

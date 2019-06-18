@@ -22,9 +22,9 @@ export default {
   },
   computed: {
     getStyle() {
+      const color = this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}accent`];
       return {
-        'border-bottom': '1px solid #ccc',
-        'border-right': this.active ? `2px solid ${this.primaryColor}` : '',
+        'border-right': this.active ? `2px solid ${color}` : '',
       };
     },
   },

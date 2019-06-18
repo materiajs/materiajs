@@ -12,7 +12,7 @@ import t from 'vue-types';
 export default {
   name: 'Layout',
   props: {
-    alignItems: t.string,
+    alignItems: t.string.def('center'),
     flexDirection: t.oneOf(['row', 'column']).def('row'),
     wrapper: t.bool.def(false),
   },

@@ -1,8 +1,7 @@
 <template>
   <div
     class="mat-list"
-    :class="{ bordered }"
-    :style="getElementStyle">
+    :class="{ bordered }">
     <slot>
       <div
         v-for="(item, key) in items"
@@ -36,9 +35,6 @@ export default {
   .mat-list {
     &.bordered {
       border: 1px solid $primary-color-light;
-    }
-    &-search-box {
-      padding: 5px;
     }
     >* {
       cursor: pointer;

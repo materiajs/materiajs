@@ -2,18 +2,15 @@
   <div class="select-index">
     <no-ssr>
       <mat-title>Select</mat-title>
-      <mat-title :subtitle="true" size="xs">
-        Examples
+      <mat-paragraph>
+        Select components is used for collecting user provided information from a list of options.
+      </mat-paragraph>
+      <mat-spacer />
+      <component-list :component-list="usedComponents" />
+      <mat-spacer />
+      <mat-title size="xs">
+        Usage
       </mat-title>
-      <mat-line-break color="accent" />
-      <mat-padding padding="30px 0">
-        The Select component is a structure which uses the
-        <nuxt-link to="input">Input</nuxt-link>,
-        <nuxt-link to="list">List</nuxt-link>,
-        <nuxt-link to="chip-list">ChipList</nuxt-link>,
-        <nuxt-link to="checkbox">Checkbox</nuxt-link> and
-        <nuxt-link to="action-box">ActionBox</nuxt-link> components.
-      </mat-padding>
       <template v-for="(component, key) in componentList">
         <mat-padding padding="15px 0">
           <component-viewer
@@ -53,6 +50,29 @@ export default {
       { value: 'Aoife' },
       { value: 'Chrissy' },
       { value: 'Cooper' },
+    ],
+    //   <component-link route="/input">Input</component-link>
+    // <component-link route="/list">List</component-link>
+    // <component-link route="/chip-list">ChipList</component-link>
+    // <component-link route="/checkbox">Checkbox</component-link>
+    // <component-link route="/action-box">ActionBox</component-link>
+    usedComponents: [
+      {
+        route: '/input',
+        text: 'Input',
+      },
+      {
+        route: '/list',
+        text: 'List',
+      },
+      {
+        route: '/chip-list',
+        text: 'ChipList',
+      },
+      {
+        route: '/checkbox',
+        text: 'Checkbox',
+      },
     ],
   }),
   computed: {

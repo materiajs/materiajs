@@ -29,8 +29,6 @@ export {
 
 const { mapState } = createNamespacedHelpers('materiajs');
 
-const white = '#FFF';
-
 export default {
   props: {
     // :dark overrides global dark mode
@@ -72,12 +70,12 @@ export default {
     backgroundTextColor() {
       return this.parseTextColor(this.background);
     },
-    textPrimaryColor() {
-      return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary-text`];
-    },
-    textSecondaryColor() {
-      return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}secondary-text`];
-    },
+    // textPrimaryColor() {
+    //   return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary-text`];
+    // },
+    // textSecondaryColor() {
+    //   return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}secondary-text`];
+    // },
   },
   methods: {
     parseTextColor(color) {
