@@ -6,7 +6,7 @@ export default {
     warn: '#f44336',
     default: '#ffffff',
     'primary-text': '#222',
-    'secondary-text': '#555',
+    'secondary-text': '#777',
     'dark-primary': '#202124',
     'dark-primary-light': '#292929',
     'dark-accent': '#4f5b62',

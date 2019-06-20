@@ -103,6 +103,7 @@ export default {
     position: relative;
   }
   .mat-tabs {
+    font-size: 0;
     position: relative;
     white-space: nowrap;
     border-bottom: 1px solid #f3f3f3;

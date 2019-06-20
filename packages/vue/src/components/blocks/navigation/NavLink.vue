@@ -4,12 +4,14 @@
     :class="{ dark }"
     class="mat-nav-link mat-flex-center mat-standard-transition"
   >
-    <template v-if="href">
-      <a :href="href" :target="target">
-        <slot />
-      </a>
-    </template>
-    <slot v-else />
+    <div class="mat-nav-link-wrapper">
+      <template v-if="href">
+        <a :href="href" :target="target">
+          <slot />
+        </a>
+      </template>
+      <slot v-else />
+    </div>
   </div>
 </template>
 
@@ -36,9 +38,7 @@ export default {
     color: inherit;
     cursor: pointer;
     height: 100%;
-    padding: 5px;
     position: relative;
-    text-align: center;
     user-select: none;
     border-radius: 3px;
     a {
@@ -54,11 +54,10 @@ export default {
         background: rgba(255, 255, 255, 0.1);
       }
     }
-    > * {
+    &-wrapper {
+      min-width: 60px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100%;
     }
   }
 </style>

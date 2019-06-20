@@ -11,6 +11,7 @@
       ref="blox-input-ref"
       :value="value"
       :type="type"
+      :disabled="disabled"
       @input="onInputChange"
       @focus="onInputFocus">
     <textarea
@@ -49,6 +50,7 @@ export default {
     themeable,
   ],
   props: {
+    disabled: t.bool.def(false),
     focused: t.bool.def(false),
     placeholder: t.string.def('Enter text'),
     raisePlaceholder: t.bool.def(false),
@@ -102,8 +104,10 @@ export default {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    padding: 15px 0;
+    padding: 15px 0 5px;
     border-bottom: 1px solid;
+    margin-top: 15px;
+    min-width: 250px;
 
     &.focused {
       border-bottom-color: $primary-color-dark;
@@ -128,7 +132,7 @@ export default {
       margin: 0 -3px;
       padding: 0 3px;
       position: absolute;
-      top: 25px;
+      top: 15px;
       transform: translateY(-50%);
       transition: top $standard-transition-t-e, font-size $standard-transition-t-e;
       user-select: none;
@@ -144,7 +148,7 @@ export default {
           transform: translateY(-50%);
           z-index: -1;
         }
-        top: 0;
+        top: 5px;
         font-size: 0.8em;
       }
       &.focused {

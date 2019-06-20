@@ -5,6 +5,7 @@
     <slot name="trigger">
       <mat-input
         v-model="searchString"
+        :disabled="!searchable"
         :placeholder="placeholder"
         :focused="open"
         :raise-placeholder="valueNotNull"
@@ -18,9 +19,10 @@
       </mat-input>
     </slot>
     <div class="mat-select-action-box-wrapper">
-      <mat-action-box
+      <mat-menu
         @close="onCloseSelect"
-        :position="position" :value="open">
+        :position="position"
+        :value="open">
         <mat-list
           v-if="listItems.length"
           :items="listItems">
@@ -43,7 +45,7 @@
         >
           No options
         </div>
-      </mat-action-box>
+      </mat-menu>
     </div>
   </div>
 </template>
@@ -56,7 +58,7 @@ import themeable from '../../../mixins/themeable';
 import MatInput from '../../blocks/input/Input.vue';
 import MatList from '../../blocks/list/List.vue';
 import MatCheckbox from '../../blocks/checkbox/Checkbox.vue';
-import MatActionBox from '../../composites/action-box/ActionBox.vue';
+import MatMenu from '../../blocks/menu/Menu.vue';
 import MatChipList from '../../composites/chip/ChipList.vue';
 
 export default {
@@ -66,17 +68,18 @@ export default {
   ],
   props: {
     closeOnSelect: t.bool.def(false),
-    singleValue: t.bool.def(false),
     fuseOptions: t.object,
     hideSelected: t.bool.def(false),
     options: t.array,
     placeholder: t.string,
-    showCheckboxes: t.bool.def(false),
-    value: t.oneOfType([t.object, t.arrayOf(t.object)]),
     position: t.string.def('bottom-left'),
+    searchable: t.bool.def(true),
+    showCheckboxes: t.bool.def(false),
+    singleValue: t.bool.def(false),
+    value: t.oneOfType([t.object, t.arrayOf(t.object)]),
   },
   components: {
-    MatActionBox,
+    MatMenu,
     MatCheckbox,
     MatChipList,
     MatList,
@@ -193,8 +196,6 @@ export default {
 
 <style scoped lang="scss">
   .mat-select {
-    cursor: text;
-
     .mat-chip-list {
       margin: -5px 0;
     }

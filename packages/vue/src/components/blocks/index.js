@@ -9,26 +9,31 @@ export { default as MatButton } from './button/Button.vue';
 export { default as MatButtonGroup } from './button/ButtonGroup.vue';
 
 // Layout
+export { default as MatBannerLayout } from './layout/BannerLayout.vue';
 export { default as MatCard } from './layout/Card.vue';
 export { default as MatContainer } from './layout/Container.vue';
 export { default as MatDivider } from './layout/Divider.vue';
+export { default as MatFlexItem } from './layout/FlexItem.vue';
+export { default as MatFlexLayout } from './layout/FlexLayout.vue';
+export { default as MatGridLayout } from './layout/GridLayout.vue';
+export { default as MatLineBreak } from './layout/LineBreak.vue';
 export { default as MatMargin } from './layout/MarginComponent.vue';
+export { default as MatNavigationLayout } from './layout/NavigationLayout.vue';
 export { default as MatPadding } from './layout/PaddingComponent.vue';
 export { default as MatPageLayout } from './layout/PageLayout.vue';
-export { default as MatFlexLayout } from './layout/FlexLayout.vue';
 export { default as MatScrollbarLayout } from './layout/ScrollbarLayout.vue';
-export { default as MatFlexItem } from './layout/FlexItem.vue';
-export { default as MatGridLayout } from './layout/GridLayout.vue';
 export { default as MatSpacer } from './layout/Spacer.vue';
-export { default as MatLineBreak } from './layout/LineBreak.vue';
-export { default as MatNavigationLayout } from './layout/NavigationLayout.vue';
 
 // List
 export { default as MatList } from './list/List.vue';
 export { default as MatListLinkItem } from './list/ListLinkItem.vue';
 
+// Menu
+export { default as MatMenu } from './menu/Menu.vue';
+
 // Image
 export { default as MatImage } from './image/ImageComponent.vue';
+export { default as MatAvatar } from './image/Avatar.vue';
 
 // Navigation
 export { default as MatNavLink } from './navigation/NavLink.vue';

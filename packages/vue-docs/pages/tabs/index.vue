@@ -48,57 +48,15 @@
     <!-- EXAMPLE 2-->
     <mat-spacer />
     <mat-title size="xs">
-      Tabs and Window
+      Profile page example
       <mat-spacer />
-      <mat-nav-link @click="() => (showTabs2Code = !showTabs2Code)">
-        <mat-padding>
-          <mat-fa icon="code" />
-        </mat-padding>
-      </mat-nav-link>
     </mat-title>
     <mat-paragraph>
-      In this example we are using another component Window with Tabs. When a Tab is
-      selected, the Window component will toggle between corresponding Window Items.
+      You can see an example of how the Tabs component can be used in a Profile
+      page here.
     </mat-paragraph>
     <mat-spacer />
-    <mat-card>
-      <mat-tabs v-model="tabs2">
-        <mat-tab :tab="0">
-          Home
-        </mat-tab>
-        <mat-tab :tab="1">
-          Components
-        </mat-tab>
-        <mat-tab :tab="2">
-          Source code
-        </mat-tab>
-      </mat-tabs>
-      <mat-spacer />
-      <mat-window :value="tabs2">
-        <mat-window-item :value="0">
-          <mat-padding padding="5px">
-            Home
-          </mat-padding>
-        </mat-window-item>
-        <mat-window-item :value="1">
-          <mat-padding padding="5px">
-            Components
-            <div>
-              Content here
-            </div>
-          </mat-padding>
-        </mat-window-item>
-        <mat-window-item :value="2">
-          <mat-padding padding="5px">
-            Source code
-          </mat-padding>
-        </mat-window-item>
-      </mat-window>
-    </mat-card>
-    <mat-spacer />
-    <mat-expansion-item :show="showTabs2Code">
-      <docs-code :value="singleCode" lang="html" />
-    </mat-expansion-item>
+    <profile-example />
   </div>
 </template>
 
@@ -117,9 +75,7 @@ export default {
       },
     ],
     tabs1: 0,
-    tabs2: 0,
     showTabs1Code: false,
-    showTabs2Code: false,
     singleCode: '<mat-tabs v-model="tabs1">\n'
       + '  <mat-tab :tab="0">Home</mat-tab>\n'
       + '  <mat-tab :tab="1">Components</mat-tab>\n'

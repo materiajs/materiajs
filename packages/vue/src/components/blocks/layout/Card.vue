@@ -16,6 +16,8 @@ export default {
   props: {
     darkColor: defaultAccentColor,
     hideOnMq: t.string,
+    overflow: t.string.def('initial'),
+    padding: t.string.def('15px'),
   },
   computed: {
     mqHideList() {
@@ -32,6 +34,8 @@ export default {
     _getStyle() {
       return {
         background: this.background,
+        padding: this.padding,
+        overflow: this.overflow,
       };
     },
   },

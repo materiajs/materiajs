@@ -1,7 +1,9 @@
 <template>
   <div
     class="mat-list"
-    :class="{ bordered }">
+    :class="{ bordered }"
+    :style="{ color: backgroundTextColor }"
+  >
     <slot>
       <div
         v-for="(item, key) in items"

@@ -11,51 +11,48 @@
       <mat-title size="xs">
         Usage
       </mat-title>
-      <template v-for="(component, key) in componentList">
-        <mat-padding padding="15px 0">
-          <component-viewer
-            :key="key"
-            v-bind="component">
-          </component-viewer>
-        </mat-padding>
-      </template>
+      <mat-title size="xs">
+        Basic example
+        <mat-spacer />
+        <mat-nav-link @click="() => (showCode = !showCode)">
+          <mat-padding>
+            <mat-fa icon="code" />
+          </mat-padding>
+        </mat-nav-link>
+      </mat-title>
+      <mat-paragraph>
+        Here we are binding an integer to the <code>&lt;mat-tabs&gt;</code> component and passing
+        relevant integers to the child <code>&lt;mat-tabs&gt;</code> components
+      </mat-paragraph>
+      <mat-spacer />
+      <mat-select
+        v-model="singleValue"
+        placeholder="Select single"
+        :single-value="true"
+        :options="singleSelect"
+      />
     </no-ssr>
   </div>
 </template>
 
 <script>
 import MatSelect from '@materiajs/vue/src/components/structures/select/Select.vue';
-import SingleSelect from '../../components/select/SingleSelect.vue';
-import ComponentViewer from '../../components/ComponentViewer.vue';
 
 export default {
   name: 'Index',
   components: {
-    ComponentViewer,
-    SingleSelect,
+    MatSelect,
   },
   data: () => ({
-    multipleBasicValue: [],
-    multipleWithCheckboxesValue: [],
-    multipleBasic: [
+    showCode: false,
+    singleValue: {},
+    singleSelect: [
       { value: 'Andy' },
       { value: 'Gary' },
       { value: 'Aoife' },
       { value: 'Chrissy' },
       { value: 'Cooper' },
     ],
-    multipleWithChecboxes: [
-      { value: 'Andy' },
-      { value: 'Gary' },
-      { value: 'Aoife' },
-      { value: 'Chrissy' },
-      { value: 'Cooper' },
-    ],
-    //   <component-link route="/input">Input</component-link>
-    // <component-link route="/list">List</component-link>
-    // <component-link route="/chip-list">ChipList</component-link>
-    // <component-link route="/checkbox">Checkbox</component-link>
-    // <component-link route="/action-box">ActionBox</component-link>
     usedComponents: [
       {
         route: '/input',
@@ -75,57 +72,6 @@ export default {
       },
     ],
   }),
-  computed: {
-    componentList() {
-      return [
-        {
-          title: 'Single select',
-          component: MatSelect,
-          componentProps: {
-            placeholder: 'Select value',
-            singleValue: true,
-            options: [
-              { value: 'Andy' },
-              { value: 'Gary' },
-              { value: 'Aoife' },
-              { value: 'Chrissy' },
-              { value: 'Cooper' },
-            ],
-          },
-        },
-        {
-          title: 'Multi select',
-          component: MatSelect,
-          componentProps: {
-            placeholder: 'Select multiple (hide selected)',
-            hideSelected: true,
-            options: [
-              { value: 'Andy' },
-              { value: 'Gary' },
-              { value: 'Aoife' },
-              { value: 'Chrissy' },
-              { value: 'Cooper' },
-            ],
-          },
-        },
-        {
-          title: 'Multi select with checkboxes',
-          component: MatSelect,
-          componentProps: {
-            placeholder: 'Select multiple',
-            showCheckboxes: true,
-            options: [
-              { value: 'Andy' },
-              { value: 'Gary' },
-              { value: 'Aoife' },
-              { value: 'Chrissy' },
-              { value: 'Cooper' },
-            ],
-          },
-        },
-      ];
-    },
-  },
 };
 </script>
 

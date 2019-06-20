@@ -25,6 +25,7 @@ export default {
 
 <style scoped lang="scss">
   .mat-tab {
+    font-size: 15px;
     align-items: center;
     cursor: pointer;
     display: inline-flex;

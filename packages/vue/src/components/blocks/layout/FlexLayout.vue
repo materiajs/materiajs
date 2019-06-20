@@ -10,7 +10,7 @@
 import t from 'vue-types';
 
 export default {
-  name: 'Layout',
+  name: 'FlexLayout',
   props: {
     alignItems: t.string.def('center'),
     flexDirection: t.oneOf(['row', 'column']).def('row'),

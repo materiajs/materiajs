@@ -18,10 +18,41 @@
           </mat-padding>
         </mat-nav-link>
         <mat-spacer />
-        <mat-nav-link @click.native="toggleDark()">
-          <mat-padding>
-            <mat-fa :icon="darkIcon" />
-          </mat-padding>
+        <mat-nav-link @click="() => menu2 = true">
+          <mat-avatar size="xs" src="https://randomuser.me/api/portraits/women/33.jpg" />
+          <mat-menu
+            position="bottom-right"
+            @close="() => menu2 = !menu2"
+            v-model="menu2">
+            <mat-padding padding="15px">
+              <mat-flex-layout>
+                <mat-avatar size="xs" src="https://randomuser.me/api/portraits/women/33.jpg" />
+                <mat-flex-item>
+                  <mat-padding>
+                    <mat-title size="xs">Andy Feely</mat-title>
+                    <mat-title size="xs" :subtitle="true">Andy Feely</mat-title>
+                  </mat-padding>
+                </mat-flex-item>
+              </mat-flex-layout>
+              <mat-button @click.native="toggleDark()">
+                <mat-fa :icon="darkIcon" /> Toggle dark mode
+              </mat-button>
+              <mat-select
+                v-model="singleValue"
+                placeholder="Select single"
+                :single-value="true"
+                :options="singleSelect"
+                :close-on-select="true"
+                :searchable="false"
+              />
+            </mat-padding>
+            <mat-list :bordered="true">
+              <div>Action 1</div>
+              <div>Action 1</div>
+              <div>Action 1</div>
+              <div>Action 1</div>
+            </mat-list>
+          </mat-menu>
         </mat-nav-link>
       </mat-toolbar>
       <mat-side-bar
@@ -41,92 +72,14 @@
       </mat-side-bar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-title>Select</mat-title>
-          <mat-title :subtitle="true" color="accent" size="xs">
-            Examples
-          </mat-title>
-          <mat-title>
-            Add coin
-          </mat-title>
-          <mat-spacer></mat-spacer>
           <mat-select
-            placeholder="Select coin"
+            v-model="singleValue"
+            placeholder="Select single"
             :single-value="true"
-            :options="[]"
+            :options="singleSelect"
             :close-on-select="true"
+            :searchable="false"
           />
-          <mat-spacer></mat-spacer>
-          <mat-input
-            type="number"
-          />
-          <mat-spacer></mat-spacer>
-          <mat-button
-            color="primary"
-          >
-            Save
-          </mat-button>
-          <mat-spacer></mat-spacer>
-          <mat-card hide-on-mq="md">
-            <mat-padding padding="0 0 15px">
-              <mat-tabs v-model="windowValue">
-                <mat-tab :tab="0">
-                  Window 1
-                </mat-tab>
-                <mat-tab :tab="1">
-                  Window 2
-                </mat-tab>
-                <mat-tab :tab="2">
-                  Window 3 - with a little extra
-                </mat-tab>
-                <mat-tab :tab="3">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab="4">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab="5">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab="6">
-                  Window 4
-                </mat-tab>
-                <mat-tab :tab="7">
-                  Window 4
-                </mat-tab>
-              </mat-tabs>
-            </mat-padding>
-            <mat-window v-model="windowValue">
-              <mat-window-item :value="0">
-                Window 1
-              </mat-window-item>
-              <mat-window-item :value="1">
-                <mat-code :value="singleCode" lang="html" />
-              </mat-window-item>
-              <mat-window-item :value="2">
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-                <mat-code :value="singleCode" lang="html" />
-              </mat-window-item>
-              <mat-window-item :value="3">
-                Window 3
-              </mat-window-item>
-            </mat-window>
-            <mat-spacer />
-            <mat-spacer />
-            <mat-input
-              v-model="inputValue"
-              placeholder="With clear button on right"
-              :show-clear-button="true" />
-          </mat-card>
         </div>
       </div>
     </mat-navigation-layout>
@@ -135,16 +88,22 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-import {
-  MatCode, MatWindow, MatWindowItem, MatTab, MatTabs,
-} from './components/blocks';
 
 const { mapMutations, mapState } = createNamespacedHelpers('materiajs');
 
 export default {
   name: 'app',
   data: () => ({
-    inputValue: 'Test',
+    singleValue: {},
+    singleSelect: [
+      { value: 'Andy' },
+      { value: 'Gary' },
+      { value: 'Aoife' },
+      { value: 'Chrissy' },
+      { value: 'Cooper' },
+    ],
+    menu1: false,
+    menu2: false,
     listItems: [
       {
         name: 'Home',
@@ -163,54 +122,6 @@ export default {
         to: '/input',
         active: true,
       },
-      {
-        name: 'Home',
-        to: '/',
-      },
-      {
-        name: 'Install guide',
-        to: '/install',
-      },
-      {
-        name: 'Select',
-        to: '/select',
-      },
-      {
-        name: 'Input',
-        to: '/input',
-      },
-      {
-        name: 'Home',
-        to: '/',
-      },
-      {
-        name: 'Install guide',
-        to: '/install',
-      },
-      {
-        name: 'Select',
-        to: '/select',
-      },
-      {
-        name: 'Input',
-        to: '/input',
-      },
-      {
-        name: 'Home',
-        to: '/',
-      },
-      {
-        name: 'Install guide',
-        to: '/install',
-      },
-      {
-        name: 'Select',
-        to: '/select',
-      },
-      {
-        name: 'Input',
-        to: '/input',
-      },
     ],
     showSidebar: true,
     windowValue: 0,
@@ -222,13 +133,6 @@ export default {
       + '  :options="singleSelect"\n'
       + '/>',
   }),
-  components: {
-    MatCode,
-    MatWindow,
-    MatWindowItem,
-    MatTab,
-    MatTabs,
-  },
   computed: {
     ...mapState(['darkMode']),
     darkIcon() {

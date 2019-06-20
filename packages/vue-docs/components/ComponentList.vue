@@ -4,7 +4,8 @@
       Components used:
     </mat-title>
     <component-link
-      v-for="component in componentList"
+      v-for="(component, key) in componentList"
+      :key="key"
       :route="component.route"
     >{{ component.text }}</component-link>
     <mat-spacer />
