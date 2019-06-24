@@ -3,6 +3,7 @@
     <mat-title size="xs">
       Components used:
     </mat-title>
+    <mat-spacer />
     <component-link
       v-for="(component, key) in componentList"
       :key="key"

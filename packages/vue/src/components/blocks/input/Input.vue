@@ -104,7 +104,7 @@ export default {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    padding: 15px 0 5px;
+    padding: 15px 0 10px;
     border-bottom: 1px solid;
     margin-top: 15px;
     min-width: 250px;
@@ -132,7 +132,7 @@ export default {
       margin: 0 -3px;
       padding: 0 3px;
       position: absolute;
-      top: 15px;
+      top: 20px;
       transform: translateY(-50%);
       transition: top $standard-transition-t-e, font-size $standard-transition-t-e;
       user-select: none;

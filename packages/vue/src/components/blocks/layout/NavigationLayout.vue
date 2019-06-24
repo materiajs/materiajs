@@ -36,6 +36,7 @@ export default {
     display: grid;
     header {
       grid-area: header;
+      z-index: 10;
     }
     nav {
       grid-area: nav;

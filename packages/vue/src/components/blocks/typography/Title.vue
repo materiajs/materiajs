@@ -41,14 +41,17 @@ export default {
     font-weight: bold;
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
     &.xs {
       font-size: 1rem;
+      margin-bottom: 0;
     }
     &.xs.subtitle {
       font-size: 0.9rem;
     }
     &.small {
       font-size: 1.5rem;
+      margin-bottom: 5px;
     }
     &.small.subtitle {
       font-size: 1.25rem;

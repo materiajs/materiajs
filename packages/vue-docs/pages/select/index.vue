@@ -28,7 +28,9 @@
       <mat-select
         v-model="singleValue"
         placeholder="Select single"
+        :close-on-select="true"
         :single-value="true"
+        :searchable="false"
         :options="singleSelect"
       />
     </no-ssr>

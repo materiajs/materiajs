@@ -74,4 +74,9 @@ export default {
   router: {
     mode: 'history',
   },
+  generate: {
+    routes: function () {
+      return ['button', 'tabs', 'toolbar'];
+    }
+  },
 };

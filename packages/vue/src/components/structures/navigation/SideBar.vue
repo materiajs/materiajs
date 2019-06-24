@@ -20,6 +20,14 @@
         </div>
       </div>
     </transition>
+    <transition name="fade">
+      <div
+        v-if="isMobile && value"
+        @click="close"
+        class="close-box">
+        Close box
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -115,7 +123,7 @@ export default {
         easing: 'easeInOutQuart',
       });
     },
-    onClickActions() {
+    close() {
       this.$emit('input', !this.value);
     },
   },
@@ -124,6 +132,14 @@ export default {
 
 <style scoped lang="scss">
   .mat-side-bar {
+    .close-box {
+      position: fixed;
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+    }
     min-height: 100%;
     box-sizing: border-box;
     box-shadow: $box-shadow-standard;
@@ -131,22 +147,6 @@ export default {
       &-block {
         width: 300px;
       }
-    }
-    &.is-mobile {
-      /*background: white;*/
-      /*bottom: 0;*/
-      /*transform: translateY(100%);*/
-      /*height: 50vh;*/
-      /*position: fixed;*/
-      /*width: 100vw;*/
-      /*z-index: 5;*/
-      /*.mat-side-bar-inner {*/
-      /*  width: 100%;*/
-      /*  overflow: auto;*/
-      /*  /deep/ >* {*/
-      /*    width: auto;*/
-      /*  }*/
-      /*}*/
     }
     .actions {
       position: absolute;

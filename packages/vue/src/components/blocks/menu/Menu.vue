@@ -51,12 +51,6 @@ export default {
 
 <style scoped lang="scss">
   @import "../../../styles/main";
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .2s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
-  }
   .mat-menu-wrapper {
     position: relative;
   }
@@ -88,6 +82,12 @@ export default {
     }
     &.large {
       min-width: 480px;
+    }
+    /deep/ .mat-toolbar, /deep/ .mat-banner-layout-banner {
+      &:first-child {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
     }
   }
 </style>

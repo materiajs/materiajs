@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     getStyle() {
-      const color = this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}accent`];
+      const color = this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary-light`];
       return {
         'border-right': this.active ? `2px solid ${color}` : '',
       };
@@ -43,7 +43,7 @@ export default {
       text-decoration: none;
     }
     &.active, &:hover {
-      background: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.05);
     }
   }
 </style>

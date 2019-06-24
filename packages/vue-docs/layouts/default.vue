@@ -1,12 +1,14 @@
 <template>
   <div class="layout-default">
     <no-ssr>
-      <mat-navigation-layout>
+      <mat-navigation-layout
+        :color="darkMode ? 'primary-light' : undefined"
+      >
         <mat-toolbar
           slot="header"
           :no-padding="true"
           position="sticky"
-          color="primary-light"
+          :color="darkMode ? undefined : 'primary-light'"
           top="0">
           <mat-nav-link @click.native="showSidebar = !showSidebar">
             <mat-padding padding="0 15px">
@@ -51,7 +53,11 @@
               </mat-padding>
             </mat-list-link-item>
           </mat-expansion-item>
-          <mat-line-break color="accent" />
+          <mat-padding>
+            <mat-title size="xs">
+              Components
+            </mat-title>
+          </mat-padding>
           <mat-list-link-item
             v-for="(item, key) in navLinkItems"
             :key="key"
@@ -78,13 +84,21 @@ export default {
     showSidebar: true,
     showLinks: false,
     listItems: [
+      // {
+      //   name: 'Install guide',
+      //   to: '/install',
+      // },
       {
-        name: 'Home',
-        to: '/',
+        name: 'Button',
+        to: '/button',
       },
       {
-        name: 'Install guide',
-        to: '/install',
+        name: 'Menu',
+        to: '/menu',
+      },
+      {
+        name: 'Window',
+        to: '/window',
       },
       {
         name: 'Tabs',
@@ -94,22 +108,22 @@ export default {
         name: 'Select',
         to: '/select',
       },
-      {
-        name: 'Input',
-        to: '/input',
-      },
-      {
-        name: 'Button',
-        to: '/button',
-      },
-      {
-        name: 'Layouts',
-        to: '/layouts',
-      },
-      {
-        name: 'List',
-        to: '/list',
-      },
+      // {
+      //   name: 'Input',
+      //   to: '/input',
+      // },
+      // {
+      //   name: 'Button',
+      //   to: '/button',
+      // },
+      // {
+      //   name: 'Layouts',
+      //   to: '/layouts',
+      // },
+      // {
+      //   name: 'List',
+      //   to: '/list',
+      // },
       {
         name: 'Toolbar',
         to: '/toolbar',

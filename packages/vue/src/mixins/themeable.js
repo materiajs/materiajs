@@ -65,7 +65,7 @@ export default {
       return theme;
     },
     background() {
-      return this.theme.colors[this.colorKey];
+      return this.theme.colors[this.colorKey] || this.theme.colors[this.color];
     },
     backgroundTextColor() {
       return this.parseTextColor(this.background);

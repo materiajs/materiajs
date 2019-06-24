@@ -1,9 +1,13 @@
 <template>
   <div class="index">
-    <mat-title color="primary-light" size="large">
+    <mat-title
+      :dark="true"
+      color="primary-light" size="large">
       Materia JS
     </mat-title>
-    <mat-title size="small" color="primary-light">
+    <mat-title
+      :dark="true"
+      size="small" color="primary-light">
       Vue component framework
     </mat-title>
     <mat-spacer />

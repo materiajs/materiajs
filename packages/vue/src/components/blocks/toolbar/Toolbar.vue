@@ -53,7 +53,7 @@ export default {
       height: 75px;
     }
     &.mat-box-shadow-heavy {
-      z-index: 10;
+      z-index: 3;
     }
     >* {
       height: 100%;

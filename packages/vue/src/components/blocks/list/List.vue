@@ -47,9 +47,6 @@ export default {
       &:not(:last-child) {
         border-bottom: 1px solid $primary-color-light;
       }
-      &:hover {
-        background: lighten($primary-color-light, 10%);
-      }
     }
   }
 </style>

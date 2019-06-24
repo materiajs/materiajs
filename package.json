@@ -6,6 +6,6 @@
   },
   "scripts": {
     "build-yalc-update": "cd ./packages/vue && npm run build-bundle && yalc push",
-    "build-yalc-deploy": "npm run build-yalc-update && cd ../vue-docs && npm run deploy"
+    "build-yalc-deploy": "npm run build-yalc-update && cd ./packages/vue-docs && npm run deploy"
   }
 }

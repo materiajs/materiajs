@@ -5,14 +5,11 @@
     <div
       :class="{ checked: value }"
       class="mat-checkbox-box mat-frame mat-flex-center">
-      <transition name="mat-fade">
-        <i
-          v-if="value"
-          class="fas fa-check mat-absolute-center"></i>
-      </transition>
+      <i class="fas fa-check mat-absolute-center"></i>
     </div>
     <div class="mat-checkbox-label">
       {{ text }}
+      <slot />
     </div>
   </div>
 </template>
@@ -52,10 +49,19 @@ export default {
       min-height: $frame-size;
       min-width: $frame-size;
       padding: 0;
+      transition: all 0.1s ease-in-out;
+      i {
+        opacity: 0;
+        transition: all 0.1s ease-in-out;
+        font-size: 12px;
+      }
 
       &.checked {
         background: $primary-color;
         border: 1px solid $primary-color;
+        i {
+          opacity: 1;
+        }
       }
     }
   }

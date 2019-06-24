@@ -1,13 +1,16 @@
 <template>
-  <div class="banner-layout">
-    <div class="banner-layout-banner" :style="_getStyle"></div>
-    <div class="banner-layout-slot">
+  <div class="mat-banner-layout">
+    <div
+      :class="[type]"
+      class="mat-banner-layout-banner" :style="_getStyle"></div>
+    <div class="mat-banner-layout-slot">
       <slot />
     </div>
   </div>
 </template>
 
 <script>
+import t from 'vue-types';
 import themeable, { defaultAccentColor } from '../../../mixins/themeable';
 
 export default {
@@ -17,6 +20,7 @@ export default {
   ],
   props: {
     color: defaultAccentColor,
+    type: t.oneOf(['half', 'full']).def('half'),
   },
   computed: {
     _getStyle() {
@@ -29,7 +33,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .banner-layout {
+  .mat-banner-layout {
     position: relative;
     &-banner {
       position: absolute;
@@ -38,6 +42,9 @@ export default {
       z-index: 1;
       top: 0;
       left: 0;
+      &.full {
+        height: 100%;
+      }
     }
     &-slot {
       position: relative;

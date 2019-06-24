@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <mat-navigation-layout>
+    <mat-navigation-layout
+      :color="darkMode ? 'primary-light' : undefined"
+    >
       <mat-toolbar
         slot="header"
-        color="primary-light"
+        :color="darkMode ? undefined : 'primary'"
         position="sticky"
         :no-padding="true"
         top="0">
@@ -46,7 +48,7 @@
                 :searchable="false"
               />
             </mat-padding>
-            <mat-list :bordered="true">
+            <mat-list>
               <div>Action 1</div>
               <div>Action 1</div>
               <div>Action 1</div>
@@ -58,7 +60,6 @@
       <mat-side-bar
         v-model="showSidebar"
         slot="nav"
-        :color="darkMode ? 'accent' : undefined"
       >
         <mat-list-link-item
           v-for="(item, key) in listItems"
@@ -72,14 +73,72 @@
       </mat-side-bar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-select
-            v-model="singleValue"
-            placeholder="Select single"
-            :single-value="true"
-            :options="singleSelect"
-            :close-on-select="true"
-            :searchable="false"
-          />
+          <mat-table>
+            <mat-table-row>
+              <mat-table-cell>
+                Cell 1
+              </mat-table-cell>
+              <mat-table-cell>
+                Cell 2
+              </mat-table-cell>
+            </mat-table-row>
+            <mat-table-row>
+              <mat-table-cell>
+                Cell 1
+              </mat-table-cell>
+              <mat-table-cell>
+                Cell 2
+              </mat-table-cell>
+            </mat-table-row>
+          </mat-table>
+          <mat-spacer />
+          <mat-button @click.native="() => menu = true">
+            Menu
+          </mat-button>
+          <mat-menu @close="() => menu = !menu"
+                    v-model="menu">
+            <mat-window v-model="tab">
+              <mat-window-item :value="0">
+                <mat-banner-layout type="full">
+                  <mat-padding>
+                    <mat-title size="xs" :dark="true">
+                      Test
+                    </mat-title>
+                  </mat-padding>
+                </mat-banner-layout>
+                <mat-list>
+                  <div  @click="() => tab = 1">
+                    Dark theme
+                  </div>
+                  <div  @click="() => tab = 1">
+                    Dark theme
+                  </div>
+                  <div  @click="() => tab = 1">
+                    Dark theme
+                  </div>
+                </mat-list>
+              </mat-window-item>
+              <mat-window-item :value="1">
+                <mat-toolbar
+                  color="accent"
+                  size="xs"
+                  :shadow="false"
+                  :no-padding="true">
+                  <mat-flex-layout>
+                    <mat-padding>
+                      <mat-fa  @click.native="() => tab = 0" icon="arrow-left" />
+                    </mat-padding>
+                  </mat-flex-layout>
+                  Dark theme settings
+                </mat-toolbar>
+                <mat-padding>
+                  <mat-checkbox v-model="compDarkMode">
+                    Dark mode
+                  </mat-checkbox>
+                </mat-padding>
+              </mat-window-item>
+            </mat-window>
+          </mat-menu>
         </div>
       </div>
     </mat-navigation-layout>
@@ -94,6 +153,9 @@ const { mapMutations, mapState } = createNamespacedHelpers('materiajs');
 export default {
   name: 'app',
   data: () => ({
+    compDarkMode: false,
+    menu: false,
+    tab: 0,
     singleValue: {},
     singleSelect: [
       { value: 'Andy' },
