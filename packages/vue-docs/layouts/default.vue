@@ -32,27 +32,20 @@
         <mat-side-bar
           slot="nav"
           v-model="showSidebar">
-          <mat-list-link-item  @click.native="showLinks = !showLinks">
-            <mat-padding>
-              <mat-flex-layout>
-                Getting started
-                <mat-spacer />
-                <mat-fa
-                  :rotate="showLinks ? 180 : 0"
-                  icon="chevron-down" />
-              </mat-flex-layout>
-            </mat-padding>
+          <mat-padding>
+            <mat-title size="xs">
+              Getting started
+            </mat-title>
+          </mat-padding>
+          <mat-list-link-item
+            v-for="(item, key) in gettingStartedItems"
+            :key="key"
+            :active="item.active"
+          >
+            <nuxt-link :to="item.to">
+              {{ item.name }}
+            </nuxt-link>
           </mat-list-link-item>
-          <mat-expansion-item :show="showLinks">
-            <mat-list-link-item>
-              <mat-padding>
-                <mat-flex-layout>
-                  Install
-                  <mat-spacer />
-                </mat-flex-layout>
-              </mat-padding>
-            </mat-list-link-item>
-          </mat-expansion-item>
           <mat-padding>
             <mat-title size="xs">
               Components
@@ -83,11 +76,13 @@ export default {
   data: () => ({
     showSidebar: true,
     showLinks: false,
+    gettingStarted: [
+      {
+        name: 'Install guide',
+        to: '/install',
+      },
+    ],
     listItems: [
-      // {
-      //   name: 'Install guide',
-      //   to: '/install',
-      // },
       {
         name: 'Button',
         to: '/button',
@@ -108,22 +103,6 @@ export default {
         name: 'Select',
         to: '/select',
       },
-      // {
-      //   name: 'Input',
-      //   to: '/input',
-      // },
-      // {
-      //   name: 'Button',
-      //   to: '/button',
-      // },
-      // {
-      //   name: 'Layouts',
-      //   to: '/layouts',
-      // },
-      // {
-      //   name: 'List',
-      //   to: '/list',
-      // },
       {
         name: 'Toolbar',
         to: '/toolbar',
@@ -148,6 +127,13 @@ export default {
     },
     navLinkItems() {
       return this.listItems
+        .map(item => ({
+          ...item,
+          active: this.$route.path === item.to,
+        }));
+    },
+    gettingStartedItems() {
+      return this.gettingStarted
         .map(item => ({
           ...item,
           active: this.$route.path === item.to,

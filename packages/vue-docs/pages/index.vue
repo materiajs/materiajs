@@ -12,7 +12,7 @@
     </mat-title>
     <mat-spacer />
     <mat-spacer />
-    <nuxt-link to="/tabs">
+    <nuxt-link to="/install">
       <mat-button color="primary">
          Get started
       </mat-button>

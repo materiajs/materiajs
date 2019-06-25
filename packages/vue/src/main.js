@@ -9,9 +9,9 @@ const store = new Vuex.Store({
   modules: {
     materiajs,
   },
-}); // create a new store object
+});
 Vue.config.productionTip = false;
-Vue.use(toolblox, { store });
+Vue.use(toolblox, {});
 
 new Vue({
   store,
