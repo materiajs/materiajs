@@ -3,43 +3,62 @@
     <mat-banner-layout
       :background-gradient="['primary-light', 'primary']"
       type="full" color="primary-light">
-      <mat-page-layout>
-        <mat-padding padding="100px 30px">
-          <div class="index-main">
-            <mat-title
-              :dark="true"
-              color="primary-light" size="large">
-              Materia JS
-            </mat-title>
-            <mat-title
-              :dark="true"
-              size="small" color="primary-light">
-              Vue component framework
-            </mat-title>
-            <mat-spacer />
-            <mat-spacer />
-            <nuxt-link to="/install">
-              <mat-button color="primary">
-                Get started
-              </mat-button>
-            </nuxt-link>
-            <mat-button>
-              <mat-fa prefix="fab" icon="github"></mat-fa >Github
+      <div class="index-main">
+        <mat-padding padding="15px 0">
+          <mat-title
+            :dark="true"
+            color="primary-light" size="large">
+            Materia JS
+          </mat-title>
+          <mat-title
+            :dark="true"
+            size="small" color="primary-light">
+            Vue component framework
+          </mat-title>
+          <mat-spacer />
+          <mat-spacer />
+          <nuxt-link to="/install">
+            <mat-button color="primary">
+              Get started
             </mat-button>
-            <mat-spacer />
-            <mat-flex-layout flex-wrap="wrap">
-              <mat-flex-item v-for="undefined in 3" flex="200px">
-                <mat-padding>
-                  <mat-card>
-                    Card
-                  </mat-card>
-                </mat-padding>
-              </mat-flex-item>
-            </mat-flex-layout>
-          </div>
+          </nuxt-link>
+          <mat-button>
+            <mat-fa prefix="fab" icon="github"></mat-fa >Github
+          </mat-button>
         </mat-padding>
-      </mat-page-layout>
+      </div>
     </mat-banner-layout>
+    <div class="index-main">
+      <mat-spacer />
+      <mat-title size="small">
+        Why Materia JS?
+      </mat-title>
+      <mat-spacer />
+      <mat-margin margin="0 -15px">
+        <mat-flex-layout class="index-main-items" flex-wrap="wrap">
+          <mat-flex-item v-for="item in mainItems" flex="250px">
+            <mat-padding>
+              <mat-card
+                padding="0"
+                overflow="hidden"
+                class="index-card"
+              >
+                <mat-image :src="item.imageSrc" />
+                <mat-padding>
+                  <mat-title size="xs">
+                    {{ item.title }}
+                  </mat-title>
+                  <mat-spacer />
+                  <mat-paragraph>
+                    {{ item.body }}
+                  </mat-paragraph>
+                </mat-padding>
+              </mat-card>
+            </mat-padding>
+          </mat-flex-item>
+        </mat-flex-layout>
+      </mat-margin>
+    </div>
   </div>
 </template>
 
@@ -48,14 +67,65 @@
 export default {
   name: 'index',
   layout: 'home',
+  data: () => ({
+    mainItems: [
+      {
+        // eslint-disable-next-line
+        imageSrc: require('~/assets/images/profile.png'),
+        title: 'Modern and flexible components',
+        body: 'Emphasis on user and dev friendliness, flexibility and beautiful design. '
+          + 'All components work standalone or alongside each other.',
+      },
+      {
+        // eslint-disable-next-line
+        imageSrc: require('~/assets/images/install.png'),
+        title: 'Quick to install',
+        body: 'Can be added to your application in minutes. Allows for easy scaffolding of'
+          + 'web pages and sites.',
+      },
+      {
+        // eslint-disable-next-line
+        imageSrc: require('~/assets/images/code.png'),
+        title: 'Semantic markup',
+        body: 'Sensible props and events allows the dev to understand the '
+          + 'template clearly while having to consult the documentation as little as '
+          + 'possible.',
+      },
+    ],
+  }),
 };
 </script>
 
 <style lang="scss" scoped>
   .index {
     &-main {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
+      padding: 60px 15px;
+      @media screen and (max-width: 900px) {
+        padding: 15px 15px;
+      }
+
+      &-items {
+        height: 350px;
+        /deep/ .mat-image {
+          height: 140px;
+          overflow: hidden;
+          img {
+            max-height: initial;
+            width: 100%;
+            align-self: baseline;
+          }
+        }
+        .mat-flex-item, /deep/ .mat-padding-component {
+          height: 100%;
+        }
+      }
+    }
+    &-card {
+      margin: auto;
+      max-width: 300px;
+      height: 100%;
     }
   }
 </style>

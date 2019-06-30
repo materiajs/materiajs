@@ -1,5 +1,5 @@
 <template>
-  <div class="mat-banner-layout">
+  <div class="mat-banner-layout" :style="{ color: backgroundTextColor }">
     <div
       :class="[type]"
       class="mat-banner-layout-banner" :style="_getStyle"></div>

@@ -19,7 +19,6 @@ export default {
 <style scoped lang="scss">
   .mat-image {
     display: flex;
-    height: 240px;
     align-items: center;
     justify-content: center;
     img {

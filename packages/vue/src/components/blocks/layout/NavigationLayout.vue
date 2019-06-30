@@ -36,7 +36,7 @@ export default {
 
 <style scoped lang="scss">
   .mat-navigation-layout {
-    grid-template-areas: "header header" "nav main" "footer footer";
+    grid-template-areas: "header header" "nav main" "nav footer";
     grid-template-columns: minmax(0, auto) 1fr;
     grid-template-rows: min-content 1fr min-content;
     height: 100vh;

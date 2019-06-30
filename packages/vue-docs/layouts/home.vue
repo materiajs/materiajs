@@ -11,7 +11,18 @@
           <main-sidebar v-model="showSidebar" />
         </template>
         <div class="layout-home-main">
-          <nuxt />
+          <mat-page-layout>
+            <nuxt />
+          </mat-page-layout>
+          <mat-banner-layout
+            type="full"
+            color="primary">
+            <mat-padding padding="30px 15px">
+              <mat-flex-layout>
+                materiajs.com
+              </mat-flex-layout>
+            </mat-padding>
+          </mat-banner-layout>
         </div>
       </mat-navigation-layout>
     </no-ssr>
