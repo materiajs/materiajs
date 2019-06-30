@@ -1,5 +1,6 @@
 import t from 'vue-types';
 import { createNamespacedHelpers } from 'vuex';
+import isEmpty from 'lodash/isEmpty';
 import theme from '../styles/themes';
 
 const colors = {
@@ -34,6 +35,7 @@ export default {
     // :dark overrides global dark mode
     dark: t.any,
     color: t.oneOf(defaultColors).def('default'),
+    backgroundGradient: t.array.def([]),
   },
   computed: {
     ...mapState([
@@ -51,31 +53,25 @@ export default {
     primaryColor() {
       return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary`];
     },
-    // getElementStyle() {
-    //   const { background } = this;
-    //   const styles = {
-    //     color, background,
-    //   };
-    //   return styles;
-    // },
     theme() {
       if (this.$materiajs) {
         return this.$materiajs.theme;
       }
       return theme;
     },
-    background() {
+    toggledColor() {
       return this.theme.colors[this.colorKey] || this.theme.colors[this.color];
+    },
+    background() {
+      if (isEmpty(this.backgroundGradient)) {
+        return this.toggledColor;
+      }
+      const gradients = this.backgroundGradient.map(color => this.theme.colors[(this.isAnyDark ? 'dark-' : '') + color]);
+      return `linear-gradient(${gradients.join(',')})`;
     },
     backgroundTextColor() {
       return this.parseTextColor(this.background);
     },
-    // textPrimaryColor() {
-    //   return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary-text`];
-    // },
-    // textSecondaryColor() {
-    //   return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}secondary-text`];
-    // },
   },
   methods: {
     parseTextColor(color) {

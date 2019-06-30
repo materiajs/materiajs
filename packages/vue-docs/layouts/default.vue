@@ -4,63 +4,12 @@
       <mat-navigation-layout
         :color="darkMode ? 'primary-light' : undefined"
       >
-        <mat-toolbar
-          slot="header"
-          :no-padding="true"
-          position="sticky"
-          :color="darkMode ? undefined : 'primary-light'"
-          top="0">
-          <mat-nav-link @click.native="showSidebar = !showSidebar">
-            <mat-padding padding="0 15px">
-              <mat-fa icon="bars" />
-            </mat-padding>
-          </mat-nav-link>
-          <nuxt-link to="/">
-            <mat-nav-link>
-              <mat-padding>
-                Materia JS
-              </mat-padding>
-            </mat-nav-link>
-          </nuxt-link>
-          <mat-spacer />
-          <mat-nav-link @click.native="toggleDark()">
-            <mat-padding padding="0 15px">
-              <mat-fa :icon="darkIcon" />
-            </mat-padding>
-          </mat-nav-link>
-        </mat-toolbar>
-        <mat-side-bar
-          slot="nav"
-          v-model="showSidebar">
-          <mat-padding>
-            <mat-title size="xs">
-              Getting started
-            </mat-title>
-          </mat-padding>
-          <mat-list-link-item
-            v-for="(item, key) in gettingStartedItems"
-            :key="key"
-            :active="item.active"
-          >
-            <nuxt-link :to="item.to">
-              {{ item.name }}
-            </nuxt-link>
-          </mat-list-link-item>
-          <mat-padding>
-            <mat-title size="xs">
-              Components
-            </mat-title>
-          </mat-padding>
-          <mat-list-link-item
-            v-for="(item, key) in navLinkItems"
-            :key="key"
-            :active="item.active"
-          >
-            <nuxt-link :to="item.to">
-              {{ item.name }}
-            </nuxt-link>
-          </mat-list-link-item>
-        </mat-side-bar>
+        <template slot="header">
+          <main-toolbar @sidebarToggle="showSidebar = !showSidebar" />
+        </template>
+        <template slot="nav">
+          <main-sidebar v-model="showSidebar" />
+        </template>
         <div class="layout-default-main">
           <div class="layout-default-main-inner">
             <nuxt />
@@ -71,88 +20,12 @@
   </div>
 </template>
 <script>
+import LayoutMixin from './layout-mixin';
 
 export default {
-  data: () => ({
-    showSidebar: true,
-    showLinks: false,
-    gettingStarted: [
-      {
-        name: 'Install guide',
-        to: '/install',
-      },
-    ],
-    listItems: [
-      {
-        name: 'Button',
-        to: '/button',
-      },
-      {
-        name: 'Menu',
-        to: '/menu',
-      },
-      {
-        name: 'Window',
-        to: '/window',
-      },
-      {
-        name: 'Tabs',
-        to: '/tabs',
-      },
-      {
-        name: 'Select',
-        to: '/select',
-      },
-      {
-        name: 'Toolbar',
-        to: '/toolbar',
-      },
-    ],
-  }),
-  mounted() {
-    if (this.getMenuMqs().includes(this.$mq)) {
-      this.showSidebar = false;
-    }
-  },
-  computed: {
-    darkMode() {
-      const store = this.$store;
-      if (store.state && store.state.materiajs) {
-        return store.state.materiajs.darkMode;
-      }
-      return false;
-    },
-    darkIcon() {
-      return this.darkMode ? 'sun' : 'moon';
-    },
-    navLinkItems() {
-      return this.listItems
-        .map(item => ({
-          ...item,
-          active: this.$route.path === item.to,
-        }));
-    },
-    gettingStartedItems() {
-      return this.gettingStarted
-        .map(item => ({
-          ...item,
-          active: this.$route.path === item.to,
-        }));
-    },
-  },
-  methods: {
-    toggleDark() {
-      this.$store.commit('materiajs/toggleDark');
-    },
-    getMenuMqs() {
-      const mqs = Object.keys(this.$mqAvailableBreakpoints);
-      const i = mqs.findIndex(mq => mq === 'md');
-      if (i > -1) {
-        return mqs.slice(0, i + 1);
-      }
-      return [];
-    },
-  },
+  mixins: [
+    LayoutMixin,
+  ],
 };
 </script>
 <style lang="scss">
@@ -176,12 +49,15 @@ export default {
   }
   a {
     color: inherit;
+    text-decoration: none;
   }
   .layout-default {
     &-main {
-      padding: 30px;
       margin: auto;
       max-width: 800px;
+      &.home {
+        max-width: initial;
+      }
     }
   }
 </style>

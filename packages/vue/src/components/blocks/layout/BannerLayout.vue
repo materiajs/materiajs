@@ -48,7 +48,7 @@ export default {
     }
     &-slot {
       position: relative;
-      z-index: 5;
+      z-index: 3;
     }
   }
 </style>

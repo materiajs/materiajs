@@ -2,6 +2,7 @@
   <div id="app">
     <mat-navigation-layout
       :color="darkMode ? 'primary-light' : undefined"
+      :sidebar-overlay="true"
     >
       <mat-toolbar
         slot="header"
@@ -60,7 +61,26 @@
       <mat-side-bar
         v-model="showSidebar"
         slot="nav"
+        :overlay="true"
       >
+        <mat-toolbar
+          :color="darkMode ? undefined : 'primary-light'"
+          position="sticky"
+          :no-padding="true"
+          :shadow="false"
+          top="0">
+          <mat-nav-link @click.native="showSidebar = !showSidebar">
+            <mat-padding>
+              <mat-fa icon="bars" />
+            </mat-padding>
+          </mat-nav-link>
+          <mat-nav-link>
+            <mat-padding>
+              Materia JS
+            </mat-padding>
+          </mat-nav-link>
+          <mat-spacer />
+        </mat-toolbar>
         <mat-list-link-item
           v-for="(item, key) in listItems"
           :key="key"
@@ -72,6 +92,28 @@
         </mat-list-link-item>
       </mat-side-bar>
       <div class="main-wrapper">
+        <mat-banner-layout
+          :background-gradient="['primary-light', 'primary']"
+          type="full" color="primary-light">
+          <mat-padding padding="60px 30px">
+            <div class="index-main">
+              <mat-title
+                :dark="true"
+                color="primary-light" size="large">
+                Materia JS
+              </mat-title>
+              <mat-title
+                :dark="true"
+                size="small" color="primary-light">
+                Vue component framework
+              </mat-title>
+              <mat-spacer />
+              <mat-button>
+                <mat-fa prefix="fab" icon="github"></mat-fa >Github
+              </mat-button>
+            </div>
+          </mat-padding>
+        </mat-banner-layout>
         <div class="main-container">
           <mat-table>
             <mat-table-row>

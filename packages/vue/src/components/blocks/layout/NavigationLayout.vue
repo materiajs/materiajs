@@ -1,5 +1,9 @@
 <template>
-  <div class="mat-navigation-layout" :style="{ background, color: backgroundTextColor }">
+  <div
+    class="mat-navigation-layout"
+    :class="{ 'sidebar-overlay': sidebarOverlay }"
+    :style="{ background, color: backgroundTextColor }"
+  >
     <header>
       <slot name="header" />
     </header>
@@ -16,6 +20,7 @@
 </template>
 
 <script>
+import t from 'vue-types';
 import themeable from '../../../mixins/themeable';
 
 export default {
@@ -23,6 +28,9 @@ export default {
   mixins: [
     themeable,
   ],
+  props: {
+    sidebarOverlay: t.bool.def(false),
+  },
 };
 </script>
 
@@ -52,6 +60,13 @@ export default {
     }
     footer {
       grid-area: footer;
+    }
+    &.sidebar-overlay  {
+      nav {
+        z-index: 15;
+        position: fixed;
+        height: 100%;
+      }
     }
   }
 </style>

@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <mat-title>{{ component.title }}</mat-title>
-    <mat-paragraph>
-      <div v-html="component.introduction"></div>
+  <div class="component-name">
+    <mat-padding>
+      <mat-title>{{ component.title }}</mat-title>
+      <mat-paragraph>
+        <div v-html="component.introduction"></div>
+        <mat-spacer />
+      </mat-paragraph>
       <mat-spacer />
-    </mat-paragraph>
-    <mat-spacer />
-    <component-list
-      v-if="component.componentList"
-      :component-list="component.componentList" />
-    <template v-for="section in component.sections">
-      <component :is="section.component" />
-      <mat-spacer />
-    </template>
+      <component-list
+        v-if="component.componentList"
+        :component-list="component.componentList" />
+      <template v-for="section in component.sections">
+        <component :is="section.component" />
+        <mat-spacer />
+      </template>
+    </mat-padding>
   </div>
 </template>
 
@@ -31,6 +33,9 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .component-name {
+    margin: auto;
+    max-width: 800px;
+  }
 </style>

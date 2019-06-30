@@ -55,7 +55,7 @@ export default {
     position: relative;
   }
   .mat-menu {
-    min-width: 200px;
+    min-width: 280px;
     position: absolute;
     top: 100%;
     z-index: 100;

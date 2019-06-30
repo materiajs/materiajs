@@ -22,7 +22,7 @@
     </transition>
     <transition name="fade">
       <div
-        v-if="isMobile && value"
+        v-if="(overlay || isMobile) && value"
         @click="close"
         class="close-box">
         Close box
@@ -38,6 +38,13 @@ import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'SideBar',
+  props: {
+    overlay: t.bool.def(false),
+    value: t.bool.def(true),
+  },
+  mixins: [
+    themeable,
+  ],
   data: () => ({
     mobileStyles: {
       beforeEnter: {
@@ -71,12 +78,6 @@ export default {
       },
     },
   }),
-  props: {
-    value: t.bool.def(true),
-  },
-  mixins: [
-    themeable,
-  ],
   computed: {
     isMobile() {
       return ['xs', 'sm', 'md'].includes(this.$mq);
