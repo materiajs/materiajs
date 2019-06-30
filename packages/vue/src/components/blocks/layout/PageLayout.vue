@@ -27,7 +27,7 @@ export default {
     _getElementStyle() {
       let height;
       if (this.mounted) {
-        height = window.innerHeight - this.$el.offsetTop;
+        height = window.innerHeight - this.$el.getBoundingClientRect().top;
       }
       return {
         ...this.getElementStyle,

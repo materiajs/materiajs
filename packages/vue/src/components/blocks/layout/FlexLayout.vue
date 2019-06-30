@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[flexDirection, wrapper ? 'mat-flex-layout-wrapper' : 'mat-flex-layout']"
-   :style="{ 'align-items': alignItems, 'flex-direction': flexDirection }">
+   :style="getStyle">
     <slot />
   </div>
 </template>
@@ -14,7 +14,17 @@ export default {
   props: {
     alignItems: t.string.def('center'),
     flexDirection: t.oneOf(['row', 'column']).def('row'),
+    flexWrap: t.oneOf(['wrap', 'initial', 'nowrap', 'wrap-reverse']).def('nowrap'),
     wrapper: t.bool.def(false),
+  },
+  computed: {
+    getStyle() {
+      return {
+        'align-items': this.alignItems,
+        'flex-direction': this.flexDirection,
+        'flex-wrap': this.flexWrap,
+      };
+    },
   },
 };
 </script>
