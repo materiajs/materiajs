@@ -35,29 +35,35 @@ export default {
 
 <style scoped lang="scss">
   @import "../../../styles/main";
-
+  $size-values: 1rem 1.5rem 2rem 2.5rem;
   .mat-title {
     font-size: 2rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    &.xs {
-      font-size: 1rem;
-      margin-bottom: 0;
+
+    $size-list: xs small regular large;
+    @each $size in $size-list {
+      $i: index($size-list, $size);
+      &.#{$size} {
+        font-size: nth($size-values, $i);
+        &.subtitle {
+          font-size: calc(#{nth($size-values, $i)} * 0.8);
+        }
+      }
     }
-    &.xs.subtitle {
-      font-size: 0.9rem;
-    }
-    &.small {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-    }
-    &.small.subtitle {
-      font-size: 1.25rem;
-    }
-    &.large {
-      font-size: 2.5rem;
+
+    @media screen and (max-width: 767px){
+      @each $size in $size-list {
+        $i: index($size-list, $size);
+        &.#{$size} {
+          font-size: calc(#{nth($size-values, $i)} * 0.8);
+          &.subtitle {
+            font-size: calc(#{nth($size-values, $i)} * 0.64);
+          }
+        }
+      }
     }
   }
 </style>

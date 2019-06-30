@@ -115,6 +115,13 @@
           </mat-padding>
         </mat-banner-layout>
         <div class="main-container">
+          <mat-title size="xs">XS</mat-title>
+          <mat-title size="xs" :subtitle="true">XS</mat-title>
+          <mat-title size="small">Small</mat-title>
+          <mat-title size="small" :subtitle="true">Small sub</mat-title>
+          <mat-title size="regular">Regular</mat-title>
+          <mat-title size="regular" :subtitle="true">Regular subtitle</mat-title>
+          <mat-title size="large">Large</mat-title>
           <mat-table>
             <mat-table-row>
               <mat-table-cell>

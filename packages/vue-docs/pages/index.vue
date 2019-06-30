@@ -105,9 +105,7 @@ export default {
       @media screen and (max-width: 900px) {
         padding: 15px 15px;
       }
-
       &-items {
-        height: 350px;
         /deep/ .mat-image {
           height: 140px;
           overflow: hidden;
@@ -126,6 +124,7 @@ export default {
       margin: auto;
       max-width: 300px;
       height: 100%;
+      min-height: 320px;
     }
   }
 </style>
