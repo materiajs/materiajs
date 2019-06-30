@@ -36,14 +36,13 @@ export default {
 <style scoped lang="scss">
   @import "../../../styles/main";
   $size-values: 1rem 1.5rem 2rem 2.5rem;
+  $size-list: xs small regular large;
   .mat-title {
     font-size: 2rem;
     font-weight: bold;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-
-    $size-list: xs small regular large;
+    margin: 5px 0;
     @each $size in $size-list {
       $i: index($size-list, $size);
       &.#{$size} {

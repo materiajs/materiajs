@@ -1,6 +1,6 @@
 <template>
   <div class="component-name">
-    <mat-padding padding="30px 15px">
+    <mat-padding>
       <mat-title>{{ component.title }}</mat-title>
       <mat-paragraph>
         <div v-html="component.introduction"></div>

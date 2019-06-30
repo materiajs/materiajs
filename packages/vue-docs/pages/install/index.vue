@@ -1,6 +1,6 @@
 <template>
   <div class="install-index">
-    <mat-padding padding="30px 15px">
+    <mat-padding>
       <mat-title>Install guide</mat-title>
       <mat-paragraph>
         This page will explain how to install Materia JS into your Vue application.

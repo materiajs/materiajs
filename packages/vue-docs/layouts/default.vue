@@ -12,6 +12,9 @@
         </template>
         <div class="layout-default-main">
           <div class="layout-default-main-inner">
+            <mq-layout mq="lg+">
+              <mat-spacer />
+            </mq-layout>
             <nuxt />
           </div>
         </div>
@@ -32,7 +35,7 @@ export default {
   html {
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15px;
+    font-size: 0.95rem;
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;

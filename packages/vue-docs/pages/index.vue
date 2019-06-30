@@ -101,9 +101,9 @@ export default {
     &-main {
       max-width: 900px;
       margin: auto;
-      padding: 60px 15px;
+      padding: 60px 30px;
       @media screen and (max-width: 900px) {
-        padding: 15px 15px;
+        padding: 15px 30px;
       }
       &-items {
         /deep/ .mat-image {
@@ -125,6 +125,15 @@ export default {
       max-width: 300px;
       height: 100%;
       min-height: 320px;
+    }
+    @media screen and (max-width: 600px) {
+      &-card {
+        max-width: 100%;
+        width: 100%;
+      }
+      /deep/ .mat-image {
+        height: 180px;
+      }
     }
   }
 </style>
