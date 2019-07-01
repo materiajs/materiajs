@@ -1,10 +1,8 @@
 import VueMq from 'vue-mq';
-import merge from 'lodash/merge';
 import materiaJsStore from './store';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
-import theme from './styles/themes';
 
 const components = {
   ...blocks,
@@ -13,14 +11,16 @@ const components = {
 };
 
 export default {
-  install: (Vue, options) => {
-    Vue.prototype.$materiajs = {
-      theme: merge(theme, options ? options.theme : {}),
-    };
+  install: (Vue, { store, options }) => {
+    store.registerModule('materiajs', materiaJsStore);
     Object.keys(components)
       .forEach((name) => {
         Vue.component(name, components[name]);
       });
+    document.body.style.setProperty('--accent', '#f3f3f3');
+    if (options && options.themeName) {
+      store.dispatch('materiajs/setThemeByName', options.themeName);
+    }
     Vue.use(VueMq, {
       breakpoints: { // default breakpoints - customize this
         xs: 360,

@@ -3,7 +3,7 @@ import MateriaJs from '@materiajs/vue';
 import Vue from 'vue';
 
 export default ({ store }) => {
-  Vue.use(MateriaJs);
+  Vue.use(MateriaJs, { store: { registerModule: () => {} } });
   window.onNuxtReady(() => {
     store.registerModule('materiajs', MateriaJs.materiaJsStore, { preserveState: false });
   });

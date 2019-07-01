@@ -106,7 +106,6 @@ export default {
     flex-wrap: wrap;
     padding: 15px 0 10px;
     border-bottom: 1px solid;
-    margin-top: 15px;
     min-width: 250px;
 
     &.focused {

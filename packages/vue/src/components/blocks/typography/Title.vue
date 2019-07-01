@@ -42,7 +42,6 @@ export default {
     font-weight: bold;
     display: flex;
     align-items: center;
-    margin: 5px 0;
     @each $size in $size-list {
       $i: index($size-list, $size);
       &.#{$size} {

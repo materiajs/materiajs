@@ -15,9 +15,20 @@
             <mq-layout mq="lg+">
               <mat-spacer />
             </mq-layout>
-            <nuxt />
+            <mat-page-layout>
+              <nuxt />
+            </mat-page-layout>
           </div>
         </div>
+        <mat-banner-layout
+          type="full"
+          color="primary-light">
+          <mat-padding padding="30px 15px">
+            <mat-flex-layout>
+              materiajs.com
+            </mat-flex-layout>
+          </mat-padding>
+        </mat-banner-layout>
       </mat-navigation-layout>
     </no-ssr>
   </div>
@@ -35,7 +46,7 @@ export default {
   html {
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;

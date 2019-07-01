@@ -38,14 +38,23 @@ export default {
     backgroundGradient: t.array.def([]),
   },
   computed: {
-    ...mapState([
-      'darkMode',
-    ]),
+    ...mapState({
+      darkMode: 'darkMode',
+      stateTheme: 'theme',
+    }),
     isAnyDark() {
       if (this.dark !== undefined) {
         return this.dark;
       }
       return this.darkMode;
+    },
+    theme() {
+      if (!this.stateTheme) {
+        return {
+          colors: {},
+        };
+      }
+      return this.stateTheme;
     },
     colorKey() {
       return `${this.isAnyDark ? 'dark-' : ''}${this.color}`;
@@ -53,14 +62,8 @@ export default {
     primaryColor() {
       return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary`];
     },
-    theme() {
-      if (this.$materiajs) {
-        return this.$materiajs.theme;
-      }
-      return theme;
-    },
     toggledColor() {
-      return this.theme.colors[this.colorKey] || this.theme.colors[this.color];
+      return this.theme && (this.theme.colors[this.colorKey] || this.theme.colors[this.color]);
     },
     background() {
       if (isEmpty(this.backgroundGradient)) {

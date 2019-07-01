@@ -2,6 +2,7 @@
   <div class="install-index">
     <mat-padding>
       <mat-title>Install guide</mat-title>
+      <mat-spacer />
       <mat-paragraph>
         This page will explain how to install Materia JS into your Vue application.
         You can install into a

@@ -12,7 +12,6 @@ export default {
 
 <style scoped lang="scss">
   .mat-paragraph {
-    line-height: 1.5;
-    padding: 0 3px;
+    line-height: 1.75;
   }
 </style>

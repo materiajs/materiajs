@@ -43,10 +43,10 @@ export default {
 <style scoped lang="scss">
   .mat-fa {
     font-size: 14px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*text-align: center;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     &-wrapper {
       position: relative;
     }

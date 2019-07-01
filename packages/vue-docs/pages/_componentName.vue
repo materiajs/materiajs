@@ -2,6 +2,7 @@
   <div class="component-name">
     <mat-padding>
       <mat-title>{{ component.title }}</mat-title>
+      <mat-spacer />
       <mat-paragraph>
         <div v-html="component.introduction"></div>
         <mat-spacer />

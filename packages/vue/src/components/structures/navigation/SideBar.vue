@@ -25,7 +25,6 @@
         v-if="(overlay || isMobile) && value"
         @click="close"
         class="close-box">
-        Close box
       </div>
     </transition>
   </div>

@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     onClickOutside() {
-      this.$emit('close');
+      this.$emit('input', false);
     },
   },
 };

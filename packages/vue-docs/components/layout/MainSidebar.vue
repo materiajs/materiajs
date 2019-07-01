@@ -37,6 +37,7 @@
 
 <script>
 import t from 'vue-types';
+import components from '../../components';
 
 export default {
   name: 'MainSidebar',
@@ -50,32 +51,11 @@ export default {
         to: '/install',
       },
     ],
-    listItems: [
-      {
-        name: 'Button',
-        to: '/button',
-      },
-      {
-        name: 'Menu',
-        to: '/menu',
-      },
-      {
-        name: 'Window',
-        to: '/window',
-      },
-      {
-        name: 'Tabs',
-        to: '/tabs',
-      },
-      {
-        name: 'Select',
-        to: '/select',
-      },
-      {
-        name: 'Toolbar',
-        to: '/toolbar',
-      },
-    ],
+    listItems: Object.keys(components)
+      .map(key => ({
+        to: key,
+        name: components[key].title,
+      })),
   }),
   computed: {
     navLinkItems() {

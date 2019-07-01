@@ -104,4 +104,19 @@ export default {
       },
     ],
   },
+  table: {
+    title: 'Table',
+    introduction: 'Buttons paragraph',
+    sections: [
+      {
+        component: 'table-example',
+      },
+    ],
+    componentList: [
+      {
+        route: '/menu',
+        text: 'Menu',
+      },
+    ],
+  },
 };

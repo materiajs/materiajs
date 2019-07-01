@@ -20,6 +20,9 @@ import ButtonBasicGroupExample from '../components/examples/button/BasicButtonGr
 // Profile
 import ProfileAvatarName from '../components/examples/profile/ProfileAvatarName.vue';
 
+// Table
+import TableExample from '../components/examples/table/TableExample.vue';
+
 Vue.component('docs-code', DocsCode);
 Vue.component('component-link', ComponentLink);
 Vue.component('component-list', ComponentList);
@@ -31,6 +34,8 @@ Vue.component('menu-toolbar-window', MenuToolbarWindow);
 
 Vue.component('button-basic-example', ButtonBasicExample);
 Vue.component('button-basic-group-example', ButtonBasicGroupExample);
+
+Vue.component('table-example', TableExample);
 
 Vue.component('profile-avatar-name', ProfileAvatarName);
 

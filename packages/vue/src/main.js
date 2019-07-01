@@ -1,17 +1,17 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import materiajs from './store';
 import App from './App.vue';
-import toolblox from '.';
+import MateriaJs from '.';
 
 Vue.use(Vuex);
-const store = new Vuex.Store({
-  modules: {
-    materiajs,
+const store = new Vuex.Store({});
+Vue.config.productionTip = false;
+Vue.use(MateriaJs, {
+  store,
+  options: {
+    themeName: 'green',
   },
 });
-Vue.config.productionTip = false;
-Vue.use(toolblox, {});
 
 new Vue({
   store,

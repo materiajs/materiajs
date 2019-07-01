@@ -55,5 +55,12 @@ export default {
       border-radius: $border-radius-light;
       box-shadow: $box-shadow-light;
     }
+
+    /deep/ .mat-toolbar {
+      &:first-child {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+    }
   }
 </style>

@@ -10,6 +10,7 @@
             color="primary-light" size="large">
             Materia JS
           </mat-title>
+          <mat-spacer />
           <mat-title
             :dark="true"
             size="small" color="primary-light">
@@ -22,7 +23,7 @@
               Get started
             </mat-button>
           </nuxt-link>
-          <mat-button>
+          <mat-button @click.native="onClickGithub">
             <mat-fa prefix="fab" icon="github"></mat-fa >Github
           </mat-button>
         </mat-padding>
@@ -44,6 +45,7 @@
                 class="index-card"
               >
                 <mat-image :src="item.imageSrc" />
+                <mat-spacer />
                 <mat-padding>
                   <mat-title size="xs">
                     {{ item.title }}
@@ -71,6 +73,14 @@ export default {
     mainItems: [
       {
         // eslint-disable-next-line
+        imageSrc: require('~/assets/images/code.png'),
+        title: 'Semantic markup',
+        body: 'Sensible props and events allows the dev to understand the '
+          + 'template clearly while having to consult the documentation as little as '
+          + 'possible.',
+      },
+      {
+        // eslint-disable-next-line
         imageSrc: require('~/assets/images/profile.png'),
         title: 'Modern and flexible components',
         body: 'Emphasis on user and dev friendliness, flexibility and beautiful design. '
@@ -83,16 +93,13 @@ export default {
         body: 'Can be added to your application in minutes. Allows for easy scaffolding of'
           + 'web pages and sites.',
       },
-      {
-        // eslint-disable-next-line
-        imageSrc: require('~/assets/images/code.png'),
-        title: 'Semantic markup',
-        body: 'Sensible props and events allows the dev to understand the '
-          + 'template clearly while having to consult the documentation as little as '
-          + 'possible.',
-      },
     ],
   }),
+  methods: {
+    onClickGithub() {
+      this.$store.dispatch('materiajs/setThemeByName', 'green');
+    },
+  },
 };
 </script>
 
@@ -124,7 +131,7 @@ export default {
       margin: auto;
       max-width: 300px;
       height: 100%;
-      min-height: 320px;
+      min-height: 350px;
     }
     @media screen and (max-width: 600px) {
       &-card {

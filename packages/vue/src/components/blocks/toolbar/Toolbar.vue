@@ -55,8 +55,8 @@ export default {
     &.mat-box-shadow-heavy {
       z-index: 3;
     }
-    >* {
-      height: 100%;
-    }
+    /*>* {*/
+    /*  height: 100%;*/
+    /*}*/
   }
 </style>
