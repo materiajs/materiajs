@@ -11,6 +11,20 @@
           Table name
         </mat-padding>
         <mat-spacer />
+        <mat-nav-link @click="() => tableFiltersMenu = true">
+          <mat-fa icon="filter" />
+          <mat-menu
+            position="bottom-right"
+            v-model="tableFiltersMenu">
+            <mat-toolbar size="xs" :shadow="false" color="accent">Filters</mat-toolbar>
+            <mat-padding>
+              <slot
+                :filters="getFilters"
+                :add-filter="addFilter"
+                name="filter"></slot>
+            </mat-padding>
+          </mat-menu>
+        </mat-nav-link>
         <mat-nav-link @click="() => tableColumnsMenu = true">
           <mat-fa icon="cog" />
           <mat-menu
@@ -18,7 +32,8 @@
             v-model="tableColumnsMenu">
             <mat-list>
               <div
-                v-for="column in columns"
+                v-for="(column, key) in columns"
+                :key="key"
                 @click="setColumnVisibility(column.name, !visibleColumns[column.name])"
               >
                 <mat-checkbox
@@ -34,9 +49,10 @@
       <table class="mat-table">
         <thead>
           <tr>
-            <template v-for="column in columns">
+            <template v-for="(column, key) in columns">
               <th
                 v-if="!hiddenColumns.includes(column.name)"
+                :key="key"
                 @click="onClickColumnHeader(column.name)"
                 :class="{ sorting: sortColumn === column.name }"
               >
@@ -57,15 +73,16 @@
           v-for="(row, key) in sortedRows"
           :key="key"
         >
-          <template v-for="column in visibleColumnNames">
-            <td>
-              <slot
-                :name="column"
-                :value="row[column]">
-                  {{ row[column] }}
-              </slot>
-            </td>
-          </template>
+          <td
+            v-for="(column, key) in visibleColumnNames"
+            :key="key"
+          >
+            <slot
+              :name="column"
+              :value="row[column]">
+                {{ row[column] }}
+            </slot>
+          </td>
         </tr>
         <tfoot>
           <tr>
@@ -83,8 +100,10 @@ import t from 'vue-types';
 export default {
   name: 'Table',
   data: () => ({
+    filters: {},
     hiddenColumns: [],
     tableColumnsMenu: false,
+    tableFiltersMenu: false,
     sortColumn: null,
     sortDirection: '',
   }),
@@ -93,11 +112,25 @@ export default {
     columns: t.array.def([]),
   },
   computed: {
+    getFilters() {
+      return this.filters;
+    },
+    filteredRows() {
+      const filters = Object.values(this.getFilters);
+      const rows = [...this.rows];
+      const r = filters.reduce((previousRows, currentFilter) => {
+        if (currentFilter.filter) {
+          return previousRows.filter(row => currentFilter.filter(row, currentFilter.value));
+        }
+        return previousRows;
+      }, rows);
+      return r;
+    },
     sortedRows() {
       if (this.sortDirection && !this.sortColumn) {
-        return this.rows;
+        return this.filteredRows;
       }
-      return [...this.rows].sort((a, b) => {
+      return [...this.filteredRows].sort((a, b) => {
         const { sortColumn, sortDirection } = this;
         if (a[sortColumn] === b[sortColumn]) {
           return 0;
@@ -108,7 +141,9 @@ export default {
     },
     visibleColumns() {
       return this.columns
-        .reduce((prev, column) => ({ ...prev, [column.name]: !this.hiddenColumns.includes(column.name) }), {});
+        .reduce((prev, column) => ({
+          ...prev, [column.name]: !this.hiddenColumns.includes(column.name),
+        }), {});
     },
     visibleColumnNames() {
       return Object.keys(this.visibleColumns)
@@ -116,6 +151,12 @@ export default {
     },
   },
   methods: {
+    addFilter(column, filter, value) {
+      this.$set(this.filters, column, {
+        filter,
+        value,
+      });
+    },
     setColumnVisibility(columnName, value) {
       if (!value) {
         this.hiddenColumns.push(columnName);
@@ -125,14 +166,14 @@ export default {
     },
     onClickColumnHeader(columnName) {
       if (this.sortColumn === columnName) {
-        if (this.sortDirection === 'desc') {
-          this.sortDirection = 'asc';
-        } else {
+        if (this.sortDirection === 'asc') {
           this.sortDirection = 'desc';
+        } else {
+          this.sortDirection = 'asc';
           this.sortColumn = '';
         }
       } else {
-        this.sortDirection = 'desc';
+        this.sortDirection = 'asc';
         this.sortColumn = columnName;
       }
     },

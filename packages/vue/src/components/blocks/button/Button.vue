@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="action"
+    @click="$emit('click')"
     class="mat-button"
     :style="_getElementStyle"
     :class="[color]">
@@ -19,7 +19,6 @@ export default {
     themeable,
   ],
   props: {
-    action: t.func,
     text: t.string,
   },
   computed: {

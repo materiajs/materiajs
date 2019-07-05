@@ -20,6 +20,27 @@
             <template slot="id" slot-scope="{ value }">
               {{ value.value }}
             </template>
+            <template slot="filter" slot-scope="{ addFilter, filters }">
+<!--              <mat-input-->
+<!--                placeholder="Name"-->
+<!--                :value="filters.name"-->
+<!--                @input="value => filter('name', value)" />-->
+<!--              <mat-spacer />-->
+              Gender
+              <mat-spacer />
+              <mat-button-group>
+                <mat-button
+                  v-for="(option, key) in options"
+                  :key="key"
+                  @click="() => setGenderFilter(filters, option.value, addFilter)"
+                  :color="filters.gender && filters.gender.value === option.value
+                  ? 'primary'
+                  : undefined"
+                >
+                  {{ option.value }}
+                </mat-button>
+              </mat-button-group>
+            </template>
           </mat-table>
           <mat-spacer />
         </div>
@@ -37,6 +58,7 @@ export default {
     users: [],
     compDarkMode: false,
     showSidebar: true,
+    options: [{ value: 'male' }, { value: 'female' }],
     columns: [
       {
         name: 'name',
@@ -72,6 +94,13 @@ export default {
       });
   },
   methods: {
+    setGenderFilter(filters, value, addFilter) {
+      if (filters.gender && filters.gender.value === value) {
+        addFilter('gender', undefined);
+      } else {
+        addFilter('gender', ({ gender }, rowValue) => gender === rowValue, value);
+      }
+    },
     onClickGithub() {
       if (this.$store.state.materiajs.theme.colors.primary === '#1565c0') {
         this.$store.dispatch('materiajs/setThemeByName', 'green');

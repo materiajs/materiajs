@@ -5,8 +5,11 @@
     <docs-code :value="code" lang="html" />
     <mat-spacer />
     <mat-table :columns="columns" :rows="rows">
-      <template slot="id" slot-scope="{ value }">
-        {{ value.value }}
+      <template slot="filter" slot-scope="{ filter, filters }">
+        <mat-input
+          placeholder="Name"
+          :value="filters.name"
+          @input="value => filter('name', value)" />
       </template>
     </mat-table>
   </div>
@@ -19,6 +22,12 @@ export default {
     code: '<mat-table :columns="columns" :rows="rows">\n'
       + '  <template slot="id" slot-scope="{ value }">\n'
       + '    {{ value.value }}\n'
+      + '  </template>\n'
+      + '  <template slot="filter" slot-scope="{ filter, filters }">\n'
+      + '    <mat-input\n'
+      + '      placeholder="Name"\n'
+      + '      :value="filters.name"\n'
+      + '      @input="value => filter(\'name\', value)" />\n'
       + '  </template>\n'
       + '</mat-table>',
     columns: [
