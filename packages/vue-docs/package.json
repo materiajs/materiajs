@@ -1,6 +1,6 @@
 {
   "name": "@materiajs/vue-docs",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "Documentation and Component demo for Materia JS Vue ",
   "author": "andyfeely",
   "private": true,
