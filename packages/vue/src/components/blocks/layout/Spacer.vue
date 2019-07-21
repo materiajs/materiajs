@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <div class="mat-spacer"></div>
 </template>
 

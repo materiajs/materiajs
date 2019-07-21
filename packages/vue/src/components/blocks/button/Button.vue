@@ -1,40 +1,22 @@
-<template>
+<template functional>
   <button
-    @click="$emit('click')"
-    class="mat-button"
-    :style="_getElementStyle"
-    :class="[color]">
-    {{ text }}
+    @click="listeners.click"
+    class="mat-button">
     <slot />
   </button>
 </template>
 
 <script>
-import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
-
 export default {
   name: 'mat-button',
-  mixins: [
-    themeable,
-  ],
-  props: {
-    text: t.string,
-  },
-  computed: {
-    _getElementStyle() {
-      return {
-        background: this.background !== null ? this.background : '#FFF',
-        color: this.backgroundTextColor,
-      };
-    },
-  },
 };
 </script>
 
 <style scoped lang="scss">
   @import "../../../styles/main";
   .mat-button {
+    background: var(--primary);
+    color: var(--primary-text-color);
     align-items: center;
     border-radius: $border-radius-light;
     border: none;

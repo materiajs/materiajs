@@ -25,8 +25,6 @@ export default {
   computed: {
     _getStyle() {
       return {
-        background: this.background,
-        color: this.backgroundTextColor,
         ...this.getPositionStyle,
         padding: this.noPadding ? '' : '0 15px',
       };
@@ -37,10 +35,12 @@ export default {
 
 <style scoped lang="scss">
   .mat-toolbar {
-    position: relative;
+    align-items: center;
+    background: var(--primary);
+    color: var(--primary-text-color);
     display: flex;
     height: 60px;
-    align-items: center;
+    position: relative;
 
     &.xs {
       height: 40px;

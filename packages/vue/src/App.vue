@@ -16,32 +16,36 @@
       </mat-toolbar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-table :columns="columns" :rows="rows">
-            <template slot="id" slot-scope="{ value }">
-              {{ value.value }}
-            </template>
-            <template slot="filter" slot-scope="{ addFilter, filters }">
-<!--              <mat-input-->
-<!--                placeholder="Name"-->
-<!--                :value="filters.name"-->
-<!--                @input="value => filter('name', value)" />-->
+          <mat-input v-model="inputValue" />
+          <mat-button @click="onClickButton">
+            Click
+          </mat-button>
+<!--          <mat-table :columns="columns" :rows="rows">-->
+<!--            <template slot="id" slot-scope="{ value }">-->
+<!--              {{ value.value }}-->
+<!--            </template>-->
+<!--            <template slot="filter" slot-scope="{ addFilter, filters }">-->
+<!--&lt;!&ndash;              <mat-input&ndash;&gt;-->
+<!--&lt;!&ndash;                placeholder="Name"&ndash;&gt;-->
+<!--&lt;!&ndash;                :value="filters.name"&ndash;&gt;-->
+<!--&lt;!&ndash;                @input="value => filter('name', value)" />&ndash;&gt;-->
+<!--&lt;!&ndash;              <mat-spacer />&ndash;&gt;-->
+<!--              Gender-->
 <!--              <mat-spacer />-->
-              Gender
-              <mat-spacer />
-              <mat-button-group>
-                <mat-button
-                  v-for="(option, key) in options"
-                  :key="key"
-                  @click="() => setGenderFilter(filters, option.value, addFilter)"
-                  :color="filters.gender && filters.gender.value === option.value
-                  ? 'primary'
-                  : undefined"
-                >
-                  {{ option.value }}
-                </mat-button>
-              </mat-button-group>
-            </template>
-          </mat-table>
+<!--              <mat-button-group>-->
+<!--                <mat-button-->
+<!--                  v-for="(option, key) in options"-->
+<!--                  :key="key"-->
+<!--                  @click="() => setGenderFilter(filters, option.value, addFilter)"-->
+<!--                  :color="filters.gender && filters.gender.value === option.value-->
+<!--                  ? 'primary'-->
+<!--                  : undefined"-->
+<!--                >-->
+<!--                  {{ option.value }}-->
+<!--                </mat-button>-->
+<!--              </mat-button-group>-->
+<!--            </template>-->
+<!--          </mat-table>-->
           <mat-spacer />
         </div>
       </div>
@@ -55,6 +59,7 @@ import axios from 'axios';
 export default {
   name: 'app',
   data: () => ({
+    inputValue: '',
     users: [],
     compDarkMode: false,
     showSidebar: true,
@@ -94,6 +99,10 @@ export default {
       });
   },
   methods: {
+    onClickButton() {
+      console.debug('Setting'); // TODO - Remove console output
+      this.$materiajs.setThemeVariable('primary', this.inputValue);
+    },
     setGenderFilter(filters, value, addFilter) {
       if (filters.gender && filters.gender.value === value) {
         addFilter('gender', undefined);

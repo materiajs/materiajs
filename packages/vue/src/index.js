@@ -1,5 +1,6 @@
 import VueMq from 'vue-mq';
 import materiaJsStore from './store';
+import $materiajs from './$materiajs';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
@@ -12,6 +13,7 @@ const components = {
 
 export default {
   install: (Vue, { store, options }) => {
+    Vue.prototype.$materiajs = $materiajs;
     store.registerModule('materiajs', materiaJsStore);
     Object.keys(components)
       .forEach((name) => {
