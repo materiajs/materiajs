@@ -18,7 +18,7 @@ export default {
     position,
   ],
   props: {
-    shadow: t.bool.def(true),
+    shadow: t.bool.def(false),
     size: t.oneOf(['xs', 'small', 'large']),
     noPadding: t.bool.def(false),
   },

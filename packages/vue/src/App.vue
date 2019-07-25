@@ -16,10 +16,25 @@
       </mat-toolbar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-input v-model="inputValue" />
+          <mat-card padding="0">
+            <mat-toolbar>
+              Testing
+            </mat-toolbar>
+            <mat-padding>
+              Heya
+            </mat-padding>
+          </mat-card>
           <mat-button @click="onClickButton">
             Click
           </mat-button>
+          <mat-modal v-model="modal">
+            <mat-toolbar>
+              Heya
+            </mat-toolbar>
+            <mat-padding>
+              Content here
+            </mat-padding>
+          </mat-modal>
 <!--          <mat-table :columns="columns" :rows="rows">-->
 <!--            <template slot="id" slot-scope="{ value }">-->
 <!--              {{ value.value }}-->
@@ -61,6 +76,7 @@ export default {
   data: () => ({
     inputValue: '',
     users: [],
+    modal: false,
     compDarkMode: false,
     showSidebar: true,
     options: [{ value: 'male' }, { value: 'female' }],
@@ -102,6 +118,7 @@ export default {
     onClickButton() {
       console.debug('Setting'); // TODO - Remove console output
       this.$materiajs.setThemeVariable('primary', this.inputValue);
+      this.modal = !this.modal;
     },
     setGenderFilter(filters, value, addFilter) {
       if (filters.gender && filters.gender.value === value) {

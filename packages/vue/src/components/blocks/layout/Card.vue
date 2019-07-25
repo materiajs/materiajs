@@ -1,5 +1,7 @@
 <template>
-  <div :class="{ 'mat-card': !hideOnMqSet }" :style="_getStyle">
+  <div
+    class="mat-wrapper-element"
+    :class="{ 'mat-card': !hideOnMqSet }" :style="_getStyle">
     <slot />
   </div>
 </template>
@@ -43,6 +45,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "../../../styles/main";
   // Card
   .mat-card {
     background: white;
@@ -54,13 +57,6 @@ export default {
       background: white;
       border-radius: $border-radius-light;
       box-shadow: $box-shadow-light;
-    }
-
-    /deep/ .mat-toolbar {
-      &:first-child {
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
     }
   }
 </style>

@@ -35,6 +35,9 @@ export { default as MatMenu } from './menu/Menu.vue';
 export { default as MatImage } from './image/ImageComponent.vue';
 export { default as MatAvatar } from './image/Avatar.vue';
 
+// Modal
+export { default as MatModal } from './modal/Modal.vue';
+
 // Navigation
 export { default as MatNavLink } from './navigation/NavLink.vue';
 export { default as MatSideBarHeader } from './navigation/SideBarHeader.vue';

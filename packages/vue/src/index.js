@@ -4,6 +4,7 @@ import $materiajs from './$materiajs';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
+import themes from './styles/themes';
 
 const components = {
   ...blocks,
@@ -19,7 +20,10 @@ export default {
       .forEach((name) => {
         Vue.component(name, components[name]);
       });
-    document.body.style.setProperty('--accent', '#f3f3f3');
+    Object.keys(themes.colors)
+      .forEach((key) => {
+        $materiajs.setThemeVariable(key, themes.colors[key]);
+      });
     if (options && options.themeName) {
       store.dispatch('materiajs/setThemeByName', options.themeName);
     }
