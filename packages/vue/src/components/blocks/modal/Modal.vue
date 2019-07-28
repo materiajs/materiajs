@@ -74,4 +74,10 @@ export default {
     transform: translate(-50%, 0);
     top: 100vh;
   }
+
+  @media screen and (max-width: 768px) {
+    .mat-modal-content {
+      min-width: 90vw;
+    }
+  }
 </style>
