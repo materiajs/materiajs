@@ -16,14 +16,10 @@
     "yalc-update": "npm run build-bundle && yalc push"
   },
   "dependencies": {
-    "@storybook/addon-knobs": "^4.1.13",
-    "@storybook/addon-links": "^4.1.0",
-    "@storybook/vue": "^4.1.13",
     "axios": "^0.19.0",
     "fuse.js": "^3.3.0",
     "highlight.js": "^9.15.6",
     "lodash": "^4.17.11",
-    "storybook-addon-vue-info": "^0.7.0",
     "velocity-animate": "^1.5.2",
     "vue": "^2.5.17",
     "vue-clickaway": "^2.2.2",

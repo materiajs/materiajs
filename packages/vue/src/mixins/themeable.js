@@ -75,6 +75,12 @@ export default {
     backgroundTextColor() {
       return this.parseTextColor(this.background);
     },
+    getStyle() {
+      return {
+        background: `var(--${this.color})`,
+        color: `var(--${this.color}-text-color)`,
+      };
+    },
   },
   methods: {
     parseTextColor(color) {

@@ -2,7 +2,7 @@
   <div
     class="mat-navigation-layout"
     :class="{ 'sidebar-overlay': sidebarOverlay }"
-    :style="{ background, color: backgroundTextColor }"
+    :style="getStyle"
   >
     <header>
       <slot name="header" />

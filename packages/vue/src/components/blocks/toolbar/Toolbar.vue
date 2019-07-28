@@ -21,11 +21,12 @@ export default {
     shadow: t.bool.def(false),
     size: t.oneOf(['xs', 'small', 'large']),
     noPadding: t.bool.def(false),
+    color: t.string.def('primary'),
   },
   computed: {
     _getStyle() {
       return {
-        ...this.getPositionStyle,
+        ...this.getStyle,
         padding: this.noPadding ? '' : '0 15px',
       };
     },
