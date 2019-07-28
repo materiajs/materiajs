@@ -1,21 +1,23 @@
 <template>
-  <transition name="fade">
-    <div
-      v-if="value"
-      class="mat-modal"
-      @click.self="$emit('input', false)"
-    >
-      <transition
-        appear
-        name="rise">
-        <div
-          v-if="value"
-          class="mat-modal-content mat-wrapper-element mat-box-shadow-heavy">
-          <slot />
-        </div>
-      </transition>
-    </div>
-  </transition>
+  <div class="mat-modal" :class="{ open: value }">
+    <transition name="fade">
+      <div
+        v-if="value"
+        class="mat-modal-background"
+        @click.self="$emit('input', false)"
+      >
+      </div>
+    </transition>
+    <transition
+      appear
+      name="rise">
+      <div
+        v-if="value"
+        class="mat-modal-content mat-wrapper-element mat-box-shadow-heavy">
+        <slot />
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -36,20 +38,32 @@ export default {
 <style scoped lang="scss">
   .mat-modal {
     position: fixed;
-    top: 0;
-    height: 100%;
     width: 100%;
-    background: rgba(0,0,0,0.3);
     left: 0;
+    top: 0;
+    z-index: 15;
+    &.open {
+      height: 100%;
+    }
+
+    &-background {
+      position: fixed;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      left: 0;
+    }
 
     &-content {
       background: white;
       border-radius: 3px;
       min-width: 260px;
-      position: absolute;
-      top: 50vh;
-      left: 50vh;
-      transform: translate(0, -50%);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -57,7 +71,7 @@ export default {
     transition: all .4s cubic-bezier(.5,.33,.37,1.11);
   }
   .rise-enter, .rise-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translate(0, 0);
+    transform: translate(-50%, 0);
     top: 100vh;
   }
 </style>

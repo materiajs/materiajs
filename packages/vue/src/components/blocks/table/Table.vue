@@ -7,11 +7,15 @@
         color="primary-light"
         :shadow="false"
       >
-        <mat-padding>
-          Table name
-        </mat-padding>
+        <slot name="title">
+          <mat-padding>
+            Table name
+          </mat-padding>
+        </slot>
         <mat-spacer />
-        <mat-nav-link @click="() => tableFiltersMenu = true">
+        <mat-nav-link
+          v-if="$slots.filter"
+          @click="() => tableFiltersMenu = true">
           <mat-fa icon="filter" />
           <mat-menu
             position="bottom-right"

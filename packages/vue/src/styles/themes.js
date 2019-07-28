@@ -2,7 +2,7 @@ export default {
   colors: {
     primary: '#1565c0',
     'primary-light': '#1e88e5',
-    accent: '#78909c',
+    accent: '#f3f3f3',
     warn: '#ff6400',
     default: '#ffffff',
     'primary-text': '#212121',

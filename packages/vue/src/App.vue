@@ -25,6 +25,7 @@
             </mat-padding>
           </mat-card>
           <mat-button @click="onClickButton">
+            <mat-fa icon="lock" space="right" />
             Click
           </mat-button>
           <mat-modal v-model="modal">

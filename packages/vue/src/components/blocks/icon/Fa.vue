@@ -2,6 +2,7 @@
   <span
     @click="action"
     class="mat-fa-wrapper mat-standard-transition"
+    :class="[`space-${space}`]"
     :style="getStyle"
   >
     <i class="mat-fa" :class="getClass"></i>
@@ -25,6 +26,7 @@ export default {
     size: t.oneOf(['small', 'large', 'extra-large']),
     rotate: t.number.def(0),
     prefix: t.string.def('fas'),
+    space: t.string.def(''),
   },
   computed: {
     getClass() {
@@ -49,6 +51,14 @@ export default {
     /*align-items: center;*/
     &-wrapper {
       position: relative;
+      &.space {
+        &-right {
+          margin-right: 10px;
+        }
+        &-left {
+          margin-left: 10px;
+        }
+      }
     }
     &.small {
       font-size: 8px;
