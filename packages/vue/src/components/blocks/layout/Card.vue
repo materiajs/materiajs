@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="mat-wrapper-element"
-    :class="{ 'mat-card': !hideOnMqSet }" :style="_getStyle">
+  <div :class="{ 'mat-card': !hideOnMqSet }" :style="_getStyle">
     <slot />
   </div>
 </template>
@@ -49,13 +47,11 @@ export default {
   // Card
   .mat-card {
     background: white;
-    border-radius: $border-radius-standard;
     box-shadow: $box-shadow-standard;
     padding: 15px;
 
     &-light {
       background: white;
-      border-radius: $border-radius-light;
       box-shadow: $box-shadow-light;
     }
   }
