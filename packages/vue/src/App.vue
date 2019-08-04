@@ -16,8 +16,18 @@
       </mat-toolbar>
       <div class="main-wrapper">
         <div class="main-container">
-          <toast-list v-model="messages" />
+          <mat-toast-list v-model="messages" />
           <mat-button @click="onClickButton">Push</mat-button>
+          <mat-modal size="large" v-model="modal">
+            <mat-toolbar>
+              <div @click="() => modal = false">
+                Close
+              </div>
+            </mat-toolbar>
+            <mat-padding>
+              Hello
+            </mat-padding>
+          </mat-modal>
 <!--          <mat-table :columns="columns" :rows="rows">-->
 <!--            <template slot="id" slot-scope="{ value }">-->
 <!--              {{ value.value }}-->
@@ -58,6 +68,7 @@ export default {
   name: 'app',
   data: () => ({
     messages: [],
+    modal: false,
     showSidebar: true,
     options: [{ value: 'male' }, { value: 'female' }],
     columns: [
@@ -96,12 +107,13 @@ export default {
   },
   methods: {
     onClickButton() {
-      this.messages.push({
-        color: 'success',
-        icon: 'check',
-        text: 'Saved!',
-        id: new Date().getTime(),
-      });
+      this.modal = true;
+      // this.messages.push({
+      //   color: 'success',
+      //   icon: 'check',
+      //   text: 'Saved!',
+      //   id: new Date().getTime(),
+      // });
     },
     setGenderFilter(filters, value, addFilter) {
       if (filters.gender && filters.gender.value === value) {

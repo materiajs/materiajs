@@ -13,7 +13,9 @@
       name="rise">
       <div
         v-if="value"
-        class="mat-modal-content mat-wrapper-element mat-box-shadow-heavy">
+        class="mat-modal-content mat-wrapper-element mat-box-shadow-heavy"
+        :class="[size]"
+      >
         <slot />
       </div>
     </transition>
@@ -30,6 +32,7 @@ export default {
     themeable,
   ],
   props: {
+    size: t.string,
     value: t.bool.def(false),
   },
 };
@@ -60,24 +63,36 @@ export default {
       border-radius: 3px;
       min-width: 260px;
       position: fixed;
-      top: 50%;
       left: 50%;
       -webkit-transform: translate(0, -50%);
       transform: translate(-50%, -50%);
+      top: 50%;
+      min-width: 360px;
+    }
+    .large {
+      transform: translate(-50%, 0%);
+      min-width: 360px;
+      bottom: 0;
     }
   }
 
   .rise-enter-active, .rise-leave-active {
     transition: all .4s cubic-bezier(.5,.33,.37,1.11);
   }
-  .rise-enter, .rise-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translate(-50%, 0);
-    top: 100vh;
+  .rise-enter,
+  .rise-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translate(-50%, 0) !important;
+    top: 100vh !important;
   }
 
   @media screen and (max-width: 768px) {
     .mat-modal-content {
       min-width: 90vw;
+    }
+
+    .large {
+      top: 0;
+      width: 100%;
     }
   }
 </style>
