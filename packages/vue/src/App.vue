@@ -16,26 +16,8 @@
       </mat-toolbar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-card padding="0">
-            <mat-toolbar>
-              Testing
-            </mat-toolbar>
-            <mat-padding>
-              Heya
-            </mat-padding>
-          </mat-card>
-          <mat-button @click="onClickButton">
-            <mat-fa icon="lock" space="right" />
-            Click
-          </mat-button>
-          <mat-modal v-model="modal">
-            <mat-toolbar>
-              Heya
-            </mat-toolbar>
-            <mat-padding>
-              Content here
-            </mat-padding>
-          </mat-modal>
+          <toast-list v-model="messages" />
+          <mat-button @click="onClickButton">Push</mat-button>
 <!--          <mat-table :columns="columns" :rows="rows">-->
 <!--            <template slot="id" slot-scope="{ value }">-->
 <!--              {{ value.value }}-->
@@ -75,10 +57,7 @@ import axios from 'axios';
 export default {
   name: 'app',
   data: () => ({
-    inputValue: '',
-    users: [],
-    modal: false,
-    compDarkMode: false,
+    messages: [],
     showSidebar: true,
     options: [{ value: 'male' }, { value: 'female' }],
     columns: [
@@ -117,9 +96,12 @@ export default {
   },
   methods: {
     onClickButton() {
-      console.debug('Setting'); // TODO - Remove console output
-      this.$materiajs.setThemeVariable('primary', this.inputValue);
-      this.modal = !this.modal;
+      this.messages.push({
+        color: 'success',
+        icon: 'check',
+        text: 'Saved!',
+        id: new Date().getTime(),
+      });
     },
     setGenderFilter(filters, value, addFilter) {
       if (filters.gender && filters.gender.value === value) {

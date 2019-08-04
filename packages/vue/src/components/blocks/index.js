@@ -61,3 +61,6 @@ export { default as MatTab } from './tabs/TabComponent.vue';
 // Table
 export { default as MatTableRow } from './table/TableRow.vue';
 export { default as MatTable } from './table/Table.vue';
+
+// Notification
+export { default as MatToastList } from './notification/ToastList.vue';

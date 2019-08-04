@@ -1,14 +1,21 @@
 <template functional>
   <button
     @click="listeners.click"
-    class="mat-button">
+    :class="[`space-${props.space}`]"
+    class="mat-button"
+  >
     <slot />
   </button>
 </template>
 
 <script>
+import t from 'vue-types';
+
 export default {
   name: 'mat-button',
+  props: {
+    space: t.string.def(''),
+  },
 };
 </script>
 
@@ -28,7 +35,14 @@ export default {
     padding: 0 10px;
     transition: $standard-transition;
     white-space: nowrap;
-
+    &.space {
+      &-right {
+        margin-right: 10px;
+      }
+      &-left {
+        margin-left: 10px;
+      }
+    }
     >* {
       min-width: 15px;
     }

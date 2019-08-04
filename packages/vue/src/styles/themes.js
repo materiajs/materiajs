@@ -3,6 +3,7 @@ export default {
     primary: '#1565c0',
     'primary-light': '#1e88e5',
     accent: '#f3f3f3',
+    success: '#28a745',
     warn: '#ff6400',
     default: '#ffffff',
     'primary-text': '#212121',

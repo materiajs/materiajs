@@ -34,7 +34,7 @@ export default {
   props: {
     // :dark overrides global dark mode
     dark: t.any,
-    color: t.oneOf(defaultColors).def('default'),
+    color: t.string.def('default'),
     backgroundGradient: t.array.def([]),
   },
   computed: {
