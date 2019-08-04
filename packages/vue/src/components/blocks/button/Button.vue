@@ -1,7 +1,8 @@
-<template functional>
+<template>
   <button
-    @click="listeners.click"
-    :class="[`space-${props.space}`]"
+    :style="getStyle"
+    @click="click"
+    :class="[`space-${space}`]"
     class="mat-button"
   >
     <slot />
@@ -10,9 +11,11 @@
 
 <script>
 import t from 'vue-types';
+import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'mat-button',
+  mixins: [themeable],
   props: {
     space: t.string.def(''),
   },
