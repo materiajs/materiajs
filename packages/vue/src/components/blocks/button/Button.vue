@@ -1,7 +1,7 @@
 <template>
   <button
     :style="getStyle"
-    @click="click"
+    @click="$emit('click')"
     :class="[`space-${space}`]"
     class="mat-button"
   >
