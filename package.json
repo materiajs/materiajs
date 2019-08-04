@@ -5,7 +5,7 @@
     "lerna": "^3.3.2"
   },
   "scripts": {
-    "build-lerna-publish": "cd ./packages/vue && npm run build bundle && cd ../../ && lerna publish",
+    "build-lerna-publish": "cd ./packages/vue && npm run build-bundle && cd ../../ && lerna publish",
     "build-yalc-update": "cd ./packages/vue && npm run build-bundle && yalc push",
     "build-yalc-deploy": "npm run build-yalc-update && cd ./packages/vue-docs && npm run deploy"
   }
