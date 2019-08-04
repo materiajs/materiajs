@@ -67,6 +67,8 @@ export default {
 
 <style scoped lang="scss">
   .mat-toast-list {
+    display: flex;
+    height: 0;
     >* {
       margin-bottom: 15px;
     }
