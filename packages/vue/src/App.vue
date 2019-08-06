@@ -17,15 +17,17 @@
       <div class="main-wrapper">
         <div class="main-container">
           <mat-toast-list v-model="messages" />
-          <mat-button
-            color="danger"
-            @click="onClickButton">Push</mat-button>
-          <mat-button
-            color="warn"
-            @click="onClickButton">Push</mat-button>
-          <mat-button
-            color="primary"
-            @click="onClickButton">Push</mat-button>
+          <mat-button-group>
+            <mat-button
+              color="danger"
+              @click="onClickButton">Push</mat-button>
+            <mat-button
+              color="warn"
+              @click="onClickButton">Push</mat-button>
+            <mat-button
+              color="primary"
+              @click="onClickButton">Push</mat-button>
+          </mat-button-group>
           <mat-modal size="large" v-model="modal">
             <mat-toolbar color="primary">
               <div @click="() => modal = false">

@@ -29,7 +29,7 @@ const computeTextColor = (color, simple) => {
   if (simple) {
     return ((r * 0.299 + g * 0.587 + b * 0.114) > 186)
       ? '#212121' : '#ffffff';
-  } // else complex formula
+  } // elNse complex formula
   const uicolors = [r / 255, g / 255, b / 255];
   const c = uicolors.map((c) => {
     if (c <= 0.03928) {

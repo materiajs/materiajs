@@ -30,14 +30,17 @@ export default {
     align-items: center;
     border-radius: $border-radius-light;
     border: none;
+    box-shadow: $box-shadow-light;
     cursor: pointer;
     display: inline-flex;
     font-size: 14px;
     height: 35px;
     outline: none;
     padding: 0 10px;
-    transition: $standard-transition;
+    transform: scale(1);
+    transition: all 0.15s cubic-bezier(.41,.15,.55,1.19);
     white-space: nowrap;
+    z-index: 3;
     &.space {
       &-right {
         margin-right: 10px;
@@ -49,10 +52,9 @@ export default {
     >* {
       min-width: 15px;
     }
-
-    box-shadow: $box-shadow-light;
     &:active {
-      box-shadow: $box-shadow-extra-light;
+      transform: scale(0.965);
+      z-index: 1;
     }
   }
 </style>

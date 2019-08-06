@@ -14,13 +14,11 @@ export default {
   .mat-button-group {
     white-space: nowrap;
     font-size: 0;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
     display: inline-block;
     /deep/ .mat-button {
       background: #212121;
       box-shadow: none;
       border: none;
-      margin: -1px;
 
       &:not(:first-child) {
         border-top-left-radius: 0;
