@@ -4,16 +4,13 @@ export default {
     'primary-light': '#1e88e5',
     accent: '#f3f3f3',
     success: '#28a745',
-    warn: '#ff6400',
+    danger: '#F44336',
+    warn: '#FF9800',
     default: '#ffffff',
-    'primary-text': '#212121',
-    'secondary-text': '#757575',
     'dark-primary': '#222437',
     'dark-primary-light': '#1c1e2f',
     'dark-accent': '#4f5b62',
     'dark-default': '#222437',
-    'dark-primary-text': '#fff',
-    'dark-secondary-text': '#ccc',
   },
   themes: {
     green: {

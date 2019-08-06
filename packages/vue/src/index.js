@@ -12,6 +12,13 @@ const components = {
   ...structures,
 };
 
+const addToTheme = (object) => {
+  Object.keys(object)
+    .forEach((key) => {
+      $materiajs.setThemeVariable(key, object[key]);
+    });
+};
+
 export default {
   install: (Vue, { store, options }) => {
     Vue.prototype.$materiajs = $materiajs;
@@ -20,10 +27,9 @@ export default {
       .forEach((name) => {
         Vue.component(name, components[name]);
       });
-    Object.keys(themes.colors)
-      .forEach((key) => {
-        $materiajs.setThemeVariable(key, themes.colors[key]);
-      });
+    addToTheme(themes.colors);
+    // Overwrite
+    if (options && options.colors) addToTheme(options.colors);
     if (options && options.themeName) {
       store.dispatch('materiajs/setThemeByName', options.themeName);
     }

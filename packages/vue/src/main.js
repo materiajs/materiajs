@@ -8,9 +8,7 @@ const store = new Vuex.Store({});
 Vue.config.productionTip = false;
 Vue.use(MateriaJs, {
   store,
-  options: {
-    themeName: 'green',
-  },
+  options: {},
 });
 
 new Vue({
