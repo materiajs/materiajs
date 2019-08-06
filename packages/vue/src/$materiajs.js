@@ -28,7 +28,7 @@ const computeTextColor = (color, simple) => {
   const b = hexToB(color);
   if (simple) {
     return ((r * 0.299 + g * 0.587 + b * 0.114) > 186)
-      ? '#000000' : '#ffffff';
+      ? '#212121' : '#ffffff';
   } // else complex formula
   const uicolors = [r / 255, g / 255, b / 255];
   const c = uicolors.map((c) => {
@@ -38,7 +38,7 @@ const computeTextColor = (color, simple) => {
     return Math.pow((c + 0.055) / 1.055, 2.4);
   });
   const L = 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-  return (L > 0.179) ? '#000000' : '#ffffff';
+  return (L > 0.179) ? '#212121' : '#ffffff';
 };
 
 export default {
