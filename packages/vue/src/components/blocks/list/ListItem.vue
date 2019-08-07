@@ -1,7 +1,7 @@
 <template>
   <div
     :class="{ active }"
-    class="mat-list-link-item"
+    class="mat-list-item"
     :style="getStyle"
   >
     <slot />
@@ -13,7 +13,7 @@ import t from 'vue-types';
 import themeable from '../../../mixins/themeable';
 
 export default {
-  name: 'ListLinkItem',
+  name: 'ListItem',
   mixins: [
     themeable,
   ],
@@ -32,9 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "../../../styles/variables";
-
-  .mat-list-link-item {
+  .mat-list-item {
     cursor: pointer;
     a {
       color: inherit;

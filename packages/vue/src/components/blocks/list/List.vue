@@ -2,7 +2,7 @@
   <div
     class="mat-list"
     :class="{ bordered }"
-    :style="{ color: backgroundTextColor }"
+    :style="getStyle"
   >
     <slot>
       <div

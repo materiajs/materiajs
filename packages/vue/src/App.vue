@@ -20,14 +20,26 @@
           <mat-button-group>
             <mat-button
               color="danger"
-              @click="onClickButton">Push</mat-button>
+              @click="onToast">Toast!</mat-button>
             <mat-button
               color="warn"
-              @click="onClickButton">Push</mat-button>
+              @click="onClickButton">Modal</mat-button>
             <mat-button
               color="primary"
               @click="onClickButton">Push</mat-button>
           </mat-button-group>
+          <mat-spacer />
+          <mat-list :bordered="true">
+            <mat-list-item>
+              Andy
+            </mat-list-item>
+            <mat-list-item>
+              Feely
+            </mat-list-item>
+          </mat-list>
+          <mat-toast-list
+            v-model="messages"
+          />
           <mat-modal size="large" v-model="modal">
             <mat-toolbar color="primary">
               <div @click="() => modal = false">
@@ -36,6 +48,48 @@
             </mat-toolbar>
             <mat-padding>
               Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              Hello
+            </mat-padding>
+            <mat-padding>
+              LATAS
+            </mat-padding>
+            <mat-padding>
+              LATAS
+            </mat-padding>
+            <mat-padding>
+              LATAS
+            </mat-padding>
+            <mat-padding>
+              LATAS
+            </mat-padding>
+            <mat-padding>
+              ZZZZZ
             </mat-padding>
           </mat-modal>
 <!--          <mat-table :columns="columns" :rows="rows">-->
@@ -124,6 +178,14 @@ export default {
       //   text: 'Saved!',
       //   id: new Date().getTime(),
       // });
+    },
+    onToast() {
+      this.messages.push({
+        color: 'success',
+        icon: 'check',
+        text: 'Saved!',
+        id: new Date().getTime(),
+      });
     },
     setGenderFilter(filters, value, addFilter) {
       if (filters.gender && filters.gender.value === value) {

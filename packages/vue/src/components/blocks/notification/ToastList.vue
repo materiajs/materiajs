@@ -27,6 +27,7 @@ export default {
   },
   props: {
     value: t.array,
+    intervalTime: t.number.def(5000),
   },
   data: () => ({
     interval: null,
@@ -37,7 +38,7 @@ export default {
       handler(messages) {
         if (!this.looping && messages.length) {
           this.looping = true;
-          this.interval = setInterval(this.popMessage, 3000);
+          this.interval = setInterval(this.popMessage, this.intervalTime);
         }
       },
       immediate: true,

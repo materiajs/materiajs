@@ -41,10 +41,19 @@ export default {
 <style scoped lang="scss">
   .mat-modal {
     position: fixed;
+    height: 0;
     width: 100%;
     left: 0;
-    top: 0;
+    bottom: 0;
+    transition: all .5s cubic-bezier(.5,.33,.37,1.11);
+
     z-index: 15;
+    overflow: scroll;
+    -ms-overflow-style: none;  // IE 10+
+    scrollbar-width: none;  // Firefox
+    &::-webkit-scrollbar {
+      display: none;  // Safari and Chrome
+    }
     &.open {
       height: 100%;
     }
@@ -61,37 +70,33 @@ export default {
     &-content {
       background: white;
       border-radius: 3px;
-      min-width: 260px;
-      position: fixed;
+      position: absolute;
       left: 50%;
-      -webkit-transform: translate(0, -50%);
-      transform: translate(-50%, -50%);
-      top: 50%;
+      transform: translate(-50%, 0);
       min-width: 360px;
-    }
-    .large {
-      transform: translate(-50%, 0%);
-      min-width: 360px;
-      bottom: 0;
+      top: 10vh;
+      z-index: 20;
+      margin-bottom: 15px;
     }
   }
 
   .rise-enter-active, .rise-leave-active {
-    transition: all .4s cubic-bezier(.5,.33,.37,1.11);
+    transition: all .5s cubic-bezier(.5,.33,.37,1.11);
   }
   .rise-enter,
   .rise-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    transform: translate(-50%, 0) !important;
-    top: 100vh !important;
+    transform: translate(-50%, 100vh);
   }
 
   @media screen and (max-width: 768px) {
     .mat-modal-content {
       min-width: 90vw;
+      margin-bottom: 0;
+      top: 0;
     }
 
     .large {
-      top: 0;
+      min-height: 100%;
       width: 100%;
     }
   }

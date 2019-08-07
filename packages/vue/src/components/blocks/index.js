@@ -26,7 +26,7 @@ export { default as MatSpacer } from './layout/Spacer.vue';
 
 // List
 export { default as MatList } from './list/List.vue';
-export { default as MatListLinkItem } from './list/ListLinkItem.vue';
+export { default as MatListItem } from './list/ListItem.vue';
 
 // Menu
 export { default as MatMenu } from './menu/Menu.vue';
