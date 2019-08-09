@@ -27,6 +27,7 @@ export default {
     _getStyle() {
       return {
         ...this.getStyle,
+        ...this.getPositionStyle,
         padding: this.noPadding ? '' : '0 15px',
       };
     },

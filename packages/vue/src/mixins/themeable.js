@@ -35,6 +35,7 @@ export default {
     // :dark overrides global dark mode
     dark: t.any,
     color: t.string.def('default'),
+    accentColor: t.string.def('primary'),
     backgroundGradient: t.array.def([]),
   },
   computed: {
@@ -74,6 +75,12 @@ export default {
     },
     backgroundTextColor() {
       return this.parseTextColor(this.background);
+    },
+    getAccentStyle() {
+      return {
+        background: `var(--${this.accentColor})`,
+        color: `var(--${this.accentColor}-text-color)`,
+      };
     },
     getStyle() {
       return {

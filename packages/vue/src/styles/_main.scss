@@ -94,8 +94,6 @@ input {
 }
 
 .mat-scrollbar-hidden {
-  height: 1px;
-  min-height: 100%;
   overflow: scroll;
   -ms-overflow-style: none;  // IE 10+
   scrollbar-width: none;  // Firefox
@@ -112,11 +110,14 @@ input {
 }
 
 .mat-wrapper-element {
-  background: green;
-  /deep/ .mat-toolbar {
+  /deep/ >.mat-toolbar {
     &:first-child {
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
+    }
+    &:last-child {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
     }
   }
 }

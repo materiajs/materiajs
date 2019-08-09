@@ -68,9 +68,9 @@ export default {
           .reduce((acc, current) => acc + current, 0);
         const width = this.$children[this.value] && this.$children[this.value].$el.clientWidth;
         return {
+          ...this.getAccentStyle,
           left: `${left}px`,
           width: `${width}px`,
-          background: this.isAnyDark ? '#fff' : this.background,
         };
       }
       return null;
@@ -106,7 +106,6 @@ export default {
     font-size: 0;
     position: relative;
     white-space: nowrap;
-    border-bottom: 1px solid #f3f3f3;
     overflow-x: scroll;
     width: 100%;
     -ms-overflow-style: none;  // IE 10+

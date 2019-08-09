@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <mat-navigation-layout :sidebar-overlay="true">
+    <mat-navigation-layout
+      color="dark-primary"
+      :sidebar-overlay="true">
       <mat-toolbar
         slot="header"
         position="sticky"
@@ -16,7 +18,14 @@
       </mat-toolbar>
       <div class="main-wrapper">
         <div class="main-container">
+          <mat-tabs
+            v-model="tab"
+          >
+            <mat-tab :tab="0">Bookmarks</mat-tab>
+            <mat-tab :tab="1">Notes</mat-tab>
+          </mat-tabs>
           <mat-toast-list v-model="messages" />
+          <mat-spacer />
           <mat-button-group>
             <mat-button
               color="danger"
@@ -40,57 +49,68 @@
           <mat-toast-list
             v-model="messages"
           />
-          <mat-modal size="large" v-model="modal">
-            <mat-toolbar color="primary">
-              <div @click="() => modal = false">
-                Close
-              </div>
-            </mat-toolbar>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              Hello
-            </mat-padding>
-            <mat-padding>
-              LATAS
-            </mat-padding>
-            <mat-padding>
-              LATAS
-            </mat-padding>
-            <mat-padding>
-              LATAS
-            </mat-padding>
-            <mat-padding>
-              LATAS
-            </mat-padding>
-            <mat-padding>
-              ZZZZZ
-            </mat-padding>
+          <mat-modal
+            size="large" v-model="modal">
+                <mat-toolbar
+                  position="sticky"
+                  top="0"
+                  color="primary">
+                  <div @click="() => modal = false">
+                    Close
+                  </div>
+                </mat-toolbar>
+                <mat-scrollbar-layout>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    Hello
+                  </mat-padding>
+                  <mat-padding>
+                    ZZZZZ
+                  </mat-padding>
+                </mat-scrollbar-layout>
+<!--            <mat-toolbar-->
+<!--              color="default"-->
+<!--              size="small"-->
+<!--              slot="footer">-->
+<!--              And the footer-->
+<!--            </mat-toolbar>-->
+<!--            <div slot="left">-->
+<!--              <mat-toolbar>-->
+<!--                LEFT!-->
+<!--              </mat-toolbar>-->
+<!--            </div>-->
           </mat-modal>
 <!--          <mat-table :columns="columns" :rows="rows">-->
 <!--            <template slot="id" slot-scope="{ value }">-->
@@ -131,6 +151,7 @@ import axios from 'axios';
 export default {
   name: 'app',
   data: () => ({
+    tab: 0,
     messages: [],
     modal: false,
     showSidebar: true,
