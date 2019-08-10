@@ -68,8 +68,6 @@ export default {
     }
 
     &-content {
-      background: white;
-      border-radius: 3px;
       position: absolute;
       left: 50%;
       transform: translate(-50%, 0);
