@@ -70,13 +70,14 @@ export default {
   .mat-toast-list {
     display: flex;
     height: 0;
+    position: absolute;
     >* {
       margin-bottom: 15px;
     }
     .list-complete-item {
       transition: all .4s;
       transition-delay: .4s;
-      position: absolute;
+      position: fixed;
       top: 70px;
       left: 50%;
       transform: translate(-50%, 0);
@@ -89,7 +90,7 @@ export default {
       transition-delay: 0s;
     }
     .list-complete-leave-active {
-      position: absolute;
+      position: fixed;
     }
   }
 </style>
