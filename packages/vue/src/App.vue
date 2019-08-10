@@ -18,12 +18,7 @@
       </mat-toolbar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-tabs
-            v-model="tab"
-          >
-            <mat-tab :tab="0">Bookmarks</mat-tab>
-            <mat-tab :tab="1">Notes</mat-tab>
-          </mat-tabs>
+          <TabWindow />
           <mat-toast-list v-model="messages" />
           <mat-spacer />
           <mat-button-group>
@@ -65,39 +60,6 @@
                   </mat-padding>
                   <mat-padding>
                     Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    ZZZZZ
                   </mat-padding>
                 </mat-scrollbar-layout>
 <!--            <mat-toolbar-->
@@ -146,12 +108,12 @@
 </template>
 
 <script>
-import axios from 'axios';
+import TabWindow from './examples/TabWindow.vue';
 
 export default {
   name: 'app',
+  components: { TabWindow },
   data: () => ({
-    tab: 0,
     messages: [],
     modal: false,
     showSidebar: true,
@@ -176,19 +138,9 @@ export default {
     ],
   }),
   computed: {
-    darkIcon() {
-      return this.darkMode ? 'sun' : 'moon';
-    },
     rows() {
       return this.users.map(user => ({ ...user, name: `${user.name.first} ${user.name.last}` }));
     },
-  },
-  created() {
-    const url = 'https://randomuser.me/api/?results=10';
-    axios.get(url)
-      .then((res) => {
-        this.users = res.data.results;
-      });
   },
   methods: {
     onClickButton() {
@@ -213,13 +165,6 @@ export default {
         addFilter('gender', undefined);
       } else {
         addFilter('gender', ({ gender }, rowValue) => gender === rowValue, value);
-      }
-    },
-    onClickGithub() {
-      if (this.$store.state.materiajs.theme.colors.primary === '#1565c0') {
-        this.$store.dispatch('materiajs/setThemeByName', 'green');
-      } else {
-        this.$store.dispatch('materiajs/setThemeByName', 'blue');
       }
     },
   },

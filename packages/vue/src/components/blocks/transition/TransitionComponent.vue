@@ -20,7 +20,7 @@ export default {
   name: 'mat-transition',
   props: {
     duration: t.number.def(300),
-    easing: t.string.def('easeInOutQuart'),
+    easing: t.any.def([700, 50]),
     transitionName: t.string.def('fade-in-out'),
   },
   data: () => ({

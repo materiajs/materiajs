@@ -76,7 +76,7 @@ export default {
     .list-complete-item {
       transition: all .4s;
       transition-delay: .4s;
-      position: fixed;
+      position: absolute;
       top: 70px;
       left: 50%;
       transform: translate(-50%, 0);
