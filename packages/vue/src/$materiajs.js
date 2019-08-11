@@ -54,4 +54,5 @@ export default {
     document.documentElement.style
       .setProperty(`${propertyName}-text-color`, computeTextColor(value, true));
   },
+  computeTextColor,
 };
