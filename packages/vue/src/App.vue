@@ -46,60 +46,24 @@
           />
           <mat-modal
             size="large" v-model="modal">
-                <mat-toolbar
-                  position="sticky"
-                  top="0"
-                  color="primary">
-                  <div @click="() => modal = false">
-                    Close
-                  </div>
-                </mat-toolbar>
-                <mat-scrollbar-layout>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                  <mat-padding>
-                    Hello
-                  </mat-padding>
-                </mat-scrollbar-layout>
-<!--            <mat-toolbar-->
-<!--              color="default"-->
-<!--              size="small"-->
-<!--              slot="footer">-->
-<!--              And the footer-->
-<!--            </mat-toolbar>-->
-<!--            <div slot="left">-->
-<!--              <mat-toolbar>-->
-<!--                LEFT!-->
-<!--              </mat-toolbar>-->
-<!--            </div>-->
+              <mat-toolbar
+                position="sticky"
+                top="0"
+                color="primary">
+                <div @click="() => modal = false">
+                  Close
+                </div>
+              </mat-toolbar>
+              <mat-scrollbar-layout>
+                <mat-padding>
+                  Hello
+                </mat-padding>
+                <mat-padding>
+                  Hello
+                </mat-padding>
+              </mat-scrollbar-layout>
           </mat-modal>
-<!--          <mat-table :columns="columns" :rows="rows">-->
-<!--            <template slot="id" slot-scope="{ value }">-->
-<!--              {{ value.value }}-->
-<!--            </template>-->
-<!--            <template slot="filter" slot-scope="{ addFilter, filters }">-->
-<!--&lt;!&ndash;              <mat-input&ndash;&gt;-->
-<!--&lt;!&ndash;                placeholder="Name"&ndash;&gt;-->
-<!--&lt;!&ndash;                :value="filters.name"&ndash;&gt;-->
-<!--&lt;!&ndash;                @input="value => filter('name', value)" />&ndash;&gt;-->
-<!--&lt;!&ndash;              <mat-spacer />&ndash;&gt;-->
-<!--              Gender-->
-<!--              <mat-spacer />-->
-<!--              <mat-button-group>-->
-<!--                <mat-button-->
-<!--                  v-for="(option, key) in options"-->
-<!--                  :key="key"-->
-<!--                  @click="() => setGenderFilter(filters, option.value, addFilter)"-->
-<!--                  :color="filters.gender && filters.gender.value === option.value-->
-<!--                  ? 'primary'-->
-<!--                  : undefined"-->
-<!--                >-->
-<!--                  {{ option.value }}-->
-<!--                </mat-button>-->
-<!--              </mat-button-group>-->
-<!--            </template>-->
-<!--          </mat-table>-->
+<!--          <TableExample />-->
           <mat-spacer />
         </div>
       </div>
@@ -109,48 +73,19 @@
 
 <script>
 import TabWindow from './examples/TabWindow.vue';
+import TableExample from './TableExample.vue';
 
 export default {
   name: 'app',
-  components: { TabWindow },
+  components: { TableExample, TabWindow },
   data: () => ({
     messages: [],
     modal: false,
     showSidebar: true,
-    options: [{ value: 'male' }, { value: 'female' }],
-    columns: [
-      {
-        name: 'name',
-        header: 'Name',
-      },
-      {
-        name: 'nat',
-        header: 'Nationality',
-      },
-      {
-        name: 'gender',
-        header: 'Gender',
-      },
-      {
-        name: 'email',
-        header: 'Email',
-      },
-    ],
   }),
-  computed: {
-    rows() {
-      return this.users.map(user => ({ ...user, name: `${user.name.first} ${user.name.last}` }));
-    },
-  },
   methods: {
     onClickButton() {
       this.modal = true;
-      // this.messages.push({
-      //   color: 'success',
-      //   icon: 'check',
-      //   text: 'Saved!',
-      //   id: new Date().getTime(),
-      // });
     },
     onToast() {
       this.messages.push({
@@ -159,13 +94,6 @@ export default {
         text: 'Saved!',
         id: new Date().getTime(),
       });
-    },
-    setGenderFilter(filters, value, addFilter) {
-      if (filters.gender && filters.gender.value === value) {
-        addFilter('gender', undefined);
-      } else {
-        addFilter('gender', ({ gender }, rowValue) => gender === rowValue, value);
-      }
     },
   },
 };

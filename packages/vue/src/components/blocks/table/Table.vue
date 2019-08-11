@@ -1,100 +1,98 @@
 <template>
   <div class="mat-table">
-    <mat-card padding="0">
-      <mat-toolbar
-        size="small"
-        :no-padding="true"
-        color="primary-light"
-        :shadow="false"
-      >
-        <slot name="title">
+    <mat-toolbar
+      size="small"
+      :no-padding="true"
+      color="primary-light"
+      :shadow="false"
+    >
+      <slot name="title">
+        <mat-padding>
+          Table name
+        </mat-padding>
+      </slot>
+      <mat-spacer />
+      <mat-nav-link
+        v-if="$slots.filter"
+        @click="() => tableFiltersMenu = true">
+        <mat-fa icon="filter" />
+        <mat-menu
+          position="bottom-right"
+          v-model="tableFiltersMenu">
+          <mat-toolbar size="xs" :shadow="false" color="accent">Filters</mat-toolbar>
           <mat-padding>
-            Table name
+            <slot
+              :filters="getFilters"
+              :add-filter="addFilter"
+              name="filter"></slot>
           </mat-padding>
-        </slot>
-        <mat-spacer />
-        <mat-nav-link
-          v-if="$slots.filter"
-          @click="() => tableFiltersMenu = true">
-          <mat-fa icon="filter" />
-          <mat-menu
-            position="bottom-right"
-            v-model="tableFiltersMenu">
-            <mat-toolbar size="xs" :shadow="false" color="accent">Filters</mat-toolbar>
-            <mat-padding>
-              <slot
-                :filters="getFilters"
-                :add-filter="addFilter"
-                name="filter"></slot>
-            </mat-padding>
-          </mat-menu>
-        </mat-nav-link>
-        <mat-nav-link @click="() => tableColumnsMenu = true">
-          <mat-fa icon="cog" />
-          <mat-menu
-            position="bottom-right"
-            v-model="tableColumnsMenu">
-            <mat-list>
-              <div
-                v-for="(column, key) in columns"
-                :key="key"
-                @click="setColumnVisibility(column.name, !visibleColumns[column.name])"
-              >
-                <mat-checkbox
-                  :value="visibleColumns[column.name]"
-                  @input="value => setColumnVisibility(column.name, value)">
-                  {{ column.header }}
-                </mat-checkbox>
-              </div>
-            </mat-list>
-          </mat-menu>
-        </mat-nav-link>
-      </mat-toolbar>
-      <table class="mat-table">
-        <thead>
-          <tr>
-            <template v-for="(column, key) in columns">
-              <th
-                v-if="!hiddenColumns.includes(column.name)"
-                :key="key"
-                @click="onClickColumnHeader(column.name)"
-                :class="{ sorting: sortColumn === column.name }"
-              >
-                <mat-flex-layout>
-                  {{ column.header }}
-                  <mat-spacer />
-                  <mat-fa
-                    v-if="sortColumn === column.name"
-                    icon="arrow-down"
-                    :rotate="sortDirection === 'desc' ? 0 : 180"
-                  />
-                </mat-flex-layout>
-              </th>
-            </template>
-          </tr>
-        </thead>
-        <tr
-          v-for="(row, key) in sortedRows"
+        </mat-menu>
+      </mat-nav-link>
+      <mat-nav-link @click="() => tableColumnsMenu = true">
+        <mat-fa icon="cog" />
+        <mat-menu
+          position="bottom-right"
+          v-model="tableColumnsMenu">
+          <mat-list>
+            <div
+              v-for="(column, key) in columns"
+              :key="key"
+              @click="setColumnVisibility(column.name, !visibleColumns[column.name])"
+            >
+              <mat-checkbox
+                :value="visibleColumns[column.name]"
+                @input="value => setColumnVisibility(column.name, value)">
+                {{ column.header }}
+              </mat-checkbox>
+            </div>
+          </mat-list>
+        </mat-menu>
+      </mat-nav-link>
+    </mat-toolbar>
+    <table class="mat-table">
+      <thead>
+        <tr>
+          <template v-for="(column, key) in columns">
+            <th
+              v-if="!hiddenColumns.includes(column.name)"
+              :key="key"
+              @click="onClickColumnHeader(column.name)"
+              :class="{ sorting: sortColumn === column.name }"
+            >
+              <mat-flex-layout>
+                {{ column.header }}
+                <mat-spacer />
+                <mat-fa
+                  v-if="sortColumn === column.name"
+                  icon="arrow-down"
+                  :rotate="sortDirection === 'desc' ? 0 : 180"
+                />
+              </mat-flex-layout>
+            </th>
+          </template>
+        </tr>
+      </thead>
+      <tr
+        v-for="(row, key) in sortedRows"
+        :key="key"
+      >
+        <td
+          v-for="(column, key) in visibleColumnNames"
           :key="key"
         >
-          <td
-            v-for="(column, key) in visibleColumnNames"
-            :key="key"
-          >
-            <slot
-              :name="column"
-              :value="row[column]">
-                {{ row[column] }}
-            </slot>
-          </td>
+          <slot
+            :name="column"
+            :value="row[column]">
+              {{ row[column] }}
+          </slot>
+        </td>
+      </tr>
+      <tfoot>
+        <tr>
+          <td colspan="99">Footer</td>
         </tr>
-        <tfoot>
-          <tr>
-            <td colspan="99">Footer</td>
-          </tr>
-        </tfoot>
-      </table>
-    </mat-card>
+      </tfoot>
+    </table>
   </div>
 </template>
 

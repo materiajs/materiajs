@@ -3,7 +3,7 @@
     :class="['list-group', 'mat-frame builder']"
     v-model="valueProp"
     v-bind="dragOptions"
-    handle=".mat-handle"
+    :handle="handle"
     @start="isDragging = true"
     @end="isDragging = false"
   >
@@ -18,6 +18,7 @@ import t from 'vue-types';
 export default {
   name: 'Draggable',
   props: {
+    handle: t.string.def('.mat-handle'),
     value: t.array,
   },
   components: {
@@ -32,7 +33,6 @@ export default {
         return this.value;
       },
       set(value) {
-        console.debug('Settinh'); // TODO - Remove console output
         this.$emit('input', value);
       },
     },
