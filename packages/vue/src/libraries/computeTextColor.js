@@ -9,18 +9,10 @@ const parseTextColor = (color) => {
 /* Hex to RGB conversion:
  * http://www.javascripter.net/faq/hextorgb.htm
  */
-const cutHex = (h) => {
-  return (h.charAt(0) === '#') ? h.substring(1, 7) : h;
-};
-const hexToR = (h) => {
-  return parseInt((cutHex(h)).substring(0, 2), 16);
-};
-const hexToG = (h) => {
-  return parseInt((cutHex(h)).substring(2, 4), 16);
-};
-const hexToB = (h) => {
-  return parseInt((cutHex(h)).substring(4, 6), 16);
-};
+const cutHex = h => ((h.charAt(0) === '#') ? h.substring(1, 7) : h);
+const hexToR = h => parseInt((cutHex(h)).substring(0, 2), 16);
+const hexToG = h => parseInt((cutHex(h)).substring(2, 4), 16);
+const hexToB = h => parseInt((cutHex(h)).substring(4, 6), 16);
 
 const computeTextColor = (color, simple) => {
   const r = hexToR(color);

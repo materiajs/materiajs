@@ -10,9 +10,6 @@
     "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --target lib --name materiajs-vue ./src/index.js",
     "lint": "vue-cli-service lint",
     "lint-fix": "vue-cli-service lint --fix",
-    "storybook:build": "vue-cli-service storybook:build -c config/storybook",
-    "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
-    "storybook:upload": "aws s3 sync ./storybook-static s3://storybook.andyfeely.com",
     "yalc-update": "npm run build-bundle && yalc push"
   },
   "dependencies": {
@@ -30,8 +27,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@storybook/addon-actions": "^4.1.0",
-    "@storybook/storybook-deployer": "^2.8.1",
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
