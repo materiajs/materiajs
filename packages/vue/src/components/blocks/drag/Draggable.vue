@@ -40,7 +40,7 @@ export default {
     dragOptions() {
       return {
         animation: 300,
-        group: 'description',
+        group: this.group,
         disabled: false,
         ghostClass: 'ghost',
       };
