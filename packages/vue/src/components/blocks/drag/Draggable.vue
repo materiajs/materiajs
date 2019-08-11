@@ -19,6 +19,7 @@ export default {
   name: 'Draggable',
   props: {
     handle: t.string.def('.mat-handle'),
+    group: t.string.def('main-group'),
     value: t.array,
   },
   components: {
