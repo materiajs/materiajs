@@ -1,9 +1,9 @@
 <template>
   <draggable
-    :class="['list-group', 'mat-frame builder']"
     v-model="valueProp"
     v-bind="dragOptions"
     :handle="handle"
+    class="list-group"
     @start="isDragging = true"
     @end="isDragging = false"
   >
@@ -39,10 +39,10 @@ export default {
     },
     dragOptions() {
       return {
-        animation: 300,
+        animation: 250,
         group: this.group,
         disabled: false,
-        ghostClass: 'ghost',
+        ghostClass: 'ghosty',
       };
     },
   },
@@ -52,13 +52,13 @@ export default {
 <style scoped lang="scss">
   .list-group {
     min-height: 30px;
-    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   /deep/ .mat-handle {
     cursor: move !important;
   }
   /deep/ .ghost {
-    opacity: 0.5;
-    background: #c8ebfb;
+    opacity: 1;
   }
 </style>
