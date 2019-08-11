@@ -15,7 +15,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@materiajs/vue": "file:.yalc/@materiajs/vue",
+    "@materiajs/vue": "^0.2.32",
     "cross-env": "^5.2.0",
     "highlight.js": "^9.15.6",
     "nuxt": "^2.7.1",
