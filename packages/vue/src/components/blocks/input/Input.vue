@@ -15,7 +15,9 @@
       :type="type"
       :disabled="disabled"
       @input="onInputChange"
-      @focus="onInputFocus">
+      @focus="onInputFocus"
+      v-mat-round="this.round"
+    >
     <textarea
       v-else
       ref="blox-input-ref"
@@ -122,14 +124,13 @@ export default {
     flex-wrap: wrap;
     border: 1px solid;
     min-width: 250px;
-    padding: 15px;
-    height: 25px;
+    height: 60px;
     input {
       flex: 1;
       background: rgba(0,0,0,0);
       color: inherit;
-      position: absolute;
-      bottom: 10px;
+      padding: 15px;
+      font-size: 0.9em;
     }
     textarea {
       border: none;
@@ -144,7 +145,8 @@ export default {
       margin: 0 -3px;
       padding: 0 3px;
       position: absolute;
-      top: 25px;
+      top: 50%;
+      left: 15px;
       transform: translateY(-50%);
       transition: top $standard-transition-t-e, font-size $standard-transition-t-e;
       user-select: none;
@@ -161,7 +163,7 @@ export default {
           z-index: -1;
         }
         top: 10px;
-        font-size: 0.8em;
+        font-size: 0.7em;
       }
     }
 
