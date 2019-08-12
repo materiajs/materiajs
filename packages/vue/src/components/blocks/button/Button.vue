@@ -4,6 +4,7 @@
     @click="$emit('click')"
     :class="[`space-${space}`]"
     class="mat-button"
+    v-mat-round="round"
   >
     <slot />
   </button>
@@ -12,10 +13,14 @@
 <script>
 import t from 'vue-types';
 import themeable from '../../../mixins/themeable';
+import roundable from '../../../mixins/roundable';
 
 export default {
   name: 'mat-button',
-  mixins: [themeable],
+  mixins: [
+    themeable,
+    roundable,
+  ],
   props: {
     space: t.string.def(''),
   },

@@ -6,6 +6,7 @@ export { default as MatCheckbox } from './checkbox/Checkbox.vue';
 // Button
 export { default as MatButton } from './button/Button.vue';
 export { default as MatButtonGroup } from './button/ButtonGroup.vue';
+export { default as MatFloatingButtonGroup } from './button/FloatingButtonGroup.vue';
 
 // Container
 export { default as MatCard } from './container/Card.vue';

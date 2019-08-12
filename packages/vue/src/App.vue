@@ -22,6 +22,16 @@
           <DragExample/>
           <SelectExample/>
           <InputExample/>
+          <div class="button-example">
+            <mat-floating-button-group>
+              <mat-button round="50">
+                <mat-fa icon="plus" />
+              </mat-button>
+              <mat-button color="primary" round="50">
+                <mat-fa icon="filter" />
+              </mat-button>
+            </mat-floating-button-group>
+          </div>
           <mat-toast-list v-model="messages" />
           <mat-spacer />
           <mat-button-group>
