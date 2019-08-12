@@ -44,5 +44,4 @@ export default {
       defaultBreakpoint: 'lg', // customize this for SSR
     });
   },
-  materiaJsStore,
 };

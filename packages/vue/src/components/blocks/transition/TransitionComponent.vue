@@ -63,6 +63,16 @@ export default {
         beforeLeave: { position: 'absolute', top: 0, width: '100%' },
         leave: { translateX: ['100%', 0] },
       }),
+      'slide-up-down': () => ({
+        enter: { translateY: [0, '100%'] },
+        leave: { translateY: ['100%', 0] },
+      }),
+      explode: () => ({
+        beforeEnter: { 'transform-origin': 'top left' },
+        enter: { opacity: 1, scale: [1, 0.2] },
+        beforeLeave: { 'transform-origin': 'top left' },
+        leave: { opacity: [0, 1], scale: 0.2 },
+      }),
     },
   }),
   methods: {

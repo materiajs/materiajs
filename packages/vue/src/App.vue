@@ -20,6 +20,7 @@
         <div class="main-container">
           <TabWindow />
           <DragExample/>
+          <SelectExample/>
           <mat-toast-list v-model="messages" />
           <mat-spacer />
           <mat-button-group>
@@ -74,11 +75,12 @@
 
 <script>
 import TabWindow from './examples/TabWindow.vue';
-import DragExample from "./examples/DragExample";
+import DragExample from './examples/DragExample.vue';
+import SelectExample from './examples/SelectExample.vue';
 
 export default {
   name: 'app',
-  components: {DragExample, TabWindow },
+  components: { SelectExample, DragExample, TabWindow },
   data: () => ({
     messages: [],
     modal: false,
