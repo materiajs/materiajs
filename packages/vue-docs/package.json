@@ -1,6 +1,6 @@
 {
   "name": "@materiajs/vue-docs",
-  "version": "0.2.36",
+  "version": "0.2.37",
   "description": "Documentation and Component demo for Materia JS Vue ",
   "author": "andyfeely",
   "private": true,
@@ -15,7 +15,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@materiajs/vue": "^0.2.36",
+    "@materiajs/vue": "^0.2.37",
     "cross-env": "^5.2.0",
     "highlight.js": "^9.15.6",
     "nuxt": "^2.7.1",
