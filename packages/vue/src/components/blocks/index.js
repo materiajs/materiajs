@@ -36,6 +36,7 @@ export { default as MatImage } from './image/ImageComponent.vue';
 export { default as MatAvatar } from './image/Avatar.vue';
 
 // Input
+export { default as MatForm } from './input/MatForm.vue';
 export { default as MatInput } from './input/Input.vue';
 export { default as MatTextArea } from './input/TextArea.vue';
 

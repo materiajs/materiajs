@@ -3,7 +3,9 @@
     @click="onClickInputWrapper"
     class="mat-input"
     :class="{ focused: isFocused }"
+    :style="inputStyle"
     v-on-clickaway="onInputBlur"
+    v-mat-round="this.round"
   >
     <slot />
     <input
@@ -31,6 +33,7 @@
     <div
       class="mat-input-placeholder"
       :class="{ focused: isFocused, raised: placeholderRaised }"
+      :style="placeholderStyle"
     >
       <div class="mat-frame-placeholder-bg"></div>
       {{ placeholder }}
@@ -42,16 +45,19 @@
 import t from 'vue-types';
 import { mixin as clickaway } from 'vue-clickaway';
 import themeable from '../../../mixins/themeable';
+import roundable from '../../../mixins/roundable';
 
 export default {
   name: 'mat-input',
   mixins: [
     clickaway,
+    roundable,
     themeable,
   ],
   props: {
     disabled: t.bool.def(false),
     focused: t.bool.def(false),
+    focusBorderColor: t.string.def('white'),
     placeholder: t.string.def('Enter text'),
     raisePlaceholder: t.bool.def(false),
     showClearButton: t.bool.def(false),
@@ -67,6 +73,16 @@ export default {
     },
     placeholderRaised() {
       return this.raisePlaceholder || (this.value && this.value.length > 0) || this.inputFocused;
+    },
+    inputStyle() {
+      return {
+        'border-color': `var(--${this.isFocused ? this.accentColor : this.focusBorderColor })`,
+      };
+    },
+    placeholderStyle() {
+      return {
+        color: `var(--${this.isFocused ? this.accentColor : this.focusBorderColor })`,
+      };
     },
   },
   methods: {
@@ -104,18 +120,16 @@ export default {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    padding: 15px 0 10px;
-    border-bottom: 1px solid;
+    border: 1px solid;
     min-width: 250px;
-
-    &.focused {
-      border-bottom-color: $primary-color-dark;
-    }
-
+    padding: 15px;
+    height: 25px;
     input {
       flex: 1;
       background: rgba(0,0,0,0);
       color: inherit;
+      position: absolute;
+      bottom: 10px;
     }
     textarea {
       border: none;
@@ -127,11 +141,10 @@ export default {
       height: 200px;
     }
     &-placeholder {
-      border-radius: 15px;
       margin: 0 -3px;
       padding: 0 3px;
       position: absolute;
-      top: 20px;
+      top: 25px;
       transform: translateY(-50%);
       transition: top $standard-transition-t-e, font-size $standard-transition-t-e;
       user-select: none;
@@ -147,11 +160,8 @@ export default {
           transform: translateY(-50%);
           z-index: -1;
         }
-        top: 5px;
+        top: 10px;
         font-size: 0.8em;
-      }
-      &.focused {
-        color: $primary-color-dark;
       }
     }
 

@@ -11,6 +11,7 @@ export default {
     'dark-primary-light': '#1c1e2f',
     'dark-accent': '#4f5b62',
     'dark-default': '#222437',
+    white: '#ffffff',
   },
   themes: {
     green: {
