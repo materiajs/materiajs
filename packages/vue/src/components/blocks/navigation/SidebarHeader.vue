@@ -1,5 +1,5 @@
 <template>
-  <div class="mat-side-bar-header">
+  <div class="mat-sidebar-header">
     <slot />
   </div>
 </template>

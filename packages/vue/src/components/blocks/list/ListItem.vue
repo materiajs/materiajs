@@ -10,23 +10,11 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'ListItem',
-  mixins: [
-    themeable,
-  ],
   props: {
     active: t.bool.def(false),
-  },
-  computed: {
-    getStyle() {
-      const color = this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary-light`];
-      return {
-        'border-right': this.active ? `2px solid ${color}` : '',
-      };
-    },
   },
 };
 </script>

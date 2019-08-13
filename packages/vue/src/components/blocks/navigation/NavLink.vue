@@ -1,7 +1,6 @@
 <template>
   <div
     @click="$emit('click')"
-    :class="{ dark }"
     class="mat-nav-link mat-flex-center mat-standard-transition"
   >
     <div class="mat-nav-link-wrapper">
@@ -24,11 +23,6 @@ export default {
     href: t.string,
     target: t.string,
   },
-  computed: {
-    dark() {
-      return this.$parent.dark;
-    },
-  },
 };
 </script>
 
@@ -47,12 +41,6 @@ export default {
     }
     &:hover {
       background: rgba(0,0,0,0.1);
-    }
-
-    &.dark:hover {
-      &:before {
-        background: rgba(255, 255, 255, 0.1);
-      }
     }
     &-wrapper {
       min-width: 60px;

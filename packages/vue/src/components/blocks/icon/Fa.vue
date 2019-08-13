@@ -12,13 +12,9 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'Fa',
-  mixins: [
-    themeable,
-  ],
   props: {
     action: t.func,
     cursor: t.string.def('pointer'),

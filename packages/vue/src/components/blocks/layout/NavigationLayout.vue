@@ -21,13 +21,9 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'NavigationLayout',
-  mixins: [
-    themeable,
-  ],
   props: {
     sidebarOverlay: t.bool.def(false),
   },

@@ -48,10 +48,11 @@ export { default as MatMenu } from './menu/Menu.vue';
 export { default as MatModal } from './modal/Modal.vue';
 
 // Navigation
-export { default as MatNavLink } from './navigation/NavLink.vue';
-export { default as MatSideBarHeader } from './navigation/SideBarHeader.vue';
-export { default as MatSideBarItem } from './navigation/SideBarItem.vue';
 export { default as MatToolbar } from './toolbar/Toolbar.vue';
+export { default as MatNavLink } from './navigation/NavLink.vue';
+export { default as MatSidebar } from '../blocks/navigation/Sidebar.vue';
+export { default as MatSidebarHeader } from './navigation/SidebarHeader.vue';
+export { default as MatSidebarItem } from './navigation/SidebarItem.vue';
 
 // Tabs
 export { default as MatTabs } from './tabs/TabsComponent.vue';

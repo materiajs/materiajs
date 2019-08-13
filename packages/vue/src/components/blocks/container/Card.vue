@@ -6,13 +6,10 @@
 
 <script>
 import t from 'vue-types';
-import themeable, { defaultAccentColor } from '../../../mixins/themeable';
+import { defaultAccentColor } from '../../../mixins/themeable';
 
 export default {
   name: 'Card',
-  mixins: [
-    themeable,
-  ],
   props: {
     darkColor: defaultAccentColor,
     hideOnMq: t.string,

@@ -26,7 +26,6 @@
 <script>
 import { mixin as clickaway } from 'vue-clickaway';
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 import sizeable from '../../../mixins/sizeable';
 import mediaQuery from '../../../mixins/media-query';
 
@@ -34,7 +33,6 @@ export default {
   name: 'mat-menu',
   mixins: [
     clickaway,
-    themeable,
     sizeable,
     mediaQuery,
   ],

@@ -7,13 +7,10 @@
 </template>
 
 <script>
-import themeable, { defaultAccentColor } from '../../../mixins/themeable';
+import { defaultAccentColor } from '../../../mixins/themeable';
 
 export default {
   name: 'PageLayout',
-  mixins: [
-    themeable,
-  ],
   props: {
     darkColor: defaultAccentColor,
   },

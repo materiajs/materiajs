@@ -1,11 +1,11 @@
 import VueMq from 'vue-mq';
-import materiaJsStore from './store';
 import $materiajs from './$materiajs';
 import roundable from './directives/roundable';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
 import themes from './styles/themes';
+import { registerMixins } from './mixins';
 
 const components = {
   ...blocks,
@@ -21,19 +21,19 @@ const addToTheme = (object) => {
 };
 
 export default {
-  install: (Vue, { store, options }) => {
+  install: (Vue, { options }) => {
     Vue.prototype.$materiajs = $materiajs;
     Vue.directive('mat-round', roundable);
-    store.registerModule('materiajs', materiaJsStore);
+    registerMixins(Vue);
     Object.keys(components)
       .forEach((name) => {
         Vue.component(name, components[name]);
       });
     addToTheme(themes.colors);
+    addToTheme(themes.themes.palette1);
     // Overwrite
-    if (options && options.colors) addToTheme(options.colors);
-    if (options && options.themeName) {
-      store.dispatch('materiajs/setThemeByName', options.themeName);
+    if (options.theme) {
+      $materiajs.setTheme(themes.themes[options.theme]);
     }
     Vue.use(VueMq, {
       breakpoints: { // default breakpoints - customize this

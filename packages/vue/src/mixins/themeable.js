@@ -1,7 +1,4 @@
 import t from 'vue-types';
-import { createNamespacedHelpers } from 'vuex';
-import isEmpty from 'lodash/isEmpty';
-import theme from '../styles/themes';
 
 const colors = {
   PRIMARY: 'primary',
@@ -28,54 +25,13 @@ export {
   defaultAccentColor,
 };
 
-const { mapState } = createNamespacedHelpers('materiajs');
-
 export default {
   props: {
-    // :dark overrides global dark mode
-    dark: t.any,
     color: t.string.def('default'),
-    accentColor: t.string.def('primary'),
+    accentColor: t.string.def('accent-5'),
     backgroundGradient: t.array.def([]),
   },
   computed: {
-    ...mapState({
-      darkMode: 'darkMode',
-      stateTheme: 'theme',
-    }),
-    isAnyDark() {
-      if (this.dark !== undefined) {
-        return this.dark;
-      }
-      return this.darkMode;
-    },
-    theme() {
-      if (!this.stateTheme) {
-        return {
-          colors: {},
-        };
-      }
-      return this.stateTheme;
-    },
-    colorKey() {
-      return `${this.isAnyDark ? 'dark-' : ''}${this.color}`;
-    },
-    primaryColor() {
-      return this.theme.colors[`${this.isAnyDark ? 'dark-' : ''}primary`];
-    },
-    toggledColor() {
-      return this.theme && (this.theme.colors[this.colorKey] || this.theme.colors[this.color]);
-    },
-    background() {
-      if (isEmpty(this.backgroundGradient)) {
-        return this.toggledColor;
-      }
-      const gradients = this.backgroundGradient.map(color => this.theme.colors[(this.isAnyDark ? 'dark-' : '') + color]);
-      return `linear-gradient(${gradients.join(',')})`;
-    },
-    backgroundTextColor() {
-      return this.parseTextColor(this.background);
-    },
     getAccentStyle() {
       return {
         background: `var(--${this.accentColor})`,

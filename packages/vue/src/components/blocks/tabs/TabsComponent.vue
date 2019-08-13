@@ -12,13 +12,10 @@
 
 <script>
 import t from 'vue-types';
-import themeable, { defaultPrimaryColor } from '../../../mixins/themeable';
+import { defaultPrimaryColor } from '../../../mixins/themeable';
 
 export default {
   name: 'TabsComponent',
-  mixins: [
-    themeable,
-  ],
   props: {
     color: defaultPrimaryColor,
     value: t.number.def(0),
@@ -34,25 +31,23 @@ export default {
     let isDown = false;
     let startX;
     let scrollLeft;
-    let moved;
 
     slider.addEventListener('mousedown', (e) => {
-      moved = false;
       isDown = true;
       slider.classList.add('active');
       startX = e.pageX - slider.offsetLeft;
+      // eslint-disable-next-line
       scrollLeft = slider.scrollLeft;
     });
     slider.addEventListener('mouseleave', () => {
       isDown = false;
       slider.classList.remove('active');
     });
-    slider.addEventListener('mouseup', (e) => {
+    slider.addEventListener('mouseup', () => {
       isDown = false;
       slider.classList.remove('active');
     });
     slider.addEventListener('mousemove', (e) => {
-      moved = true;
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - slider.offsetLeft;

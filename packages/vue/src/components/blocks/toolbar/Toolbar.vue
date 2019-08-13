@@ -9,12 +9,11 @@
 
 <script>
 import t from 'vue-types';
-import { position, themeable } from '../../../mixins';
+import { position } from '../../../mixins';
 
 export default {
   name: 'toolbar',
   mixins: [
-    themeable,
     position,
   ],
   props: {

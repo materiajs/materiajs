@@ -2,13 +2,17 @@
   <div id="app">
     <mat-navigation-layout
       color="dark-primary"
-      :sidebar-overlay="true">
+      :sidebar-overlay="true"
+    >
       <mat-toolbar
         slot="header"
         position="sticky"
-        color="primary-light"
+        color="primary"
         :no-padding="true"
         top="0">
+        <mat-nav-link @click="showSidebar = !showSidebar">
+          <mat-fa icon="bars" />
+        </mat-nav-link>
         <mat-nav-link>
           <mat-padding>
             Materia JS
@@ -16,6 +20,28 @@
         </mat-nav-link>
         <mat-spacer />
       </mat-toolbar>
+      <mat-sidebar
+        v-model="showSidebar"
+        slot="nav"
+        :overlay="true"
+        color="accent"
+      >
+        <template slot-scope="{ overlay }">
+          <mat-toolbar >
+            MateriaJS
+          </mat-toolbar>
+          <mat-spacer />
+          <mat-sidebar-item
+            v-for="item in sidebarItems"
+            :active="item.value === sidebarSelected"
+            :key="item.value"
+            accent-color="primary-2"
+            @click="() => sidebarSelected = item.value"
+          >
+            {{ item.name }}
+          </mat-sidebar-item>
+        </template>
+      </mat-sidebar>
       <div class="main-wrapper">
         <div class="main-container">
           <TabWindow />
@@ -99,6 +125,7 @@ export default {
     messages: [],
     modal: false,
     showSidebar: true,
+    sidebarSelected: 'notes',
   }),
   methods: {
     onClickButton() {
@@ -111,6 +138,16 @@ export default {
         text: 'Saved!',
         id: new Date().getTime(),
       });
+    },
+  },
+  computed: {
+    sidebarItems() {
+      return [
+        { name: 'Notes', value: 'notes' },
+        { name: 'Bookmarks', value: 'bookmarks' },
+        { name: 'Todo', value: 'todo' },
+        { name: 'Messages', value: 'messages' },
+      ];
     },
   },
 };

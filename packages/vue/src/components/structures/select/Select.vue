@@ -54,7 +54,6 @@ import t from 'vue-types';
 import isEmpty from 'lodash/isEmpty';
 import isArray from 'lodash/isArray';
 import Fuse from 'fuse.js';
-import themeable from '../../../mixins/themeable';
 import MatInput from '../../blocks/input/Input.vue';
 import MatList from '../../blocks/list/List.vue';
 import MatCheckbox from '../../blocks/checkbox/Checkbox.vue';
@@ -63,9 +62,6 @@ import MatChipList from '../../composites/chip/ChipList.vue';
 
 export default {
   name: 'mat-select',
-  mixins: [
-    themeable,
-  ],
   props: {
     closeOnSelect: t.bool.def(false),
     fuseOptions: t.object,

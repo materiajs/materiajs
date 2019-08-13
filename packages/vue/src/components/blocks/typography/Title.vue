@@ -12,13 +12,9 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'Title',
-  mixins: [
-    themeable,
-  ],
   props: {
     value: t.string.def(''),
     size: t.oneOf(['xs', 'small', 'regular', 'large', 'xl']),

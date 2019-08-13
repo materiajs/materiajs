@@ -7,11 +7,9 @@
 </template>
 
 <script>
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'Toast',
-  mixins: [themeable],
 };
 </script>
 

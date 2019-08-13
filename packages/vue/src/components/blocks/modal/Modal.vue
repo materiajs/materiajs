@@ -24,13 +24,9 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'mat-modal',
-  mixins: [
-    themeable,
-  ],
   props: {
     size: t.string,
     value: t.bool.def(false),

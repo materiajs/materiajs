@@ -1,7 +1,7 @@
 <template>
   <div class="tab-window">
     <mat-toolbar
-      color="dark-primary"
+      color="primary-2"
       position="sticky"
       top="0"
     >

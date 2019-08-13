@@ -1,8 +1,8 @@
 <template>
   <div
-    class="mat-side-bar mat-scrollbar-hidden"
+    class="mat-sidebar mat-scrollbar-hidden"
     :class="{ 'is-mobile': isMobile, open: value }"
-    :style="sideBarStyle"
+    :style="getStyle"
   >
     <transition
       @beforeEnter="beforeEnter"
@@ -13,16 +13,16 @@
     >
       <div
         v-if="value"
-        class="mat-side-bar-inner"
+        class="mat-sidebar-inner"
       >
-        <div class="mat-side-bar-inner-block">
-          <slot/>
+        <div class="mat-sidebar-inner-block">
+          <slot :overlay="isOverlay" />
         </div>
       </div>
     </transition>
     <transition name="fade">
       <div
-        v-if="(overlay || isMobile) && value"
+        v-if="isOverlay && value"
         @click="close"
         class="close-box">
       </div>
@@ -33,17 +33,14 @@
 <script>
 import t from 'vue-types';
 import Velocity from 'velocity-animate';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'SideBar',
   props: {
+    color: t.string.def('default'),
     overlay: t.bool.def(false),
     value: t.bool.def(true),
   },
-  mixins: [
-    themeable,
-  ],
   data: () => ({
     mobileStyles: {
       beforeEnter: {
@@ -86,9 +83,11 @@ export default {
     },
     sideBarStyle() {
       return {
-        background: this.background,
-        color: this.backgroundTextColor,
+        ...this.getStyle,
       };
+    },
+    isOverlay() {
+      return (this.overlay || this.isMobile);
     },
   },
   methods: {
@@ -124,6 +123,7 @@ export default {
       });
     },
     close() {
+      console.log('clsing');
       this.$emit('input', !this.value);
     },
   },
@@ -131,7 +131,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .mat-side-bar {
+  .mat-sidebar {
     .close-box {
       position: fixed;
       width: 100%;
@@ -142,7 +142,6 @@ export default {
     }
     min-height: 100%;
     box-sizing: border-box;
-    box-shadow: $box-shadow-standard;
     &-inner {
       &-block {
         width: 300px;

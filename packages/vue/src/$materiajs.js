@@ -1,6 +1,10 @@
 import computeTextColor from './libraries/computeTextColor';
 
 export default {
+  setTheme(theme) {
+    Object.keys(theme)
+      .forEach(key => this.setThemeVariable(key, theme[key]))
+  },
   setThemeVariable(property, value) {
     let propertyName;
     if (property.slice(0, 2) !== '--') {
