@@ -123,7 +123,6 @@ export default {
       });
     },
     close() {
-      console.log('clsing');
       this.$emit('input', !this.value);
     },
   },

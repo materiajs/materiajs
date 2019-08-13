@@ -3,7 +3,7 @@ import computeTextColor from './libraries/computeTextColor';
 export default {
   setTheme(theme) {
     Object.keys(theme)
-      .forEach(key => this.setThemeVariable(key, theme[key]))
+      .forEach(key => this.setThemeVariable(key, theme[key]));
   },
   setThemeVariable(property, value) {
     let propertyName;
@@ -15,7 +15,7 @@ export default {
     document.documentElement.style
       .setProperty(propertyName, value);
     document.documentElement.style
-      .setProperty(`${propertyName}-text-color`, computeTextColor(value, true));
+      .setProperty(`${propertyName}-text`, computeTextColor(value, true));
   },
   computeTextColor,
 };

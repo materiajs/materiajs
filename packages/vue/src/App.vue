@@ -35,10 +35,11 @@
             v-for="item in sidebarItems"
             :active="item.value === sidebarSelected"
             :key="item.value"
-            accent-color="primary-2"
+            accent-color="primary-4"
+            hover-color="primary-1"
             @click="() => sidebarSelected = item.value"
           >
-            {{ item.name }}
+            <mat-fa :icon="item.icon" space="right" />{{ item.name }}
           </mat-sidebar-item>
         </template>
       </mat-sidebar>
@@ -143,10 +144,10 @@ export default {
   computed: {
     sidebarItems() {
       return [
-        { name: 'Notes', value: 'notes' },
-        { name: 'Bookmarks', value: 'bookmarks' },
-        { name: 'Todo', value: 'todo' },
-        { name: 'Messages', value: 'messages' },
+        { name: 'Notes', value: 'notes', icon: 'sticky-note' },
+        { name: 'Bookmarks', value: 'bookmarks', icon: 'bookmark' },
+        { name: 'Todo', value: 'todo', icon: 'tasks' },
+        { name: 'Messages', value: 'messages', icon: 'envelope' },
       ];
     },
   },

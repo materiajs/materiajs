@@ -35,13 +35,13 @@ export default {
     getAccentStyle() {
       return {
         background: `var(--${this.accentColor})`,
-        color: `var(--${this.accentColor}-text-color)`,
+        color: `var(--${this.accentColor}-text)`,
       };
     },
     getStyle() {
       return {
         background: `var(--${this.color})`,
-        color: `var(--${this.color}-text-color)`,
+        color: `var(--${this.color}-text)`,
       };
     },
   },
