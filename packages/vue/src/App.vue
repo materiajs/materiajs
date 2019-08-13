@@ -36,7 +36,7 @@
             :active="item.value === sidebarSelected"
             :key="item.value"
             accent-color="primary-4"
-            hover-color="primary-1"
+            hover-color="primary-2"
             @click="() => sidebarSelected = item.value"
           >
             <mat-fa :icon="item.icon" space="right" />{{ item.name }}
