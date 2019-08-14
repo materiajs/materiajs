@@ -98,7 +98,10 @@
             v-model="messages"
           />
           <mat-modal
-            size="large" v-model="modal">
+            color="white"
+            size="large"
+            v-model="modal"
+          >
               <mat-toolbar
                 position="sticky"
                 top="0"

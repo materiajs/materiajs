@@ -1,5 +1,8 @@
 <template>
-  <div class="mat-modal" :class="{ open: value }">
+  <div
+    class="mat-modal"
+    :class="{ open: value }"
+  >
     <transition name="fade">
       <div
         v-if="value"
@@ -13,8 +16,9 @@
       name="rise">
       <div
         v-if="value"
-        class="mat-modal-content mat-wrapper-element mat-box-shadow-heavy"
+        class="mat-modal-content mat-box-shadow-heavy"
         :class="[size]"
+        :style="getStyle"
       >
         <slot />
       </div>
