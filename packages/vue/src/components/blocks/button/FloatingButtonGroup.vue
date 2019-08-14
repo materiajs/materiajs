@@ -30,11 +30,11 @@ export default {
 
 <style scoped lang="scss">
   .mat-floating-button-group {
-    position: absolute;
-    right: 15px;
     bottom: 15px;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    right: 15px;
     .mat-button {
       margin-bottom: 5px;
     }

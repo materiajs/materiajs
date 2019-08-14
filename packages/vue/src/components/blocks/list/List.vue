@@ -18,14 +18,11 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
 
 export default {
   name: 'List',
-  mixins: [
-    themeable,
-  ],
   props: {
+    color: t.string.def('white'),
     items: t.array,
     bordered: t.bool.def(false),
   },

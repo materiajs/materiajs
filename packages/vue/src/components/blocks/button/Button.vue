@@ -12,15 +12,9 @@
 
 <script>
 import t from 'vue-types';
-import themeable from '../../../mixins/themeable';
-import roundable from '../../../mixins/roundable';
 
 export default {
   name: 'mat-button',
-  mixins: [
-    themeable,
-    roundable,
-  ],
   props: {
     space: t.string.def(''),
   },
@@ -30,18 +24,17 @@ export default {
 <style scoped lang="scss">
   @import "../../../styles/main";
   .mat-button {
-    background: var(--primary);
-    color: var(--primary-text-color);
     align-items: center;
+    background: var(--primary);
     border-radius: $border-radius-light;
     border: none;
     box-shadow: $box-shadow-light;
+    color: var(--primary-text-color);
     cursor: pointer;
     display: inline-flex;
     font-size: 14px;
-    height: 35px;
     outline: none;
-    padding: 0 10px;
+    padding: 15px;
     transform: scale(1);
     transition: all 0.15s cubic-bezier(.41,.15,.55,1.19);
     white-space: nowrap;

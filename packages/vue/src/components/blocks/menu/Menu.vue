@@ -37,6 +37,7 @@ export default {
     mediaQuery,
   ],
   props: {
+    color: t.string.def('white'),
     position: t.oneOf(['bottom-left', 'bottom-right']).def('bottom-left'),
     value: t.bool.def(false),
   },

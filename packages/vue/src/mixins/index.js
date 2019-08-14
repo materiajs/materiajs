@@ -1,5 +1,6 @@
 import Themeable from './themeable';
 import MediaQuery from './media-query';
+import roundable from './roundable';
 
 export { default as layout } from './layout';
 export { default as position } from './position';
@@ -10,4 +11,5 @@ export { default as mediaQuery } from './media-query';
 export const registerMixins = (Vue) => {
   Vue.mixin(Themeable);
   Vue.mixin(MediaQuery);
+  Vue.mixin(roundable);
 };

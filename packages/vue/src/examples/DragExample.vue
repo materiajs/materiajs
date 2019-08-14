@@ -1,5 +1,5 @@
 <template>
-  <mat-card>
+  <mat-card v-mat-round="5">
     <mat-draggable v-model="items">
       <div
         v-for="item in items"
@@ -23,10 +23,10 @@ export default {
   data: () => ({
     items: [
       { name: 'Andy', id: 1, color: 'primary' },
-      { name: 'Aoife', id: 2, color: 'dark-primary' },
-      { name: 'Dog', id: 3, color: 'dark-accent' },
-      { name: 'Cat', id: 3, color: 'primary-light' },
-      { name: 'Alligator', id: 3, color: 'accent' },
+      { name: 'Aoife', id: 2, color: 'accent' },
+      { name: 'Dog', id: 3, color: 'accent-5' },
+      { name: 'Cat', id: 3, color: 'primary-5' },
+      { name: 'Alligator', id: 3, color: 'accent-7' },
     ],
   }),
 };

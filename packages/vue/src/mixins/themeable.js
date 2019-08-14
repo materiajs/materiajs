@@ -39,6 +39,9 @@ export default {
       };
     },
     getStyle() {
+      if (!this.color) {
+        return {};
+      }
       return {
         background: `var(--${this.color})`,
         color: `var(--${this.color}-text)`,

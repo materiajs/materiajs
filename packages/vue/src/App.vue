@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <mat-navigation-layout
-      color="dark-primary"
+      color="accent"
       :sidebar-overlay="true"
     >
       <mat-toolbar
@@ -46,15 +46,23 @@
       <div class="main-wrapper">
         <div class="main-container">
           <TabWindow />
+          <mat-spacer />
+
           <DragExample/>
+          <mat-spacer />
+
           <SelectExample/>
+          <mat-spacer />
+
           <InputExample/>
+          <mat-spacer />
+
           <div class="button-example">
             <mat-floating-button-group>
-              <mat-button round="50">
+              <mat-button color="white" round="50" v-mat-padding="20">
                 <mat-fa icon="plus" />
               </mat-button>
-              <mat-button color="primary" round="50">
+              <mat-button color="primary-5" round="50" v-mat-padding="20">
                 <mat-fa icon="filter" />
               </mat-button>
             </mat-floating-button-group>
@@ -63,8 +71,11 @@
           <mat-spacer />
           <mat-button-group>
             <mat-button
-              color="danger"
-              @click="onToast">Toast!</mat-button>
+              color="danger-3"
+              @click="onToast"
+              v-mat-round="5"
+              v-mat-padding="'15px 30px'"
+            >Toast!</mat-button>
             <mat-button
               color="warn"
               @click="onClickButton">Modal</mat-button>
@@ -73,7 +84,9 @@
               @click="onClickButton">Push</mat-button>
           </mat-button-group>
           <mat-spacer />
-          <mat-list :bordered="true">
+          <mat-list
+            v-mat-round="5"
+            :bordered="true">
             <mat-list-item>
               Andy
             </mat-list-item>

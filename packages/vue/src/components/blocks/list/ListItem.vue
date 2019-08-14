@@ -15,6 +15,7 @@ export default {
   name: 'ListItem',
   props: {
     active: t.bool.def(false),
+    color: t.string.def(''),
   },
 };
 </script>

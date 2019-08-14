@@ -7,6 +7,7 @@
     >
       <mat-tabs
         v-model="tab"
+        accent-color="primary-5"
       >
         <mat-tab :tab="0">Bookmarks</mat-tab>
         <mat-tab :tab="1">Notes</mat-tab>

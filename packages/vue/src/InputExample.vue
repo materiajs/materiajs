@@ -1,6 +1,5 @@
 <template>
   <div class="input-example">
-    <mat-spacer></mat-spacer>
     <mat-form @submit="onSubmit">
       <mat-input
         v-model="value"
@@ -15,7 +14,7 @@
 export default {
   name: 'InputExample',
   data: () => ({
-    value: '',
+    value: 'Enter Text',
     password: '',
   }),
   methods: {

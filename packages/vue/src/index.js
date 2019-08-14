@@ -1,11 +1,11 @@
 import VueMq from 'vue-mq';
 import $materiajs from './$materiajs';
-import roundable from './directives/roundable';
 import * as blocks from './components/blocks/index';
 import * as composites from './components/composites/index';
 import * as structures from './components/structures/index';
-import themes from './styles/themes';
+import themes, { palette } from './styles/themes';
 import { registerMixins } from './mixins';
+import registerDirectives from './directives';
 
 const components = {
   ...blocks,
@@ -13,24 +13,17 @@ const components = {
   ...structures,
 };
 
-const addToTheme = (object) => {
-  Object.keys(object)
-    .forEach((key) => {
-      $materiajs.setThemeVariable(key, object[key]);
-    });
-};
-
 export default {
   install: (Vue, { options }) => {
     Vue.prototype.$materiajs = $materiajs;
-    Vue.directive('mat-round', roundable);
     registerMixins(Vue);
+    registerDirectives(Vue);
     Object.keys(components)
       .forEach((name) => {
         Vue.component(name, components[name]);
       });
-    addToTheme(themes.colors);
-    addToTheme(themes.themes.palette1);
+    $materiajs.setTheme(themes.colors);
+    $materiajs.setTheme(themes.themes.palette1);
     // Overwrite
     if (options.theme) {
       $materiajs.setTheme(themes.themes[options.theme]);
@@ -46,4 +39,5 @@ export default {
       defaultBreakpoint: 'lg', // customize this for SSR
     });
   },
+  palette,
 };

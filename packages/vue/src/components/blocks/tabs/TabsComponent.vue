@@ -12,12 +12,10 @@
 
 <script>
 import t from 'vue-types';
-import { defaultPrimaryColor } from '../../../mixins/themeable';
 
 export default {
   name: 'TabsComponent',
   props: {
-    color: defaultPrimaryColor,
     value: t.number.def(0),
   },
   data: () => ({
