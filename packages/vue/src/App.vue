@@ -57,6 +57,8 @@
           <InputExample/>
           <mat-spacer />
 
+          <CheckboxExample/>
+
           <div class="button-example">
             <mat-floating-button-group>
               <mat-button color="white" round="50" v-mat-padding="20">
@@ -132,10 +134,12 @@ import TabWindow from './examples/TabWindow.vue';
 import DragExample from './examples/DragExample.vue';
 import SelectExample from './examples/SelectExample.vue';
 import InputExample from './InputExample.vue';
+import CheckboxExample from "./examples/CheckboxExample";
 
 export default {
   name: 'app',
   components: {
+    CheckboxExample,
     InputExample, SelectExample, DragExample, TabWindow,
   },
   data: () => ({

@@ -46,7 +46,6 @@ export default {
     left: 0;
     bottom: 0;
     transition: all .5s cubic-bezier(.5,.33,.37,1.11);
-
     z-index: 15;
     overflow: scroll;
     -ms-overflow-style: none;  // IE 10+

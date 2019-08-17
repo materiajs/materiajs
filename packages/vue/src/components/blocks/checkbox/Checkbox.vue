@@ -3,12 +3,14 @@
     @click.stop="onClickCheckbox"
     class="mat-checkbox">
     <div
-      :class="{ checked: value }"
-      class="mat-checkbox-box mat-frame mat-flex-center">
-      <i class="fas fa-check mat-absolute-center"></i>
+      :class="{ checked: value, [type]: true }"
+      class="mat-checkbox-box mat-flex-center">
+      <i
+        class="mat-absolute-center"
+        :class="[getPrefix, getIcon]"
+      />
     </div>
     <div class="mat-checkbox-label">
-      {{ text }}
       <slot />
     </div>
   </div>
@@ -20,9 +22,23 @@ import t from 'vue-types';
 export default {
   name: 'mat-checkbox',
   props: {
-    text: t.string,
+    type: t.string.def('default'),
     value: t.bool.def(false),
     size: t.oneOf(['regular', 'small', 'large']),
+  },
+  computed: {
+    getIcon() {
+      if (this.type === 'star') {
+        return 'fa-star';
+      }
+      return 'fa-check';
+    },
+    getPrefix() {
+      if (this.type === 'star') {
+        return this.value ? 'fas' : 'far';
+      }
+      return 'fas';
+    },
   },
   methods: {
     onClickCheckbox() {
@@ -40,7 +56,9 @@ export default {
     align-items: center;
     cursor: pointer;
     display: inline-flex;
+    align-items: center;
     &-box {
+      position: relative;
       border-radius: 5px;
       color: white;
       font-size: 14px;
@@ -49,18 +67,29 @@ export default {
       min-height: $frame-size;
       min-width: $frame-size;
       padding: 0;
-      transition: all 0.1s ease-in-out;
-      i {
-        opacity: 0;
-        transition: all 0.1s ease-in-out;
-        font-size: 12px;
-      }
 
-      &.checked {
-        background: $primary-color;
-        border: 1px solid $primary-color;
+      &.default {
+        border: 1px solid white;
         i {
-          opacity: 1;
+          opacity: 0;
+          transition: all 0.1s ease-in-out;
+          font-size: 12px;
+        }
+        &.checked {
+          background: $primary-color;
+          border: 1px solid $primary-color;
+          i {
+            opacity: 1;
+          }
+        }
+      }
+      &.star {
+        transition: all .6s cubic-bezier(.64,-0.34,.48,1.11);
+        font-size: 18px;
+        width: 22px;
+        &.checked {
+          transform: rotate(360deg);
+          color: #ffe500;
         }
       }
     }
