@@ -25,11 +25,11 @@ export default {
   @import "../../../styles/main";
   .mat-button {
     align-items: center;
-    background: var(--primary);
+    background: initial;
     border-radius: $border-radius-light;
     border: none;
     box-shadow: $box-shadow-light;
-    color: var(--primary-text-color);
+    color: initial;
     cursor: pointer;
     display: inline-flex;
     font-size: 14px;
