@@ -60,7 +60,6 @@ export default {
     &-box {
       position: relative;
       border-radius: 5px;
-      color: white;
       font-size: 14px;
       display: inline-block;
       margin-right: 10px;
@@ -69,15 +68,15 @@ export default {
       padding: 0;
 
       &.default {
-        border: 1px solid white;
+        border: 1px solid var(--primary);
+        color: white;
         i {
           opacity: 0;
           transition: all 0.1s ease-in-out;
           font-size: 12px;
         }
         &.checked {
-          background: $primary-color;
-          border: 1px solid $primary-color;
+          background: var(--primary);
           i {
             opacity: 1;
           }

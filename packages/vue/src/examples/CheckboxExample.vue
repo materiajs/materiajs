@@ -1,5 +1,6 @@
 <template>
-  <div class="checbox-example">
+  <mat-container
+    class="checbox-example">
     <mat-checkbox v-model="simple">
       Checkbox
     </mat-checkbox>
@@ -10,7 +11,7 @@
     >
       Starred
     </mat-checkbox>
-  </div>
+  </mat-container>
 </template>
 <script>
 export default {
