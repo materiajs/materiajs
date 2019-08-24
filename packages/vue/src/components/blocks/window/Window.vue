@@ -1,6 +1,6 @@
 <template>
   <div ref="slider" class="swipe">
-    <div ref="swipe-wrap" class="swipe-wrap clearfix">
+    <div ref="swipe-wrap" class="swipe-wrap">
       <slot></slot>
     </div>
   </div>
@@ -9,6 +9,7 @@
 <script>
 import t from 'vue-types';
 import Swipe from 'swipejs';
+import { eventBus } from "@/libraries/eventBus";
 
 export default {
   name: 'Window',
@@ -35,11 +36,17 @@ export default {
       transitionEnd: (index, elem) => {
       }
     });
+    eventBus.$on('sidebar-opened', this.resetSwipe);
+    eventBus.$on('sidebar-closed', this.resetSwipe);
   },
   methods: {
+    resetSwipe() {
+      this.swipe.setup();
+    },
     onChange(value) {
       if (this.swipe) {
         this.swipe.slide(value, 400);
+        this.resetSwipe();
       }
     },
   },
@@ -58,21 +65,12 @@ export default {
     position: relative;
   }
   .swipe-wrap {
-    /*overflow: hidden;*/
-    /*position: relative;*/
+    overflow: hidden;
+    position: relative;
   }
   .swipe-wrap > div {
     float: left;
     width: 100%;
     position: relative;
   }
-  .clearfix:before,
-  .clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    overflow: hidden;
-  }
-  .clearfix:after { clear: both; }
-  .clearfix { zoom: 1; } /* IE < 8 */
 </style>

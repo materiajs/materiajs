@@ -191,8 +191,6 @@ export default {
       min-width: 100%;
     }
     &-container {
-      margin: auto;
-      max-width: 800px;
     }
   }
   #default-body {

@@ -10,6 +10,7 @@
       @beforeLeave="beforeLeave"
       @enter="enter"
       @leave="leave"
+      @afterLeave="afterLeave"
     >
       <div
         v-if="value"
@@ -33,6 +34,7 @@
 <script>
 import t from 'vue-types';
 import Velocity from 'velocity-animate';
+import { eventBus } from '@/libraries/eventBus';
 
 export default {
   name: 'SideBar',
@@ -107,6 +109,7 @@ export default {
     },
     afterEnter(el) {
       el.style.cssText = ''; // eslint-disable-line
+      eventBus.$emit('sidebar-opened');
     },
     beforeLeave(el) {
       const styles = this.styles.beforeLeave;
@@ -121,6 +124,9 @@ export default {
         duration: 400,
         easing: 'easeInOutQuart',
       });
+    },
+    afterLeave() {
+      eventBus.$emit('sidebar-closed');
     },
     close() {
       this.$emit('input', !this.value);
