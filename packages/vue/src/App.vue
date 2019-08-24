@@ -153,7 +153,7 @@ export default {
     tab: 0,
     messages: [],
     modal: false,
-    showSidebar: true,
+    showSidebar: false,
     sidebarSelected: 'notes',
   }),
   methods: {
