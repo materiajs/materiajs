@@ -14,8 +14,6 @@ export { default as MatContainer } from './container/Container.vue';
 export { default as MatMargin } from './container/MarginComponent.vue';
 export { default as MatPadding } from './container/PaddingComponent.vue';
 
-// Drag
-export { default as MatDraggable } from './drag/Draggable.vue';
 
 // Layout
 export { default as MatDivider } from './layout/Divider.vue';

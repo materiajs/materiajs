@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="mat-window"
-    :style="{ height: minHeight }"
-    :class="{ animating }"
-  >
-    <div ref="slider" class="swipe">
-      <div class="swipe-wrap">
-        <slot></slot>
-      </div>
+  <div ref="slider" class="swipe">
+    <div ref="swipe-wrap" class="swipe-wrap clearfix">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -19,8 +13,6 @@ import Swipe from 'swipejs';
 export default {
   name: 'Window',
   data: () => ({
-    minHeight: undefined,
-    animating: false,
     swipe: null,
   }),
   props: {
@@ -33,37 +25,27 @@ export default {
       // speed: 400,
       // auto: 3000,
       draggable: this.draggable,
-      continuous: true,
+      continuous: false,
       disableScroll: false,
       stopPropagation: true,
       callback: (index, elem, dir) => {
         this.$emit('input', index);
+        this.onChange(index);
       },
       transitionEnd: (index, elem) => {
       }
     });
   },
+  methods: {
+    onChange(value) {
+      if (this.swipe) {
+        this.swipe.slide(value, 400);
+      }
+    },
+  },
   watch: {
     value: {
-      handler(value) {
-        if (this.swipe) {
-          this.swipe.slide(value, 400);
-        }
-        this.animating = true;
-        if (this.$el) {
-          this.minHeight = `${this.$el.offsetHeight}px`;
-        }
-        this.$nextTick(() => {
-          const match = this.$children[this.value];
-          if (match) {
-            this.minHeight = `${match.$el.offsetHeight}px`;
-          }
-        });
-        setTimeout(() => {
-          this.animating = false;
-          // this.minHeight = undefined;
-        }, 400);
-      },
+      handler: 'onChange',
       immediate: true,
     },
   },
@@ -71,26 +53,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .mat-window {
-    transition: all 0.2s ease;
-    overflow: hidden;
-    &.animating {
-
-    }
-  }
   .swipe {
     overflow: hidden;
-    visibility: hidden;
     position: relative;
   }
   .swipe-wrap {
-    overflow: hidden;
-    position: relative;
+    /*overflow: hidden;*/
+    /*position: relative;*/
   }
   .swipe-wrap > div {
     float: left;
     width: 100%;
     position: relative;
+  }
+  .clearfix:before,
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
     overflow: hidden;
   }
+  .clearfix:after { clear: both; }
+  .clearfix { zoom: 1; } /* IE < 8 */
 </style>

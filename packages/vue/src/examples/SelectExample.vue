@@ -4,14 +4,14 @@
       color="primary-5"
       @click="open = true">
       Menu
+      <mat-menu v-model="open">
+        <mat-list>
+          <mat-list-item v-for="item in items">
+            {{ item }}
+          </mat-list-item>
+        </mat-list>
+      </mat-menu>
     </mat-button>
-    <mat-menu v-model="open">
-      <mat-list>
-        <mat-list-item v-for="item in items">
-          {{ item }}
-        </mat-list-item>
-      </mat-list>
-    </mat-menu>
   </div>
 </template>
 <script>
@@ -23,3 +23,9 @@ export default {
   }),
 };
 </script>
+
+<style scoped lang="scss">
+  .select-example {
+    padding: 15px;
+  }
+</style>

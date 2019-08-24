@@ -12,6 +12,7 @@
 
 <script>
 import t from 'vue-types';
+import Velocity from 'velocity-animate';
 
 export default {
   name: 'TabsComponent',
@@ -52,7 +53,7 @@ export default {
   watch: {
     value(value) {
       const el = document.getElementsByClassName('mat-tab')[value];
-      el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     },
   },
 };

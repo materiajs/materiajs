@@ -73,6 +73,12 @@ export default {
         beforeLeave: { 'transform-origin': 'top left' },
         leave: { opacity: [0, 1], scale: 0.2 },
       }),
+      'explode-left': () => ({
+        beforeEnter: { 'transform-origin': 'top right' },
+        enter: { opacity: 1, scale: [1, 0.2] },
+        beforeLeave: { 'transform-origin': 'top right' },
+        leave: { opacity: [0, 1], scale: 0.2 },
+      }),
     },
   }),
   methods: {

@@ -7,12 +7,14 @@
     <header>
       <slot name="header" />
     </header>
-    <nav>
-      <slot name="nav" />
-    </nav>
-    <main class="mat-scrollbar-hidden">
-      <slot />
-    </main>
+    <section>
+      <nav>
+        <slot name="nav" />
+      </nav>
+      <main class="mat-scrollbar-hidden">
+        <slot />
+      </main>
+    </section>
     <footer>
       <slot name="footer" />
     </footer>
@@ -37,21 +39,22 @@ export default {
     grid-template-rows: min-content 1fr min-content;
     height: 100vh;
     width: 100vw;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     header {
       grid-area: header;
       z-index: 10;
     }
-    nav {
-      grid-area: nav;
-      z-index: 5;
-    }
-    main {
-      grid-area: main;
-    }
-    @media screen and (max-width: 768px) {
+    section {
+      display: flex;
+      height: 100%;
+      nav {
+        grid-area: nav;
+        z-index: 5;
+      }
       main {
-        grid-column-start: 1;
+        grid-area: main;
+        flex: 1;
       }
     }
     footer {

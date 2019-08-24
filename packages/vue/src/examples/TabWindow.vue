@@ -6,7 +6,6 @@
   >
     <mat-toolbar
       color="primary-2"
-      position="sticky"
       top="0"
       v-mat-round="'5px 5px 0 0'"
     >
@@ -21,46 +20,48 @@
         <mat-tab :tab="4">AA</mat-tab>
       </mat-tabs>
     </mat-toolbar>
-      <mat-window
-        v-mat-round="'0 0 5px 5px'"
-        v-model="tab"
-        :draggable="false"
-      >
-        <mat-window-item>
-          <div v-mat-padding="15">
-            <div>Heya</div>
-            <mat-spacer />
-            <div>Heya</div>
-            <mat-spacer />
-            <div>Heya</div>
-            <mat-spacer />
-            <div>Heya</div>
-          </div>
-        </mat-window-item>
-        <mat-container>
-          <div v-mat-padding="15">
-            <div>Heya</div>
-            <mat-spacer />
-            <div>Heya</div>
-            <mat-spacer />
-          </div>
-        </mat-container>
-        <mat-container>
-          <div v-mat-padding="15">
-            Heya
-          </div>
-        </mat-container>
-        <mat-container>
-          <div v-mat-padding="15">
-            Heya
-          </div>
-        </mat-container>
-        <mat-container>
-          <div v-mat-padding="15">
-            Heya
-          </div>
-        </mat-container>
-      </mat-window>
+    <mat-window
+      v-mat-round="'0 0 5px 5px'"
+      v-model="tab"
+      :draggable="true"
+    >
+      <mat-window-item>
+        <div v-mat-padding="15">
+          <div>Heya</div>
+          <mat-spacer />
+          <div>Heya</div>
+          <mat-spacer />
+          <div>Heya</div>
+          <mat-spacer />
+          <div>Heya</div>
+        </div>
+      </mat-window-item>
+      <mat-window-item>
+        <div v-mat-padding="15">
+          <div>Heya</div>
+          <mat-spacer />
+          <div>Heya</div>
+        </div>
+      </mat-window-item>
+      <mat-window-item>
+        <div v-mat-padding="15">
+          <div>Heya</div>
+          <mat-spacer />
+          <div>Heya</div>
+          <mat-spacer />
+        </div>
+      </mat-window-item>
+      <mat-window-item>
+        <div v-mat-padding="15">
+          Heya
+        </div>
+      </mat-window-item>
+      <mat-window-item>
+        <div v-mat-padding="15">
+          Heya
+        </div>
+      </mat-window-item>
+    </mat-window>
   </mat-container>
 </template>
 <script>

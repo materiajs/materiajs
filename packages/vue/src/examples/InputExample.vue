@@ -24,3 +24,8 @@ export default {
   },
 };
 </script>
+<style>
+  .input-example {
+    padding: 15px;
+  }
+</style>

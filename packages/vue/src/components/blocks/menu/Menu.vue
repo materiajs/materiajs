@@ -1,5 +1,8 @@
 <template>
-  <div class="mat-menu-wrapper">
+  <div
+    class="mat-menu-wrapper"
+    :style="{ top: `${top}px`, left: `${left}px`}"
+  >
     <transition name="fade">
       <div
         v-if="isMobile && value"
@@ -10,7 +13,9 @@
       <div
         v-if="value"
         :class="[position, size]"
-        class="mat-menu">
+        class="mat-menu"
+        ref="menu-main"
+      >
         <div
           :style="getStyle"
           v-on-clickaway="onClickOutside"
@@ -31,6 +36,10 @@ import mediaQuery from '../../../mixins/media-query';
 
 export default {
   name: 'mat-menu',
+  data: () => ({
+    top: 0,
+    left: 0,
+  }),
   mixins: [
     clickaway,
     sizeable,
@@ -42,16 +51,35 @@ export default {
     value: t.bool.def(false),
   },
   computed: {
+    bottomLeft() {
+      return this.position === 'bottom-left';
+    },
     getTransitionName() {
       if (this.isMobile) {
         return 'slide-up-down';
       }
-      return 'explode';
+      return this.bottomLeft ? 'explode-left' : 'explode';
     },
   },
+  mounted() {
+    if (this.$el && this.$el.parentNode) {
+      this.$el.parentNode.addEventListener('click', this.onClickParent, false);
+      this.$el.parentNode.removeChild(this.$el);
+      document.getElementById('app').appendChild(this.$el);
+    }
+  },
+
   methods: {
     onClickOutside() {
       this.$emit('input', false);
+    },
+    onClickParent(e) {
+      this.top = e.pageY + 15;
+      if (this.position === 'bottom-left') {
+        this.left = e.pageX - this.$refs['menu-main'].clientWidth + 15;
+      } else {
+        this.left = e.pageX;
+      }
     },
   },
 };
@@ -60,10 +88,10 @@ export default {
 <style scoped lang="scss">
   @import "../../../styles/main";
   .mat-menu-wrapper {
-    position: relative;
+    position: fixed;
     .overlay {
       position: fixed;
-      height: 50%;
+      height: 100%;
       width: 100%;
       background: rgba(0,0,0,0.3);
       top: 0;
@@ -94,12 +122,6 @@ export default {
     }
     &.large {
       min-width: 480px;
-    }
-    /deep/ .mat-toolbar, /deep/ .mat-banner-layout-banner {
-      &:first-child {
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
     }
   }
   @media screen and (max-width: 768px) {

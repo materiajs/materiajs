@@ -10,11 +10,10 @@ import t from 'vue-types';
 export default {
   name: 'WindowItem',
   props: {
-    value: t.number,
+    selected: t.bool,
   },
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
 </style>

@@ -3,9 +3,10 @@
     <mat-navigation-layout
       color="accent"
       gradient-color="accent-2"
-      :sidebar-overlay="true"
+      :sidebar-overlay="isMobile"
     >
       <mat-toolbar
+        :shadow="true"
         slot="header"
         position="sticky"
         color="primary"
@@ -24,13 +25,9 @@
       <mat-sidebar
         v-model="showSidebar"
         slot="nav"
-        :overlay="true"
         color="accent"
       >
         <template slot-scope="{ overlay }">
-          <mat-toolbar gradient-color="primary-2" >
-            MateriaJS
-          </mat-toolbar>
           <mat-spacer />
           <mat-sidebar-item
             v-for="item in sidebarItems"
@@ -46,36 +43,26 @@
       </mat-sidebar>
       <div class="main-wrapper">
         <div class="main-container">
-          <mat-window>
-            <mat-container>
-              <TabWindow />
-              <mat-spacer />
-
-              <DragExample/>
-              <mat-spacer />
-
-              <SelectExample/>
-              <mat-spacer />
-
-              <InputExample/>
-              <mat-spacer />
-              <CheckboxExample/>
-            </mat-container>
-            <mat-container>
-              <TabWindow />
-              <mat-spacer />
-
-              <DragExample/>
-              <mat-spacer />
-
-              <SelectExample/>
-              <mat-spacer />
-
-              <InputExample/>
-              <mat-spacer />
-              <CheckboxExample/>
-            </mat-container>
+          <mat-tabs
+            v-model="tab"
+            accent-color="primary-5"
+          >
+            <mat-tab :tab="0">Select</mat-tab>
+            <mat-tab :tab="1">Input</mat-tab>
+            <mat-tab :tab="2">Checkbox</mat-tab>
+          </mat-tabs>
+          <mat-window
+            v-mat-round="'0 0 5px 5px'"
+            v-model="tab"
+            :draggable="true"
+          >
+            <mat-window-item><SelectExample/></mat-window-item>
+            <mat-window-item><InputExample/></mat-window-item>
+            <mat-window-item><CheckboxExample/></mat-window-item>
           </mat-window>
+          <SelectExample/>
+          <mat-spacer />
+          <TabWindow />
           <div class="button-example">
             <mat-floating-button-group>
               <mat-button @click="onClickButton" color="white" round="50" v-mat-padding="20">
@@ -150,10 +137,9 @@
 
 <script>
 import TabWindow from './examples/TabWindow.vue';
-import DragExample from './examples/DragExample.vue';
 import SelectExample from './examples/SelectExample.vue';
-import InputExample from './InputExample.vue';
-import CheckboxExample from './examples/CheckboxExample';
+import InputExample from './examples/InputExample.vue';
+import CheckboxExample from './examples/CheckboxExample.vue';
 
 export default {
   name: 'app',
@@ -161,10 +147,10 @@ export default {
     CheckboxExample,
     InputExample,
     SelectExample,
-    DragExample,
     TabWindow,
   },
   data: () => ({
+    tab: 0,
     messages: [],
     modal: false,
     showSidebar: true,
@@ -207,7 +193,6 @@ export default {
     &-container {
       margin: auto;
       max-width: 800px;
-      padding: 15px;
     }
   }
   #default-body {
