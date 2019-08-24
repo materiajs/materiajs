@@ -4,7 +4,7 @@
       color="primary-5"
       @click="open = true">
       Menu
-      <mat-menu v-model="open">
+      <mat-menu v-model="open" position="bottom-right">
         <mat-list>
           <mat-list-item v-for="item in items">
             {{ item }}

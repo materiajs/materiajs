@@ -75,10 +75,10 @@ export default {
     },
     onClickParent(e) {
       this.top = e.pageY + 15;
-      if (this.position === 'bottom-left') {
-        this.left = e.pageX - this.$refs['menu-main'].clientWidth + 15;
+      if (this.bottomLeft) {
+        this.left = Math.max(0, e.pageX - this.$refs['menu-main'].clientWidth + 15);
       } else {
-        this.left = e.pageX;
+        this.left = Math.max(0, e.pageX + this.$refs['menu-main'].clientWidth - 15);
       }
     },
   },
