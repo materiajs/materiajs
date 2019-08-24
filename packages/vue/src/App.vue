@@ -2,6 +2,7 @@
   <div id="app">
     <mat-navigation-layout
       color="accent"
+      gradient-color="accent-2"
       :sidebar-overlay="true"
     >
       <mat-toolbar
@@ -27,7 +28,7 @@
         color="accent"
       >
         <template slot-scope="{ overlay }">
-          <mat-toolbar >
+          <mat-toolbar gradient-color="primary-2" >
             MateriaJS
           </mat-toolbar>
           <mat-spacer />
@@ -45,23 +46,39 @@
       </mat-sidebar>
       <div class="main-wrapper">
         <div class="main-container">
-          <TabWindow />
-          <mat-spacer />
+          <mat-window>
+            <mat-container>
+              <TabWindow />
+              <mat-spacer />
 
-          <DragExample/>
-          <mat-spacer />
+              <DragExample/>
+              <mat-spacer />
 
-          <SelectExample/>
-          <mat-spacer />
+              <SelectExample/>
+              <mat-spacer />
 
-          <InputExample/>
-          <mat-spacer />
+              <InputExample/>
+              <mat-spacer />
+              <CheckboxExample/>
+            </mat-container>
+            <mat-container>
+              <TabWindow />
+              <mat-spacer />
 
-          <CheckboxExample/>
+              <DragExample/>
+              <mat-spacer />
 
+              <SelectExample/>
+              <mat-spacer />
+
+              <InputExample/>
+              <mat-spacer />
+              <CheckboxExample/>
+            </mat-container>
+          </mat-window>
           <div class="button-example">
             <mat-floating-button-group>
-              <mat-button color="white" round="50" v-mat-padding="20">
+              <mat-button @click="onClickButton" color="white" round="50" v-mat-padding="20">
                 <mat-fa icon="plus" />
               </mat-button>
               <mat-button color="primary-5" round="50" v-mat-padding="20">
@@ -74,6 +91,8 @@
           <mat-button-group>
             <mat-button
               color="danger-3"
+              gradient-color="danger-5"
+              gradient="to right"
               @click="onToast"
               v-mat-round="5"
               v-mat-padding="'15px 30px'"
@@ -134,13 +153,16 @@ import TabWindow from './examples/TabWindow.vue';
 import DragExample from './examples/DragExample.vue';
 import SelectExample from './examples/SelectExample.vue';
 import InputExample from './InputExample.vue';
-import CheckboxExample from "./examples/CheckboxExample";
+import CheckboxExample from './examples/CheckboxExample';
 
 export default {
   name: 'app',
   components: {
     CheckboxExample,
-    InputExample, SelectExample, DragExample, TabWindow,
+    InputExample,
+    SelectExample,
+    DragExample,
+    TabWindow,
   },
   data: () => ({
     messages: [],
@@ -150,6 +172,7 @@ export default {
   }),
   methods: {
     onClickButton() {
+      console.log('hello');
       this.modal = true;
     },
     onToast() {
@@ -175,7 +198,6 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "~highlight.js/styles/github.css";
   .main {
     width: 100%;
     &-wrapper {

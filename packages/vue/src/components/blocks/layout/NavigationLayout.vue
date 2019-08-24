@@ -1,8 +1,8 @@
-<template>
+<template functional>
   <div
     class="mat-navigation-layout"
-    :class="{ 'sidebar-overlay': sidebarOverlay }"
-    :style="getStyle"
+    :class="{ 'sidebar-overlay': props.sidebarOverlay }"
+    v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
   >
     <header>
       <slot name="header" />

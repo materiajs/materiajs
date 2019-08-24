@@ -1,21 +1,21 @@
-<template>
+<template functional>
   <button
-    :style="getStyle"
-    @click="$emit('click')"
-    :class="[`space-${space}`]"
+    v-on="listeners"
+    :class="[`space-${space} i`]"
     class="mat-button"
     v-mat-round="round"
+    v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
   >
     <slot />
   </button>
 </template>
-
 <script>
 import t from 'vue-types';
 
 export default {
   name: 'mat-button',
   props: {
+    color: t.string.def('white'),
     space: t.string.def(''),
   },
 };
@@ -25,11 +25,11 @@ export default {
   @import "../../../styles/main";
   .mat-button {
     align-items: center;
-    background: initial;
+    /*background: initial;*/
     border-radius: $border-radius-light;
     border: none;
     box-shadow: $box-shadow-light;
-    color: initial;
+    /*color: initial;*/
     cursor: pointer;
     display: inline-flex;
     font-size: 14px;

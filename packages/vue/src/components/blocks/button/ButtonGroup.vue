@@ -16,7 +16,7 @@ export default {
     font-size: 0;
     white-space: nowrap;
     /deep/ .mat-button {
-      background: #212121;
+      /*background: #212121;*/
       box-shadow: none;
       border: none;
 

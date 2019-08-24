@@ -24,35 +24,6 @@ export default {
   created() {
     this.$on('tabAdded', this.onTabAdded);
   },
-  mounted() {
-    const slider = this.$el.querySelector('.mat-tabs');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    slider.addEventListener('mousedown', (e) => {
-      isDown = true;
-      slider.classList.add('active');
-      startX = e.pageX - slider.offsetLeft;
-      // eslint-disable-next-line
-      scrollLeft = slider.scrollLeft;
-    });
-    slider.addEventListener('mouseleave', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-    slider.addEventListener('mouseup', () => {
-      isDown = false;
-      slider.classList.remove('active');
-    });
-    slider.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1; // scroll-fast
-      slider.scrollLeft = scrollLeft - walk;
-    });
-  },
   computed: {
     inkLinePosition() {
       if (this.tabAmount) {
@@ -76,15 +47,12 @@ export default {
     },
     setActiveTab(tabIndex) {
       this.$emit('input', tabIndex);
-      const boxOffset = this.$el.clientWidth / 2;
-      const leftSiblingsWidth = this.$children
-        .slice(0, tabIndex)
-        .map(child => child.$el.clientWidth)
-        .reduce((acc, current) => acc + current, 0);
-      const childOffset = this.$children[tabIndex].$el.offsetWidth;
-      const left = (leftSiblingsWidth - boxOffset) - childOffset;
-      const doc = this.$el.querySelector('.mat-tabs');
-      doc.scrollTo({ left, behavior: 'smooth' });
+    },
+  },
+  watch: {
+    value(value) {
+      const el = document.getElementsByClassName('mat-tab')[value];
+      el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     },
   },
 };
@@ -94,12 +62,15 @@ export default {
   @import "../../../styles/main";
   .mat-tabs-wrapper {
     position: relative;
+    max-width: 100%;
   }
   .mat-tabs {
     font-size: 0;
     position: relative;
     white-space: nowrap;
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
+    overscroll-behavior: none;
+    overflow: scroll;
     width: 100%;
     -ms-overflow-style: none;  // IE 10+
     scrollbar-width: none;  // Firefox

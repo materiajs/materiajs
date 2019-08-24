@@ -63,7 +63,6 @@ export { default as MatTableRow } from './table/TableRow.vue';
 export { default as MatTable } from './table/Table.vue';
 
 // Typography
-export { default as MatCode } from './typography/Code.vue';
 export { default as MatTitle } from './typography/Title.vue';
 export { default as MatParagraph } from './typography/Paragraph.vue';
 

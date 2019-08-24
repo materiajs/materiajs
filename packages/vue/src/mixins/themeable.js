@@ -27,8 +27,10 @@ export {
 
 export default {
   props: {
-    color: t.string.def('default'),
-    accentColor: t.string.def('accent-5'),
+    color: t.string.def(''),
+    gradientColor: t.string.def(''),
+    gradient: t.string.def(''),
+    accentColor: t.string.def(''),
     backgroundGradient: t.array.def([]),
   },
   computed: {
