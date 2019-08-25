@@ -38,5 +38,6 @@ export default {
     .mat-button {
       margin-bottom: 5px;
     }
+    z-index: 15;
   }
 </style>

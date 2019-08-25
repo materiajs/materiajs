@@ -36,6 +36,7 @@ export default {
   .mat-navigation-layout {
     width: 100vw;
     flex-direction: column;
+    min-height: 100vh;
     header {
       grid-area: header;
       z-index: 10;
