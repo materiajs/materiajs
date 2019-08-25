@@ -1,24 +1,14 @@
-<template>
-  <div class="mat-container" :style="_getStyle">
+<template functional>
+  <div
+    class="mat-container"
+    v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
+  >
     <slot />
   </div>
 </template>
 
 <script>
-import stylable from '../../../mixins/stylable';
-
 export default {
   name: 'Container',
-  mixins: [
-    stylable,
-  ],
-  computed: {
-    _getStyle() {
-      return {
-        ...this.getStyle,
-        ...this.styleOptions,
-      };
-    },
-  },
 };
 </script>

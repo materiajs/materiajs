@@ -2,7 +2,6 @@
   <div
     class="mat-title"
     :class="{ [size]: size, subtitle }"
-    :style="{ color: textColor }"
   >
     <slot>
       {{ value }}
@@ -19,12 +18,6 @@ export default {
     value: t.string.def(''),
     size: t.oneOf(['xs', 'small', 'regular', 'large', 'xl']),
     subtitle: t.bool.def(false),
-  },
-  computed: {
-    textColor() {
-      const key = `${this.isAnyDark ? 'dark-' : ''}${this.subtitle ? 'secondary-text' : 'primary-text'}`;
-      return this.theme.colors[key];
-    },
   },
 };
 </script>

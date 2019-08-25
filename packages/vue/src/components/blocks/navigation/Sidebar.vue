@@ -34,7 +34,7 @@
 <script>
 import t from 'vue-types';
 import Velocity from 'velocity-animate';
-import { eventBus } from '@/libraries/eventBus';
+import { eventBus } from '../../../libraries/eventBus';
 
 export default {
   name: 'SideBar',

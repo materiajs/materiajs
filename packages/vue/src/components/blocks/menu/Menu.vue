@@ -89,6 +89,7 @@ export default {
   @import "../../../styles/main";
   .mat-menu-wrapper {
     position: fixed;
+    z-index: 30;
     .overlay {
       position: fixed;
       height: 100%;

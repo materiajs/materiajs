@@ -1,5 +1,5 @@
 <template>
-  <div class="mat-window-item mat-scrollbar-hidden">
+  <div class="mat-swipe-item mat-scrollbar-hidden">
     <slot />
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .mat-window-item {
+  .mat-swipe-item {
     max-height: 100vh;
     scroll-behavior: smooth;
   }

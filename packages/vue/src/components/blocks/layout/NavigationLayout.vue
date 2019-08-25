@@ -1,6 +1,6 @@
 <template functional>
   <div
-    class="mat-navigation-layout"
+    class="mat-navigation-layout mat-scrollbar-hidden"
     :class="{ 'sidebar-overlay': props.sidebarOverlay }"
     v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
   >
@@ -11,7 +11,7 @@
       <nav>
         <slot name="nav" />
       </nav>
-      <main class="mat-scrollbar-hidden">
+      <main>
         <slot />
       </main>
     </section>
@@ -34,12 +34,7 @@ export default {
 
 <style scoped lang="scss">
   .mat-navigation-layout {
-    grid-template-areas: "header header" "nav main" "nav footer";
-    grid-template-columns: minmax(0, auto) 1fr;
-    grid-template-rows: min-content 1fr min-content;
-    height: 100vh;
     width: 100vw;
-    display: flex;
     flex-direction: column;
     header {
       grid-area: header;
@@ -55,6 +50,7 @@ export default {
       main {
         grid-area: main;
         flex: 1;
+        max-width: 100%;
       }
     }
     footer {

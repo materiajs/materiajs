@@ -1,6 +1,6 @@
 <template>
-  <div ref="slider" class="swipe">
-    <div ref="swipe-wrap" class="swipe-wrap">
+  <div ref="mat-swipe" class="mat-swipe">
+    <div class="mat-swipe-wrap">
       <slot></slot>
     </div>
   </div>
@@ -12,16 +12,17 @@ import Swipe from 'swipejs';
 import { eventBus } from '../../../libraries/eventBus';
 
 export default {
-  name: 'Window',
+  name: 'Swipe',
   data: () => ({
     swipe: null,
   }),
   props: {
     value: t.number,
     draggable: t.bool.def(true),
+    children: t.any,
   },
   mounted() {
-    this.swipe = new Swipe(this.$refs.slider, {
+    this.swipe = new Swipe(this.$refs['mat-swipe'], {
       startSlide: 0,
       // speed: 400,
       // auto: 3000,
@@ -30,6 +31,7 @@ export default {
       disableScroll: false,
       stopPropagation: true,
       callback: (index, elem, dir) => {
+        console.log('callback');
         this.$emit('input', index);
         this.onChange(index);
       },
@@ -41,18 +43,28 @@ export default {
   },
   methods: {
     resetSwipe() {
-      this.swipe.setup();
+      if (this.swipe) {
+        this.swipe.setup();
+      } else {
+        console.log('swipe not set up');
+      }
     },
     onChange(value) {
       if (this.swipe) {
         this.swipe.slide(value, 400);
-        this.resetSwipe();
+        setTimeout(() => {
+          this.resetSwipe();
+        }, 200);
       }
     },
   },
   watch: {
     value: {
-      handler: 'onChange',
+      handler: 'resetSwipe',
+      immediate: true,
+    },
+    children: {
+      handler: 'resetSwipe',
       immediate: true,
     },
   },
@@ -60,15 +72,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .swipe {
+  .mat-swipe {
     overflow: hidden;
     position: relative;
   }
-  .swipe-wrap {
+  .mat-swipe-wrap {
     overflow: hidden;
     position: relative;
+    min-width: 100%;
   }
-  .swipe-wrap > div {
+  .mat-swipe-wrap > div {
     float: left;
     width: 100%;
     position: relative;

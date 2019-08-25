@@ -33,7 +33,7 @@ export default {
     bottom: 15px;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     right: 15px;
     .mat-button {
       margin-bottom: 5px;

@@ -6,6 +6,7 @@ import * as structures from './components/structures/index';
 import themes, { palette } from './styles/themes';
 import { registerMixins } from './mixins';
 import registerDirectives from './directives';
+import './styles/_main.scss';
 
 const components = {
   ...blocks,

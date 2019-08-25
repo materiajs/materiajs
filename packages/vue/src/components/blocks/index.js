@@ -13,6 +13,7 @@ export { default as MatCard } from './container/Card.vue';
 export { default as MatContainer } from './container/Container.vue';
 export { default as MatMargin } from './container/MarginComponent.vue';
 export { default as MatPadding } from './container/PaddingComponent.vue';
+export { default as MatHorizontalScroll } from './container/HorizontalScroll.vue';
 
 
 // Layout
@@ -48,9 +49,13 @@ export { default as MatModal } from './modal/Modal.vue';
 // Navigation
 export { default as MatToolbar } from './toolbar/Toolbar.vue';
 export { default as MatNavLink } from './navigation/NavLink.vue';
-export { default as MatSidebar } from '../blocks/navigation/Sidebar.vue';
+export { default as MatSidebar } from './navigation/Sidebar.vue';
 export { default as MatSidebarHeader } from './navigation/SidebarHeader.vue';
 export { default as MatSidebarItem } from './navigation/SidebarItem.vue';
+
+// Swipe
+export { default as MatSwipe } from './swipe/Swipe.vue';
+export { default as MatSwipeItem } from './swipe/SwipeItem.vue';
 
 // Tabs
 export { default as MatTabs } from './tabs/TabsComponent.vue';

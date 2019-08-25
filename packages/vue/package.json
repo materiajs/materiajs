@@ -44,10 +44,9 @@
   },
   "files": [
     "dist/*",
-    "src/*",
     "public/*",
     "*.json",
     "*.js"
   ],
-  "gitHead": "49e66c2fc6bb3b639af6377356b80d7c45aae78f"
+  "gitHead": "4350920fbcc64e1c93358ac86f8c6b3904933093"
 }

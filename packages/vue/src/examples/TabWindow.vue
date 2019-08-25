@@ -20,48 +20,42 @@
         <mat-tab :tab="4">AA</mat-tab>
       </mat-tabs>
     </mat-toolbar>
-    <mat-window
+    <mat-swipe
       v-mat-round="'0 0 5px 5px'"
       v-model="tab"
       :draggable="true"
     >
-      <mat-window-item>
-        <div v-mat-padding="15">
-          <div>Heya</div>
-          <mat-spacer />
-          <div>Heya</div>
-          <mat-spacer />
-          <div>Heya</div>
-          <mat-spacer />
-          <div>Heya</div>
+      <mat-swipe-item>
+        <div class="test" v-for="(undefined, i) in new Array(100)">
+          {{ i }} Yeow
         </div>
-      </mat-window-item>
-      <mat-window-item>
+      </mat-swipe-item>
+      <mat-swipe-item>
         <div v-mat-padding="15">
           <div>Heya</div>
           <mat-spacer />
           <div>Heya</div>
         </div>
-      </mat-window-item>
-      <mat-window-item>
+      </mat-swipe-item>
+      <mat-swipe-item>
         <div v-mat-padding="15">
           <div>Heya</div>
           <mat-spacer />
           <div>Heya</div>
           <mat-spacer />
         </div>
-      </mat-window-item>
-      <mat-window-item>
+      </mat-swipe-item>
+      <mat-swipe-item>
         <div v-mat-padding="15">
           Heya
         </div>
-      </mat-window-item>
-      <mat-window-item>
+      </mat-swipe-item>
+      <mat-swipe-item>
         <div v-mat-padding="15">
           Heya
         </div>
-      </mat-window-item>
-    </mat-window>
+      </mat-swipe-item>
+    </mat-swipe>
   </mat-container>
 </template>
 <script>
@@ -72,3 +66,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+  .test {
+    padding: 15px;
+  }
+</style>

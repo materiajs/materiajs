@@ -62,7 +62,9 @@
           </mat-window>
           <SelectExample/>
           <mat-spacer />
-          <TabWindow />
+          <div v-mat-padding="15">
+            <TabWindow />
+          </div>
           <div class="button-example">
             <mat-floating-button-group>
               <mat-button @click="onClickButton" color="white" round="50" v-mat-padding="20">
