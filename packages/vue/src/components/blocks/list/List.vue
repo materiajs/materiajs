@@ -1,18 +1,10 @@
-<template>
+<template functional>
   <div
     class="mat-list"
-    :class="{ bordered }"
-    :style="getStyle"
+    :class="{ bordered: props.bordered }"
+    v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
   >
-    <slot>
-      <div
-        v-for="(item, key) in items"
-        :key="key"
-        @click="item.onClick"
-        class="mat-list-item" >
-        <slot name="item" v-bind:item="item" />
-      </div>
-    </slot>
+    <slot />
   </div>
 </template>
 
@@ -23,7 +15,6 @@ export default {
   name: 'List',
   props: {
     color: t.string.def('white'),
-    items: t.array,
     bordered: t.bool.def(false),
   },
 };
@@ -34,16 +25,6 @@ export default {
   .mat-list {
     &.bordered {
       border: 1px solid $primary-color-light;
-    }
-    >* {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      min-height: 45px;
-      padding: 0 15px;
-      &:not(:last-child) {
-        border-bottom: 1px solid $primary-color-light;
-      }
     }
   }
 </style>

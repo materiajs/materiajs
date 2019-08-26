@@ -10,21 +10,5 @@ export default {
     padding: t.string,
     width: t.string,
     maxWidth: t.string,
-    styleOptions: t.object,
-  },
-  computed: {
-    // getStyle() {
-    //   // return {
-    //   //   display: this.display,
-    //   //   flex: this.flex,
-    //   //   'flex-direction': this.flexDirection,
-    //   //   'grid-template-columns': this.gridTemplateColumns,
-    //   //   margin: this.margin,
-    //   //   padding: this.padding,
-    //   //   width: this.width,
-    //   //   'max-width': this.maxWidth,
-    //   // };
-    //   return this
-    // },
   },
 };

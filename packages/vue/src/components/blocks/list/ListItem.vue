@@ -23,6 +23,10 @@ export default {
 <style lang="scss" scoped>
   .mat-list-item {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    min-height: 45px;
+    padding: 0 15px;
     a {
       color: inherit;
       padding: 15px;

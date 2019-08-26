@@ -27,11 +27,11 @@ export {
 
 export default {
   props: {
-    color: t.string.def(''),
-    gradientColor: t.string.def(''),
-    gradient: t.string.def(''),
     accentColor: t.string.def(''),
     backgroundGradient: t.array.def([]),
+    color: t.string.def(''),
+    gradient: t.string.def(''),
+    gradientColor: t.string.def(''),
   },
   computed: {
     getAccentStyle() {

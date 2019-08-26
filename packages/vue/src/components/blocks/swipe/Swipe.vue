@@ -22,11 +22,12 @@ export default {
     children: t.any,
   },
   mounted() {
+    console.log('swipong');
     this.swipe = new Swipe(this.$refs['mat-swipe'], {
       startSlide: 0,
       // speed: 400,
       // auto: 3000,
-      draggable: this.draggable,
+      draggable: false,
       continuous: false,
       disableScroll: false,
       stopPropagation: true,

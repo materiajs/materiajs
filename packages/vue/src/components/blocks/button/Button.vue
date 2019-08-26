@@ -1,7 +1,7 @@
 <template functional>
   <button
     v-on="listeners"
-    :class="[`space-${space} i`]"
+    :class="[`space-${space}`]"
     class="mat-button"
     v-mat-round="round"
     v-mat-background:[props.gradient]="[props.color, props.gradientColor]"

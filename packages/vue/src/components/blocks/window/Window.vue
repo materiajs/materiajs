@@ -1,58 +1,47 @@
 <template>
-  <div ref="slider" class="swipe">
-    <div ref="swipe-wrap" class="swipe-wrap">
-      <slot></slot>
-    </div>
+  <div
+    class="mat-window"
+    :style="{ height: minHeight }"
+    :class="{ animating }"
+  >
+    <slot></slot>
   </div>
 </template>
 
 <script>
 import t from 'vue-types';
-import Swipe from 'swipejs';
-import { eventBus } from '../../../libraries/eventBus';
 
 export default {
   name: 'Window',
   data: () => ({
-    swipe: null,
+    minHeight: undefined,
+    animating: false,
   }),
   props: {
+    animateHeight: t.bool.def(true),
     value: t.number,
-    draggable: t.bool.def(true),
-  },
-  mounted() {
-    this.swipe = new Swipe(this.$refs.slider, {
-      startSlide: 0,
-      // speed: 400,
-      // auto: 3000,
-      draggable: this.draggable,
-      continuous: false,
-      disableScroll: false,
-      stopPropagation: true,
-      callback: (index, elem, dir) => {
-        this.$emit('input', index);
-        this.onChange(index);
-      },
-      transitionEnd: (index, elem) => {
-      },
-    });
-    eventBus.$on('sidebar-opened', this.resetSwipe);
-    eventBus.$on('sidebar-closed', this.resetSwipe);
-  },
-  methods: {
-    resetSwipe() {
-      this.swipe.setup();
-    },
-    onChange(value) {
-      if (this.swipe) {
-        this.swipe.slide(value, 400);
-        this.resetSwipe();
-      }
-    },
   },
   watch: {
     value: {
-      handler: 'onChange',
+      handler() {
+        if (this.animateHeight) {
+          this.animating = true;
+          if (this.$el) {
+            this.minHeight = `${this.$el.offsetHeight}px`;
+          }
+          this.$nextTick(() => {
+            const match = this.$children
+              .find(child => child.value === this.value);
+            if (match) {
+              this.minHeight = `${match.$el.offsetHeight}px`;
+            }
+          });
+          setTimeout(() => {
+            this.animating = false;
+            this.minHeight = undefined;
+          }, 300);
+        }
+      },
       immediate: true,
     },
   },
@@ -60,17 +49,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .swipe {
-    overflow: hidden;
+  .mat-window {
     position: relative;
-  }
-  .swipe-wrap {
-    overflow: hidden;
-    position: relative;
-  }
-  .swipe-wrap > div {
-    float: left;
-    width: 100%;
-    position: relative;
+    transition: all 0.2s ease;
+    &.animating {
+      overflow: hidden;
+    }
   }
 </style>

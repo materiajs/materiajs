@@ -6,6 +6,7 @@
     <transition name="fade">
       <div
         v-if="isMobile && value"
+        @click.stop="onClickOutside"
         class="overlay"></div>
     </transition>
     <mat-transition
@@ -39,6 +40,7 @@ export default {
   data: () => ({
     top: 0,
     left: 0,
+    originalParent: null,
   }),
   mixins: [
     clickaway,
@@ -49,6 +51,7 @@ export default {
     color: t.string.def('white'),
     position: t.oneOf(['bottom-left', 'bottom-right']).def('bottom-left'),
     value: t.bool.def(false),
+    root: t.bool.def(false),
   },
   computed: {
     bottomLeft() {
@@ -62,10 +65,12 @@ export default {
     },
   },
   mounted() {
-    if (this.$el && this.$el.parentNode) {
-      this.$el.parentNode.addEventListener('click', this.onClickParent, false);
-      this.$el.parentNode.removeChild(this.$el);
+    if (this.root && this.$el && this.$el.parentNode) {
+      this.originalParent = this.$el.parentNode;
+      this.originalParent.addEventListener('click', this.onClickParent, false);
+      this.originalParent.removeChild(this.$el);
       document.getElementById('app').appendChild(this.$el);
+      console.log(this.originalParent.$el);
     }
   },
 

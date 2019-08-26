@@ -1,7 +1,7 @@
-<template>
+<template functional>
   <div
     class="mat-floating-button-group"
-    :style="floatingButtonGroupStyle"
+    :style="{ right: props.right, bottom: props.bottom }"
   >
     <slot></slot>
   </div>
@@ -33,11 +33,11 @@ export default {
     bottom: 15px;
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     right: 15px;
-    .mat-button {
+    /deep/ .mat-button {
       margin-bottom: 5px;
+      border-radius: 50%;
     }
-    z-index: 15;
   }
 </style>
