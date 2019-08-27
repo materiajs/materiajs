@@ -2,6 +2,7 @@
   <div
     @click="$emit('click')"
     class="mat-nav-link mat-flex-center mat-standard-transition"
+    @click.native="e => $emit('click.native', e)"
   >
     <div class="mat-nav-link-wrapper">
       <template v-if="href">
@@ -39,6 +40,7 @@ export default {
       color: inherit;
       text-decoration: none;
     }
+
     &:hover {
       background: rgba(0,0,0,0.1);
     }
@@ -46,6 +48,9 @@ export default {
       min-width: 60px;
       display: flex;
       justify-content: center;
+    }
+    @media (hover: none) {
+      background: none !important;
     }
   }
 </style>

@@ -23,6 +23,9 @@
           v-on-clickaway="onClickOutside"
           class="mat-menu-body mat-scrollbar-hidden
           mat-card-light mat-box-shadow-heavy">
+          <div class="header">
+            <slot name="header" />
+          </div>
           <slot />
         </div>
       </div>
@@ -113,6 +116,11 @@ export default {
     position: absolute;
     top: 100%;
     z-index: 100;
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
     &-body {
       border-radius: 5px;
       max-height: 50vh;
