@@ -11,7 +11,6 @@
 </template>
 <script>
 import t from 'vue-types';
-
 export default {
   name: 'mat-button',
   props: {

@@ -60,6 +60,7 @@ export default {
     default: '',
     white: '#ffffff',
   },
+  palette,
   themes: {
     palette1: {
       ...getColorsFromKey('light-blue', 'primary'),

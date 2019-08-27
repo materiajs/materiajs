@@ -1,6 +1,8 @@
 import computeTextColor from './libraries/computeTextColor';
+import { palette } from "./styles/themes";
 
 export default {
+  palette,
   setTheme(theme) {
     Object.keys(theme)
       .forEach(key => this.setThemeVariable(key, theme[key]));
