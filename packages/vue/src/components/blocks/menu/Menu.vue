@@ -1,6 +1,7 @@
 <template>
   <div
     class="mat-menu-wrapper"
+    :class="{ root }"
     :style="{ top: `${top}px`, left: `${left}px`}"
   >
     <transition name="fade">
@@ -61,7 +62,7 @@ export default {
       if (this.isMobile) {
         return 'slide-up-down';
       }
-      return this.bottomLeft ? 'explode-left' : 'explode';
+      return this.bottomLeft ? 'explode' : 'explode-left';
     },
   },
   mounted() {
@@ -93,8 +94,10 @@ export default {
 <style scoped lang="scss">
   @import "../../../styles/main";
   .mat-menu-wrapper {
-    position: fixed;
-    z-index: 30;
+    &.root {
+      position: fixed;
+      z-index: 30;
+    }
     .overlay {
       position: fixed;
       height: 100%;

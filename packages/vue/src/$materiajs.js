@@ -1,5 +1,5 @@
 import computeTextColor from './libraries/computeTextColor';
-import { palette } from "./styles/themes";
+import { palette } from './styles/themes';
 
 export default {
   palette,

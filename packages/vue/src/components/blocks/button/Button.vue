@@ -3,7 +3,7 @@
     v-on="listeners"
     :class="[`space-${space}`]"
     class="mat-button"
-    v-mat-round="round"
+    v-mat-round="props.round"
     v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
   >
     <slot />
@@ -11,6 +11,7 @@
 </template>
 <script>
 import t from 'vue-types';
+
 export default {
   name: 'mat-button',
   props: {

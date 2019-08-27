@@ -39,8 +39,6 @@ export default {
 <style scoped lang="scss">
   .mat-toolbar {
     align-items: center;
-    background: var(--primary);
-    color: var(--primary-text-color);
     display: flex;
     height: 60px;
     position: relative;

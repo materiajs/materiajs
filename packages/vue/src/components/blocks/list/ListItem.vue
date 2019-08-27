@@ -1,8 +1,9 @@
-<template>
+<template functional>
   <div
-    :class="{ active }"
+    v-on="listeners.click ? { click: listeners.click } : {}"
+    :class="{ active: props.active }"
     class="mat-list-item"
-    :style="getStyle"
+    v-mat-round="props.round"
   >
     <slot />
   </div>

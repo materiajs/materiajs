@@ -1,6 +1,6 @@
 <template functional>
   <div
-    class="mat-containerz"
+    class="mat-container"
     v-mat-round="props.round"
     v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
     v-mat-padding="props.padding"

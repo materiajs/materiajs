@@ -14,7 +14,6 @@ import t from 'vue-types';
 export default {
   name: 'List',
   props: {
-    color: t.string.def('white'),
     bordered: t.bool.def(false),
   },
 };

@@ -3,7 +3,7 @@
     @click.stop="onClickCheckbox"
     class="mat-checkbox">
     <div
-      :class="{ checked: value, [type]: true }"
+      :class="{ checked: value, [type]: true, margin }"
       class="mat-checkbox-box mat-flex-center">
       <i
         class="mat-absolute-center"
@@ -22,6 +22,7 @@ import t from 'vue-types';
 export default {
   name: 'mat-checkbox',
   props: {
+    margin: t.bool.def(true),
     type: t.string.def('default'),
     value: t.bool.def(false),
     size: t.oneOf(['regular', 'small', 'large']),
@@ -62,13 +63,15 @@ export default {
       border-radius: 5px;
       font-size: 14px;
       display: inline-block;
-      margin-right: 10px;
       min-height: $frame-size;
       min-width: $frame-size;
       padding: 0;
 
+      &.margin {
+        margin-right: 10px;
+      }
       &.default {
-        border: 1px solid var(--primary);
+        border: 1px solid var(--primary-4);
         color: white;
         i {
           opacity: 0;
