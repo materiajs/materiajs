@@ -71,7 +71,7 @@ export default {
         margin-right: 10px;
       }
       &.default {
-        border: 1px solid var(--primary-4);
+        border: 1px solid;
         color: white;
         i {
           opacity: 0;

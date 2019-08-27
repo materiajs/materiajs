@@ -1,0 +1,23 @@
+$size-values: 1.25rem 1.5rem 2rem 2.5rem;
+$size-list: xs small regular large;
+@each $size in $size-list {
+  $i: index($size-list, $size);
+  .#{$size} {
+    font-size: nth($size-values, $i) !important;
+    .subtitle {
+      font-size: calc(#{nth($size-values, $i)} * 0.8) !important;
+    }
+  }
+}
+
+@media screen and (max-width: 767px){
+  @each $size in $size-list {
+    $i: index($size-list, $size);
+    .#{$size} {
+      font-size: calc(#{nth($size-values, $i)} * 0.8) !important;
+      &.subtitle {
+        font-size: calc(#{nth($size-values, $i)} * 0.64) !important;
+      }
+    }
+  }
+}

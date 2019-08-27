@@ -24,33 +24,11 @@ export default {
 
 <style scoped lang="scss">
   @import "../../../styles/main";
-  $size-values: 1rem 1.5rem 2rem 2.5rem;
-  $size-list: xs small regular large;
+  @import "../../../styles/typography";
   .mat-title {
     font-size: 2rem;
     font-weight: bold;
     display: flex;
     align-items: center;
-    @each $size in $size-list {
-      $i: index($size-list, $size);
-      &.#{$size} {
-        font-size: nth($size-values, $i);
-        &.subtitle {
-          font-size: calc(#{nth($size-values, $i)} * 0.8);
-        }
-      }
-    }
-
-    @media screen and (max-width: 767px){
-      @each $size in $size-list {
-        $i: index($size-list, $size);
-        &.#{$size} {
-          font-size: calc(#{nth($size-values, $i)} * 0.8);
-          &.subtitle {
-            font-size: calc(#{nth($size-values, $i)} * 0.64);
-          }
-        }
-      }
-    }
   }
 </style>
