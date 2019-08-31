@@ -2,7 +2,7 @@
   <div
     @click="onClickInputWrapper"
     class="mat-input"
-    :class="{ focused: isFocused }"
+    :class="{ focused: isFocused, [size]: size }"
     :style="inputStyle"
     v-on-clickaway="onInputBlur"
     v-mat-round="this.round"
@@ -65,6 +65,7 @@ export default {
     showClearButton: t.bool.def(false),
     type: t.oneOf(['text', 'number', 'password', 'textarea']),
     value: t.string.def(''),
+    size: t.string,
   },
   data: () => ({
     inputFocused: false,
@@ -100,6 +101,7 @@ export default {
       this.inputFocused = true;
     },
     onInputBlur() {
+      console.log('inout blur');
       if (this.inputFocused) {
         this.$emit('focus', false);
         this.inputFocused = false;
@@ -125,6 +127,9 @@ export default {
     border: 1px solid;
     min-width: 250px;
     height: 60px;
+    &.small {
+      height: initial;
+    }
     input {
       flex: 1;
       background: rgba(0,0,0,0);

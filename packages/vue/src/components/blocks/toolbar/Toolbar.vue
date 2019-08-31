@@ -4,6 +4,7 @@
     :class="[shadow ? 'mat-box-shadow-heavy' : '', size]"
     :style="_getStyle"
     v-mat-background:[gradient]="[color, gradientColor]"
+    v-mat-round="round"
   >
     <slot />
   </div>

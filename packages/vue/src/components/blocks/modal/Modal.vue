@@ -69,11 +69,11 @@ export default {
     &-content {
       position: absolute;
       left: 50%;
-      transform: translate(-50%, 0);
+      transform: translate(-50%, -50%);
       min-width: 360px;
-      top: 10vh;
+      top: 50%;
+      max-height: 95vh;
       z-index: 20;
-      margin-bottom: 15px;
     }
   }
 
@@ -89,7 +89,6 @@ export default {
     .mat-modal-content {
       min-width: 90vw;
       margin-bottom: 0;
-      top: 0;
     }
 
     .large {
