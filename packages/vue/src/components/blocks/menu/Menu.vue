@@ -6,7 +6,7 @@
   >
     <transition name="fade">
       <div
-        v-if="isMobile && value"
+        v-if="(isMobile || root) && value"
         @click.stop="onClickOutside"
         class="overlay"></div>
     </transition>
@@ -65,7 +65,7 @@ export default {
       if (this.isMobile) {
         return 'slide-up-down';
       }
-      return this.bottomLeft ? 'explode' : 'explode-left';
+      return this.bottomLeft ? 'explode-left' : 'explode';
     },
   },
   mounted() {
@@ -74,7 +74,6 @@ export default {
       this.originalParent.addEventListener('click', this.onClickParent, false);
       this.originalParent.removeChild(this.$el);
       document.getElementById('app').appendChild(this.$el);
-      console.log(this.originalParent.$el);
     }
   },
 

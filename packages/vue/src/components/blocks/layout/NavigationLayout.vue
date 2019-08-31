@@ -37,6 +37,7 @@ export default {
     width: 100vw;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
     header {
       grid-area: header;
       z-index: 10;

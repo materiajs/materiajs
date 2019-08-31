@@ -37,12 +37,12 @@ export default {
     border: 2px solid white;
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.3);
     &.xs {
-      width: 45px;
-      height: 45px;
+      width: 32px;
+      height: 32px;
     }
     &.small {
-      width: 75px;
-      height: 75px;
+      width: 45px;
+      height: 45px;
     }
     &.regular {
       width: 100px;

@@ -46,7 +46,7 @@ export const palette = {
   // Yellow (Vivid)
   'yellow-vivid-1': '#8D2B0B',
   'yellow-vivid-2': '#B44D12',
-  'green-vivid-3': '#CB6E17',
+  'yellow-vivid-3': '#CB6E17',
   'yellow-vivid-4': '#DE911D',
   'yellow-vivid-5': '#F0B429',
   'yellow-vivid-6': '#F7C948',

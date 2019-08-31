@@ -89,6 +89,7 @@ export default {
     .mat-modal-content {
       min-width: 90vw;
       margin-bottom: 0;
+      max-height: 100vh;
     }
 
     .large {
