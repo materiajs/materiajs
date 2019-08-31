@@ -92,8 +92,12 @@ export default {
     }
 
     .large {
-      min-height: 100%;
-      width: 100%;
+      top: 0;
+      bottom: 0;
+      transform: translate(0, 0);
+      left: 0;
+      max-width: 100vw;
+      width: 100vw;
     }
   }
 </style>
