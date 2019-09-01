@@ -5,6 +5,7 @@
     class="mat-title"
     :class="{ [size]: size, subtitle }"
     v-on-clickaway="update"
+    :style="{ 'font-weight': bold ? 'bold' : 'initial' }"
   >
     <slot>
       {{ value }}
@@ -20,6 +21,7 @@ export default {
   name: 'Title',
   mixins: [clickaway],
   props: {
+    bold: t.bool.def(false),
     value: t.string.def(''),
     size: t.oneOf(['xs', 'small', 'regular', 'large', 'xl']),
     subtitle: t.bool.def(false),
@@ -41,7 +43,6 @@ export default {
   @import "../../../styles/typography";
   .mat-title {
     font-size: 2rem;
-    font-weight: bold;
     display: flex;
     align-items: center;
   }

@@ -25,6 +25,7 @@ export default {
       });
     $materiajs.setTheme(themes.colors);
     $materiajs.setTheme(themes.themes.palette1);
+    $materiajs.init();
     // Overwrite
     if (options.theme) {
       $materiajs.setTheme(themes.themes[options.theme]);

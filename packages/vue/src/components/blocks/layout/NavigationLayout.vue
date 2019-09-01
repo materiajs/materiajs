@@ -1,6 +1,6 @@
 <template functional>
   <div
-    class="mat-navigation-layout mat-scrollbar-hidden"
+    class="mat-navigation-layout"
     :class="{ 'sidebar-overlay': props.sidebarOverlay }"
     v-mat-background:[props.gradient]="[props.color, props.gradientColor]"
   >

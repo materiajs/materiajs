@@ -3,6 +3,9 @@ export { default as MatChip } from './chip/Chip.vue';
 export { default as MatTransition } from './transition/TransitionComponent.vue';
 export { default as MatCheckbox } from './checkbox/Checkbox.vue';
 
+// Block
+export { default as MatBlock } from './block/Block.vue';
+
 // Button
 export { default as MatButton } from './button/Button.vue';
 export { default as MatButtonGroup } from './button/ButtonGroup.vue';
@@ -17,6 +20,7 @@ export { default as MatHorizontalScroll } from './container/HorizontalScroll.vue
 
 
 // Layout
+export { default as MatMasonryLayout } from './layout/MasonryLayout.vue';
 export { default as MatDivider } from './layout/Divider.vue';
 export { default as MatFlexItem } from './layout/FlexItem.vue';
 export { default as MatFlexLayout } from './layout/FlexLayout.vue';
@@ -30,6 +34,9 @@ export { default as MatSpacer } from './layout/Spacer.vue';
 // List
 export { default as MatList } from './list/List.vue';
 export { default as MatListItem } from './list/ListItem.vue';
+
+// Logo
+export { default as MateriaLogo } from './logo/MateriaLogo.vue';
 
 // Image
 export { default as MatImage } from './image/ImageComponent.vue';

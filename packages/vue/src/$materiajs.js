@@ -3,6 +3,11 @@ import { palette } from './styles/themes';
 
 export default {
   palette,
+  init() {
+    Object.keys(palette)
+      .forEach(key => this.setThemeVariable(key, palette[key]));
+
+  },
   setTheme(theme) {
     Object.keys(theme)
       .forEach(key => this.setThemeVariable(key, theme[key]));
