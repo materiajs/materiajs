@@ -17,7 +17,7 @@
   "dependencies": {
     "@materiajs/vue": "^0.2.60",
     "cross-env": "^5.2.0",
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^10.1.2",
     "nuxt": "^2.7.1",
     "vue-types": "^1.5.3",
     "vuex": "^3.1.1"
